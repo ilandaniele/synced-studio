@@ -1,24 +1,21 @@
-const Hero = () => {
-    return (
-      <section className="bg-neutral-900 text-center px-6 py-24 text-white relative overflow-hidden">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-400 leading-tight">
-          ACCELERATE YOUR SALES <span className="text-gray-200">WITH</span><br />
-          <span className="italic text-green-100">IMPACTFUL 3D PRODUCT VISUALS</span>
-        </h1>
-        <p className="text-gray-300 max-w-2xl mx-auto mt-6 text-base md:text-lg">
-          Empower your business to achieve the sales you need to realize your vision, more freedom, growth, and the success you’ve always dreamed of.
-        </p>
-        <div className="mt-10 flex flex-wrap justify-center gap-6">
-          <button className="border-2 border-yellow-400 text-yellow-400 px-6 py-2 rounded-full font-semibold hover:bg-yellow-400 hover:text-black transition">
-            Get free consultation
-          </button>
-          <button className="bg-yellow-400 text-black px-8 py-6 rounded-full font-semibold hover:opacity-90 transition">
-            Make appointment
-          </button>
-        </div>
-      </section>
-    );
-  };
-  
-  export default Hero;
-  
+'use client';
+import Image from 'next/image';
+import React from 'react';
+
+const Hero: React.FC = () => {
+  return (
+    <section className="bg-[#160d09] text-center text-white py-10">
+      <div className="flex justify-center">
+        <Image
+          src="/images/synced-choco.png"
+          alt="Synced Chocolate"
+          width={800}
+          height={800}
+          priority
+        />
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

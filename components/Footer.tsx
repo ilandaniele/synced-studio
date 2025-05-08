@@ -1,51 +1,30 @@
-// components/Footer.tsx
-import { FaInstagram } from "react-icons/fa";
-import { PiThreadsLogo } from "react-icons/pi";
-import { FaBehance } from "react-icons/fa";
+'use client'
+import React from 'react'
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
-    <footer className="bg-black text-[#c9d8c1] py-6 px-8 flex flex-col md:flex-row justify-between items-center">
-      {/* Logo */}
-      <div className="text-xl font-extrabold tracking-wide">SYNCED.</div>
+    <footer className="w-full bg-[#f7e8d3] rounded-t-[60px] px-8 py-16">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-16 md:gap-32">
+        {/* Logo */}
+        <div className="text-left">
+          <h2 className="text-6xl md:text-7xl font-extrabold text-black leading-none">SYNCED</h2>
+          <p className="text-3xl md:text-4xl font-extrabold tracking-[0.7em] text-black mt-3">STUDIO</p>
+        </div>
 
-      {/* Social Icons */}
-      <div className="flex space-x-4 text-2xl mt-4 md:mt-0">
-        <a
-          href="https://www.instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition"
-        >
-          <FaInstagram />
-        </a>
-        <a
-          href="https://www.threads.net"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition"
-        >
-          <PiThreadsLogo />
-        </a>
-        <a
-          href="https://www.behance.net"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition"
-        >
-          <FaBehance />
-        </a>
+        {/* Social & Contact */}
+        <div className="flex gap-16">
+          <div className="text-center">
+            <h3 className="text-xl font-bold text-black mb-4">SOCIALS</h3>
+            <div className="w-[100px] h-[130px] border-2 border-black rounded-[20px]"></div>
+          </div>
+          <div className="text-center">
+            <h3 className="text-xl font-bold text-black mb-4">CONTACT</h3>
+            <div className="w-[100px] h-[130px] border-2 border-black rounded-[20px]"></div>
+          </div>
+        </div>
       </div>
-
-      {/* Email */}
-      <a
-        href="mailto:info@synced-studio.eu"
-        className="mt-4 md:mt-0 font-extrabold underline text-[#c9d8c1] hover:text-white transition"
-      >
-        INFO@SYNCED-STUDIO.EU
-      </a>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

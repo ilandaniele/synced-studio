@@ -1,59 +1,105 @@
+'use client'
+import React, { useEffect, useRef } from 'react'
+import Image from 'next/image'
+
+const testimonials = [
+  {
+    logo: 'https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/662cd6dd-41cd-4cff-ab72-e4f605e1dd62/Outlook-ea4djg5y.png',
+    alt: 'Glad',
+    text: 'Amazing service and stunning visuals!'
+  },
+  {
+    logo: 'https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/c88396ae-abc4-490f-849c-1a1a9fe25d8c/Logo.png',
+    alt: 'Perfect Ted',
+    text: 'Great communication and quick turnaround.'
+  },
+  {
+    logo: 'https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/e0288289-5355-4c07-a906-a9432d4a9095/AK+logo.png',
+    alt: 'Aquela Kombucha',
+    text: 'The quality of the content is superb!'
+  },
+  {
+    logo: 'https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/757bb5e4-f632-4f6a-94dc-746e35a0494a/Logo.png',
+    alt: 'Modhaus',
+    text: 'They nailed the branding on the first try.'
+  }
+]
+
 const Testimonials = () => {
-    return (
-      <section className="bg-gradient-to-b from-[#c1cebc] to-black text-white py-20 px-4">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-left leading-snug max-w-3xl">
-          WHAT ARE <br /> THEY SAYING?
-        </h2>
-  
-        <div className="mt-10 space-y-10">
-          {/* Testimonial 1 - Glad */}
-          <div className="bg-[#2d2d2d] p-8 rounded-3xl max-w-5xl ml-auto relative">
-            <p className="text-lg font-semibold italic text-[#c1cebc]">
-              – 
-              <span className="not-italic font-bold">
-                “I HAD THE BEST EXPERIENCE WORKING WITH SYNCED. HE <span className="text-yellow-400">UNDERSTOOD EXACTLY WHAT WAS REQUIRED FROM A VERY SHORT MESSAGE.</span> OVERALL PROCESS WAS SUPER PROFESSIONAL AND SMOOTH. 100% RECOMMEND THEIR SERVICES TO ANYONE IN NEED OF 3D ANIMATIONS.”
-              </span>
-            </p>
-            <img
-              src="https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/662cd6dd-41cd-4cff-ab72-e4f605e1dd62/Outlook-ea4djg5y.png"
-              alt="Glad logo"
-              className="absolute bottom-4 right-6 w-24"
+  const containerRef = useRef<HTMLDivElement>(null)
+  const scrollRef = useRef<number>(0)
+  const animationRef = useRef<number | null>(null)
+
+  const animate = () => {
+    const container = containerRef.current
+    if (container) {
+      container.scrollLeft += scrollRef.current
+
+      const scrollLeft = container.scrollLeft
+      const scrollWidth = container.scrollWidth
+      // const containerWidth = container.clientWidth
+
+      // Si llegamos al final, volvemos al medio (que tiene el mismo contenido)
+      if (scrollLeft >= scrollWidth / 2) {
+        container.scrollLeft = scrollLeft - scrollWidth / 2
+      }
+
+      // Si llegamos al principio, empujamos hacia la mitad del scroll (que tiene lo mismo)
+      if (scrollLeft <= 0) {
+        container.scrollLeft = scrollLeft + scrollWidth / 2
+      }
+    }
+    animationRef.current = requestAnimationFrame(animate)
+  }
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const handleWheel = (event: WheelEvent) => {
+      scrollRef.current = event.deltaY > 0 ? 1.5 : -1.5
+    }
+
+    // Seteamos scroll al medio al montar
+    container.scrollLeft = container.scrollWidth / 4
+
+    window.addEventListener('wheel', handleWheel)
+    animationRef.current = requestAnimationFrame(animate)
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel)
+      if (animationRef.current) cancelAnimationFrame(animationRef.current)
+    }
+  }, [])
+
+  return (
+    <section className="bg-black text-white py-16 overflow-hidden">
+      <h2 className="text-3xl md:text-5xl font-bold text-[#f7e8d3] text-center mb-12">
+        What clients are saying
+      </h2>
+      <div
+        ref={containerRef}
+        className="flex gap-6 overflow-x-hidden whitespace-nowrap no-scrollbar px-[10vw] py-4"
+      >
+        {[...testimonials, ...testimonials].map((testimonial, index) => (
+          <div
+            key={index}
+            className="inline-block bg-[#f7e8d3] text-black rounded-[60px] w-[280px] h-[400px] flex flex-col justify-start items-start px-6 pt-6 shrink-0"
+          >
+            <Image
+              src={testimonial.logo}
+              alt="Client logo"
+              width={80}
+              height={80}
+              className="h-12 w-auto object-contain mb-8"
+              unoptimized
             />
+            <p className="text-left">{testimonial.text}</p>
           </div>
-  
-          {/* Testimonial 2 - Modhaus */}
-          <div className="bg-[#2d2d2d] p-8 rounded-3xl max-w-5xl mr-auto relative">
-            <p className="text-lg font-semibold italic text-[#c1cebc]">
-              –
-              <span className="not-italic font-bold">
-                “IT WAS GREAT WORKING WITH SYNCED AND COLLABORATING WITH JERÓNIMO. <span className="text-yellow-400">GREAT COMMUNICATION AND UNDERSTOOD THE BRAND AND VISION IMMEDIATELY.</span> DELIVERED THE PROJECT VERY FAST AND EXCEEDED OUR EXPECTATIONS, HIGHLY RECOMMEND.”
-              </span>
-            </p>
-            <img
-              src="https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/757bb5e4-f632-4f6a-94dc-746e35a0494a/Logo.png"
-              alt="Modhaus logo"
-              className="absolute bottom-4 right-6 w-20"
-            />
-          </div>
-  
-          {/* Testimonial 3 - AMMP */}
-          <div className="bg-[#2d2d2d] p-8 rounded-3xl max-w-6xl ml-auto relative">
-            <p className="text-lg font-semibold italic text-[#c1cebc]">
-              –
-              <span className="not-italic font-bold">
-                “WORKING WITH SYNCED WAS AN <span className="text-yellow-400">OUTSTANDING EXPERIENCE.</span> THEY WERE ABLE TO TAKE A <span className="text-yellow-400">VAGUE IDEA</span> AND TRANSFORM IT <span className="text-yellow-400">INTO STUNNING 3D RENDERINGS</span> AND AN ANIMATION THAT EXCEEDED OUR EXPECTATIONS. THEIR SEAMLESS COMMUNICATION AND PROFESSIONALISM MADE THE COLLABORATION EFFORTLESS. THE END RESULT NOT ONLY ENHANCED OUR PRODUCT VISUALIZATION BUT ALSO STRENGTHENED OUR MARKET POSITION AND SALES POTENTIAL. WE HIGHLY RECOMMEND SYNCED FOR THEIR EXCEPTIONAL ABILITY TO TURN IDEAS INTO REALITY.”
-              </span>
-            </p>
-            <img
-              src="https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/e8c85f66-d758-4625-b369-7c8c9e932727/Logo.png"
-              alt="AMMP logo"
-              className="absolute bottom-4 right-6 w-24"
-            />
-          </div>
-        </div>
-      </section>
-    );
-  };
-  
-  export default Testimonials;
-  
+        ))}
+      </div>
+    </section>
+  )
+}
+
+export default Testimonials

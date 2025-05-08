@@ -4,7 +4,7 @@ import React from 'react'
 const AboutUs: React.FC = () => {
   return (
     <section className="w-full bg-[#f7e8d3] rounded-[60px] text-center px-6 py-16 text-black overflow-hidden">
-      <h2 className="text-6xl md:text-7xl font-bold mb-20">ABOUT SYNCED</h2>
+      <h2 className="text-6xl md:text-7xl font-bold mb-20">PROJECTS</h2>
       <p className="max-w-4xl mx-auto text-lg leading-relaxed">
         At Synced, we make your product look irresistible.
       </p>
