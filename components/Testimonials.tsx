@@ -1,6 +1,6 @@
 'use client'
-import React, { useEffect, useRef } from 'react'
-import Image from 'next/image'
+import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 const testimonials = [
   {
@@ -26,51 +26,31 @@ const testimonials = [
 ]
 
 const Testimonials = () => {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const scrollRef = useRef<number>(0)
-  const animationRef = useRef<number | null>(null)
-
-  const animate = () => {
-    const container = containerRef.current
-    if (container) {
-      container.scrollLeft += scrollRef.current
-
-      const scrollLeft = container.scrollLeft
-      const scrollWidth = container.scrollWidth
-      // const containerWidth = container.clientWidth
-
-      // Si llegamos al final, volvemos al medio (que tiene el mismo contenido)
-      if (scrollLeft >= scrollWidth / 2) {
-        container.scrollLeft = scrollLeft - scrollWidth / 2
-      }
-
-      // Si llegamos al principio, empujamos hacia la mitad del scroll (que tiene lo mismo)
-      if (scrollLeft <= 0) {
-        container.scrollLeft = scrollLeft + scrollWidth / 2
-      }
-    }
-    animationRef.current = requestAnimationFrame(animate)
-  }
+  const containerRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
+      const speed = 0.5; // píxeles por frame, ajusta para más/menos velocidad
+      const container = containerRef.current;
+      if (!container) return;
 
-    const handleWheel = (event: WheelEvent) => {
-      scrollRef.current = event.deltaY > 0 ? 1.5 : -1.5
-    }
+      const step = () => {
+        const half = container.scrollWidth / 2;
 
-    // Seteamos scroll al medio al montar
-    container.scrollLeft = container.scrollWidth / 4
+        // si llegamos al inicio, saltamos a la mitad
+        if (container.scrollLeft <= 0) {
+          container.scrollLeft = half;
+        } else {
+          container.scrollLeft -= speed; 
+        }
 
-    window.addEventListener('wheel', handleWheel)
-    animationRef.current = requestAnimationFrame(animate)
+        rafRef.current = requestAnimationFrame(step);
+      };
 
-    return () => {
-      window.removeEventListener('wheel', handleWheel)
-      if (animationRef.current) cancelAnimationFrame(animationRef.current)
-    }
-  }, [])
+      // iniciamos animación
+      rafRef.current = requestAnimationFrame(step);
+      return () => cancelAnimationFrame(rafRef.current);
+    }, []);
 
   return (
     <section className="bg-black text-white py-16 overflow-hidden">
@@ -81,7 +61,7 @@ const Testimonials = () => {
         ref={containerRef}
         className="flex gap-6 overflow-x-hidden whitespace-nowrap no-scrollbar px-[10vw] py-4"
       >
-        {[...testimonials, ...testimonials].map((testimonial, index) => (
+        {[...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => (
           <div
             key={index}
             className="inline-block bg-[#f7e8d3] text-black rounded-[60px] w-[280px] h-[400px] flex flex-col justify-start items-start px-6 pt-6 shrink-0"
