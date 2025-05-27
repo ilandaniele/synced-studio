@@ -11,7 +11,7 @@ const GetInTouch: React.FC = () => {
           IN TOUCH
         </h2>
         <p className="text-center text-2xl md:text-3xl font-semibold tracking-wide">
-          xxxxx@gmail.com
+          INFO@SYNCED-STUDIO.EU
         </p>
       </div>
 
