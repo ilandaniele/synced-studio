@@ -1,6 +1,6 @@
 'use client'
-import React, { useEffect, useRef } from "react";
-import Image from "next/image";
+import React, { useEffect, useRef } from 'react'
+import Image from 'next/image'
 
 const logos = [
   { src: "https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/662cd6dd-41cd-4cff-ab72-e4f605e1dd62/Outlook-ea4djg5y.png", alt: "Glad" },
@@ -12,50 +12,55 @@ const logos = [
 ];
 
 const TrustedBy: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const rafRef     = useRef<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null)
+  const rafRef       = useRef<number>(0)
 
   useEffect(() => {
-    const speed = 0.5; // píxeles por frame, ajusta para más/menos velocidad
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
-    const step = () => {
-      const half = container.scrollWidth / 2;
+    // 1) Recogemos todas las <img> y esperamos a que cada una termine de cargar
+    const imgs = Array.from(container.querySelectorAll('img'))
+    const loadPromises = imgs.map(img =>
+      img.complete
+        ? Promise.resolve()
+        : new Promise<void>(resolve => {
+            img.onload = () => resolve()
+            img.onerror = () => resolve()
+          })
+    )
 
-      // si llegamos al inicio, saltamos a la mitad
-      if (container.scrollLeft <= 0) {
-        container.scrollLeft = half;
-      } else {
-        container.scrollLeft -= speed; 
+    Promise.all(loadPromises).then(() => {
+      // 2) Una vez cargadas, medimos scrollWidth correctamente
+      const half = container.scrollWidth / 2
+      container.scrollLeft = half
+
+      const speed = 0.5 // píxeles por frame
+      const step = () => {
+        if (container.scrollLeft <= 0) {
+          container.scrollLeft = half
+        } else {
+          container.scrollLeft -= speed
+        }
+        rafRef.current = requestAnimationFrame(step)
       }
 
-      rafRef.current = requestAnimationFrame(step);
-    };
+      rafRef.current = requestAnimationFrame(step)
+    })
 
-    // iniciamos animación
-    rafRef.current = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, []);
+    return () => cancelAnimationFrame(rafRef.current)
+  }, [])
 
   return (
-    <section className="bg-[#160d09] text-white relative z-10 pb-10 overflow-hidden">
+    <section className="bg-[#160d09] text-white pb-10 overflow-hidden">
       <div className="pt-10 max-w-7xl mx-auto text-center">
         <h2 className="text-sm font-semibold tracking-widest mb-8">TRUSTED BY:</h2>
         <div
           ref={containerRef}
           className="flex items-center gap-8 overflow-hidden whitespace-nowrap px-4 py-4"
         >
-          {/*
-            Renderizamos el array dos veces para que, al llegar al final,
-            siga habiendo logos a la derecha y no se “vea vacío”.
-          */}
-          {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0"
-              style={{ width: 120 /* todos mismos 120px */, margin: '0 12px' /* gap horizontal */ }}
-            >
+          {[...logos, ...logos].map((logo, i) => (
+            <div key={i} className="flex-shrink-0" style={{ width: 120, margin: '0 12px' }}>
               <Image
                 src={logo.src}
                 alt={logo.alt}
@@ -69,7 +74,7 @@ const TrustedBy: React.FC = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default TrustedBy;
+export default TrustedBy

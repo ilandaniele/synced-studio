@@ -16,7 +16,7 @@ const testimonials: Testimonial[] = [
     brandLogo: '/images/gladLOGO.jpg',
     personPhoto: '/images/Gladfoto.jpg',
     rating: 5,
-    text: '“They understood my vision from a brief message. Super smooth process, amazing results. Highly recommend for 3D animations!”',
+    text: 'They understood my vision from a brief message. Super smooth process, amazing results. Highly recommend for 3D animations!',
     author: 'Katrin Cavalcanti',
     role: "Glad’s Founder"
   },
@@ -24,7 +24,7 @@ const testimonials: Testimonial[] = [
     brandLogo: '/images/ModHausLOGO.jpg',
     personPhoto: '/images/ModHausfoto.jpg',
     rating: 5,
-    text: '“Instantly got our brand vision, delivered fast and exceeded my expectations. Great communication throughout. Highly recommend!”',
+    text: 'Instantly got our brand vision, delivered fast and exceeded my expectations. Great communication throughout. Highly recommend!',
     author: 'Aaron von Kreisler',
     role: "ModHaus’s Founder"
   },
@@ -32,22 +32,22 @@ const testimonials: Testimonial[] = [
     brandLogo: '/images/AlimpLOGO.jpg',
     personPhoto: '/images/Alimpfoto.jpg',
     rating: 5,
-    text: '“Synced turned a vague idea into stunning 3D visuals that boosted our product and sales, professional, seamless, and highly recommended.”',
+    text: 'Synced turned a vague idea into stunning 3D visuals that boosted our product and sales, professional, seamless, and highly recommended.',
     author: "Alimp’s Founder"
   },
   {
     brandLogo: '/images/AquelakombuchaLOGO.jpg',
     personPhoto: '/images/Aquelakombuchafoto.jpg',
     rating: 4,
-    text: '“The content didn’t just look amazing, it made strangers remember us!”',
+    text: 'The content didn’t just look amazing, it made strangers remember us!',
     author: 'Maria Lima',
     role: "Aquela Kombucha’s Founder"
   },
   {
-    brandLogo: '/images/Reese’sLOGO.jpg',
-    personPhoto: '/images/Reese’sfoto.jpg',
+    brandLogo: '/images/ReesesLOGO.jpg',
+    personPhoto: '/images/Reesesfoto.jpg',
     rating: 4,
-    text: '“We will definitely use Synced again, good experience.”',
+    text: 'We will definitely use Synced again, good experience.',
     author: 'Fred Trevor',
     role: "Reese’s Graphic Designer"
   },
@@ -55,7 +55,7 @@ const testimonials: Testimonial[] = [
     brandLogo: '/images/TheCoconutCollabLOGO.jpg',
     personPhoto: '/images/TheCoconutCollabfoto.jpg',
     rating: 4,
-    text: '“Synced work was fast, effective and useful. They made our product launch a success with their captivating visuals.”',
+    text: 'Synced work was fast, effective and useful. They made our product launch a success with their captivating visuals.',
     author: 'Edward Averdieck',
     role: 'The Coconut Collab Founder'
   },
@@ -63,7 +63,7 @@ const testimonials: Testimonial[] = [
     brandLogo: '/images/THEREALSTUDIOLOGO.jpg',
     personPhoto: '/images/THEREALSTUDIOfoto.jpg',
     rating: 5,
-    text: '“Super good! We loved the animation so much that we placed it in our landing page background.”',
+    text: 'Super good! We loved the animation so much that we placed it in our landing page background.',
     author: 'Jose Real',
     role: 'The Real Studio Founder'
   },
@@ -71,7 +71,7 @@ const testimonials: Testimonial[] = [
     brandLogo: '/images/PerfectTedLOGO.jpg',
     personPhoto: '/images/PerfectTedFoto.jpg',
     rating: 4,
-    text: '“Our work with Synced was super fast and helpful.”',
+    text: 'Our work with Synced was super fast and helpful.',
     author: 'Marisa Poster',
     role: "PerfectTed’s Founder"
   },
@@ -79,7 +79,7 @@ const testimonials: Testimonial[] = [
     brandLogo: '/images/helpbnkLOGO.jpg',
     personPhoto: '/images/helpbnkfoto.jpg',
     rating: 5,
-    text: '“Synced helped us visualize how we imagined our brand’s tone and voice.”',
+    text: 'Synced helped us visualize how we imagined our brand’s tone and voice.',
     author: 'Will Waite',
     role: 'HelpBnk Marketing Director'
   }
@@ -92,12 +92,21 @@ export default function Testimonials() {
   useEffect(() => {
     const speed = 0.5 // px por frame
     const container = containerRef.current!
+
     const step = () => {
       const half = container.scrollWidth / 2
-      container.scrollLeft += speed
-      if (container.scrollLeft >= half) container.scrollLeft -= half
+
+      // desplazamos hacia la derecha
+      container.scrollLeft -= speed
+
+      // si pasamos del inicio, saltamos a la mitad
+      if (container.scrollLeft <= 0) {
+        container.scrollLeft += half
+      }
+
       rafRef.current = requestAnimationFrame(step)
     }
+
     rafRef.current = requestAnimationFrame(step)
     return () => cancelAnimationFrame(rafRef.current)
   }, [])
@@ -132,9 +141,9 @@ export default function Testimonials() {
                 />
               </div>
               {/* avatar + rating */}
-              <div className="flex items-center ml-auto space-x-4">
+              <div className="flex items-center">
                 {/* avatar desplazado sobre el logo */}
-                <div className="relative w-14 h-14 -translate-x-4 rounded-full overflow-hidden border-2 border-[#F7E8D3] flex-shrink-0 z-10">
+                <div className="relative w-14 h-14 -translate-x-4 rounded-full overflow-hidden  flex-shrink-0 z-10">
                   <Image
                     src={t.personPhoto}
                     alt={`Foto de ${t.author}`}
@@ -160,7 +169,7 @@ export default function Testimonials() {
               <p className="text-left text-lg leading-snug mb-4 break-words">
                 “{t.text}”
               </p>
-              <p className="text-left text-gray-400 text-sm">
+              <p className="text-left text-gray-400 text-sm truncate">
                 {t.author}{t.role && ` – ${t.role}`}
               </p>
             </div>
