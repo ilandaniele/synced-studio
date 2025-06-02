@@ -37,10 +37,10 @@ const Services: React.FC = () => {
             </span>
 
             {/* Contenido */}
-            <div className="flex flex-col items-start w-full mx-12">
+            <div className="pl-10 flex flex-col justify-around items-start w-full pt-12 group-hover:pt-0">
               {/* Título centrado verticalmente, animado con el número */}
               <h3
-                className="text-4xl md:text-7xl font-semibold mb-2 tracking-tight text-left transition-all duration-300 group-hover:text-2xl group-hover:md:text-4xl group-hover:-translate-y-2"
+                className="text-4xl md:text-7xl font-semibold tracking-tight text-left transition-all duration-300 group-hover:text-2xl group-hover:md:text-4xl group-hover:-translate-y-2"
               >
                 {svc.title}
               </h3>

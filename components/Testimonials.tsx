@@ -126,12 +126,12 @@ export default function Testimonials() {
           <div
             key={i}
             className="inline-block bg-[#0F1521] rounded-2xl flex-shrink-0"
-            style={{ width: 300, height: 360 }}
+            style={{ width: 500, height: 360 }}
           >
             {/* ─── CABECERA ─── */}
-            <div className="flex items-center h-32 px-6 relative">
+            <div className="flex items-center h-32 px-10 pt-10 relative">
               {/* logo de marca */}
-              <div className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
+              <div className="relative w-22 h-22 rounded-xl overflow-hidden flex-shrink-0">
                 <Image
                   src={t.brandLogo}
                   alt={`Logo de ${t.author}`}
@@ -143,7 +143,7 @@ export default function Testimonials() {
               {/* avatar + rating */}
               <div className="flex items-center">
                 {/* avatar desplazado sobre el logo */}
-                <div className="relative w-14 h-14 -translate-x-4 rounded-full overflow-hidden  flex-shrink-0 z-10">
+                <div className="relative w-26 h-26 -translate-x-5 rounded-full overflow-hidden flex-shrink-0 z-10 border-8 border-[#0f1521]">
                   <Image
                     src={t.personPhoto}
                     alt={`Foto de ${t.author}`}
@@ -153,23 +153,23 @@ export default function Testimonials() {
                   />
                 </div>
                 {/* estrellas */}
-                <div className="flex items-center space-x-1">
+                <div className="flex items-center space-x-1 pl-5">
                   {Array.from({ length: t.rating }).map((_, k) => (
-                    <span key={k} className="text-yellow-400 text-3xl">★</span>
+                    <span key={k} className="text-yellow-400 text-5xl">★</span>
                   ))}
                   {Array.from({ length: 5 - t.rating }).map((_, k) => (
-                    <span key={k} className="text-gray-600 text-3xl">★</span>
+                    <span key={k} className="text-gray-600 text-5xl">★</span>
                   ))}
                 </div>
               </div>
             </div>
 
             {/* ─── TEXTO ─── */}
-            <div className="px-6 pb-4 flex flex-col justify-between h-[calc(100%-128px)]">
-              <p className="text-left text-lg leading-snug mb-4 break-words">
+            <div className="px-10 pb-10 flex flex-col justify-between h-[calc(100%-128px)]">
+              <p className="pt-8 text-left text-2xl leading-snug break-words">
                 “{t.text}”
               </p>
-              <p className="text-left text-gray-400 text-sm truncate">
+              <p className="text-left text-gray-400 text-lg truncate">
                 {t.author}{t.role && ` – ${t.role}`}
               </p>
             </div>
