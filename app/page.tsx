@@ -19,7 +19,7 @@ export default function Home() {
       <Header />
       <Hero />
       <TrustedBy />
-      <AboutUs />
+       {/* <AboutUs /> */}
       <Services />
       <Projects />
       <Testimonials />
