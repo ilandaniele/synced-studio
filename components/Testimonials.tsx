@@ -41,7 +41,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     text: 'Synced turned a vague idea into stunning 3D visuals that boosted our product and sales, professional, seamless, and highly recommended.',
     author: "Alimp’s Founder",
-    initialColor: '#9802d1',
+    initialColor: '#802d1a',
     finalColor: '#100700',
   },
   {
@@ -127,6 +127,14 @@ export default function Testimonials() {
 
   const looped = [...testimonials, ...testimonials]
 
+  // Elige el PNG de estrellas según rating (4, 4.5 ó 5)
+  function getStarsImage(rating: number) {
+    if (rating >= 5) return '/images/5stars.png'
+    if (rating >= 4.5) return '/images/4.5stars.png'
+    if (rating >= 4) return '/images/4stars.png'
+    return '/images/4stars.png'
+  }
+
   return (
     <section className="bg-black text-white py-16 overflow-hidden">
       <h2 className="text-4xl md:text-6xl font-medium text-[#F7E8D3] text-center mb-12">
@@ -137,8 +145,7 @@ export default function Testimonials() {
         className="flex gap-8 overflow-x-hidden no-scrollbar px-4"
       >
         {looped.map((t, i) => {
-          // 1) Creamos exactamente el mismo degradado que usaremos 
-          //    tanto en el fondo de la tarjeta como en el "borde" del avatar.
+          // Genera el degradado CSS para fondo+avatar
           const start = t.initialColor || '#0F1521'
           const end = t.finalColor || '#000000'
           const gradientCSS = `linear-gradient(to bottom, ${start}, ${end})`
@@ -149,13 +156,13 @@ export default function Testimonials() {
               className="inline-block rounded-2xl flex-shrink-0"
               style={{
                 width: 500,
-                height: 360,
-                background: gradientCSS, // fondo de la tarjeta
+                height: 400,
+                background: gradientCSS,
               }}
             >
               {/* ─── CABECERA DEL TESTIMONIAL ─── */}
               <div className="flex items-center h-32 px-10 pt-10 relative">
-                {/* logo de marca */}
+                {/* Logo de la marca */}
                 <div className="relative w-22 h-22 rounded-xl overflow-hidden flex-shrink-0">
                   <Image
                     src={t.brandLogo}
@@ -166,20 +173,12 @@ export default function Testimonials() {
                   />
                 </div>
 
-                {/* avatar + rating */}
+                {/* Avatar + estrellas */}
                 <div className="flex items-center">
-                  {/*
-                    2) Aquí creamos el “borde” degradado de forma que sea
-                       EL MISMO degradadoCSS del fondo. Para ello:
-                         • El wrapper exterior (con rounded-full y padding)
-                           recibe gradientCSS como background.
-                         • El div interior recorta la foto en círculo.
-                  */}
+                  {/* Borde del avatar con el mismo degradado */}
                   <div
-                    className="rounded-full p-2 flex-shrink-0 -translate-x-3.5 z-10"
-                    style={{
-                      background: gradientCSS, // here reutilizamos EXACTAMENTE el mismo gradiente
-                    }}
+                    className="rounded-full p-2 flex-shrink-0 -translate-x-[0.5rem] z-10"
+                    style={{ background: gradientCSS }}
                   >
                     <div className="relative w-24 h-24 rounded-full overflow-hidden">
                       <Image
@@ -192,18 +191,15 @@ export default function Testimonials() {
                     </div>
                   </div>
 
-                  {/* estrellas */}
-                  <div className="flex items-center space-x-1 pl-5">
-                    {Array.from({ length: t.rating }).map((_, k) => (
-                      <span key={k} className="text-yellow-400 text-5xl">
-                        ★
-                      </span>
-                    ))}
-                    {Array.from({ length: 5 - t.rating }).map((_, k) => (
-                      <span key={k} className="text-gray-600 text-5xl">
-                        ★
-                      </span>
-                    ))}
+                  {/* PNG de estrellas (más grande) */}
+                  <div className="pl-4">
+                    <Image
+                      src={getStarsImage(t.rating)}
+                      alt={`${t.rating} stars`}
+                      width={240}   /* Aumenté un poco el ancho */
+                      height={140}  /* Aumenté el alto */
+                      unoptimized
+                    />
                   </div>
                 </div>
               </div>
