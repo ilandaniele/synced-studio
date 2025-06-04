@@ -1,3 +1,4 @@
+// components/Testimonials.tsx
 'use client'
 import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
@@ -9,6 +10,8 @@ interface Testimonial {
   text: string
   author: string
   role?: string
+  initialColor?: string
+  finalColor?: string
 }
 
 const testimonials: Testimonial[] = [
@@ -18,7 +21,9 @@ const testimonials: Testimonial[] = [
     rating: 5,
     text: 'They understood my vision from a brief message. Super smooth process, amazing results. Highly recommend for 3D animations!',
     author: 'Katrin Cavalcanti',
-    role: "Glad’s Founder"
+    role: "Glad’s Founder",
+    initialColor: '#7f6000',
+    finalColor: '#100b00',
   },
   {
     brandLogo: '/images/ModHausLOGO.jpg',
@@ -26,14 +31,18 @@ const testimonials: Testimonial[] = [
     rating: 5,
     text: 'Instantly got our brand vision, delivered fast and exceeded my expectations. Great communication throughout. Highly recommend!',
     author: 'Aaron von Kreisler',
-    role: "ModHaus’s Founder"
+    role: "ModHaus’s Founder",
+    initialColor: '#7f2500',
+    finalColor: '#100500',
   },
   {
     brandLogo: '/images/AlimpLOGO.jpg',
     personPhoto: '/images/Alimpfoto.jpg',
     rating: 5,
     text: 'Synced turned a vague idea into stunning 3D visuals that boosted our product and sales, professional, seamless, and highly recommended.',
-    author: "Alimp’s Founder"
+    author: "Alimp’s Founder",
+    initialColor: '#9802d1',
+    finalColor: '#100700',
   },
   {
     brandLogo: '/images/AquelakombuchaLOGO.jpg',
@@ -41,7 +50,9 @@ const testimonials: Testimonial[] = [
     rating: 4,
     text: 'The content didn’t just look amazing, it made strangers remember us!',
     author: 'Maria Lima',
-    role: "Aquela Kombucha’s Founder"
+    role: "Aquela Kombucha’s Founder",
+    initialColor: '#00217f',
+    finalColor: '#010010',
   },
   {
     brandLogo: '/images/ReesesLOGO.jpg',
@@ -49,7 +60,9 @@ const testimonials: Testimonial[] = [
     rating: 4,
     text: 'We will definitely use Synced again, good experience.',
     author: 'Fred Trevor',
-    role: "Reese’s Graphic Designer"
+    role: "Reese’s Graphic Designer",
+    initialColor: '#7f2500',
+    finalColor: '#100500',
   },
   {
     brandLogo: '/images/TheCoconutCollabLOGO.jpg',
@@ -57,7 +70,9 @@ const testimonials: Testimonial[] = [
     rating: 4,
     text: 'Synced work was fast, effective and useful. They made our product launch a success with their captivating visuals.',
     author: 'Edward Averdieck',
-    role: 'The Coconut Collab Founder'
+    role: 'The Coconut Collab Founder',
+    initialColor: '#006c7f',
+    finalColor: '#000c10',
   },
   {
     brandLogo: '/images/THEREALSTUDIOLOGO.jpg',
@@ -65,7 +80,9 @@ const testimonials: Testimonial[] = [
     rating: 5,
     text: 'Super good! We loved the animation so much that we placed it in our landing page background.',
     author: 'Jose Real',
-    role: 'The Real Studio Founder'
+    role: 'The Real Studio Founder',
+    initialColor: '#373737',
+    finalColor: '#0f0f0f',
   },
   {
     brandLogo: '/images/PerfectTedLOGO.jpg',
@@ -73,7 +90,9 @@ const testimonials: Testimonial[] = [
     rating: 4,
     text: 'Our work with Synced was super fast and helpful.',
     author: 'Marisa Poster',
-    role: "PerfectTed’s Founder"
+    role: "PerfectTed’s Founder",
+    initialColor: '#007f48',
+    finalColor: '#001005',
   },
   {
     brandLogo: '/images/helpbnkLOGO.jpg',
@@ -81,8 +100,10 @@ const testimonials: Testimonial[] = [
     rating: 5,
     text: 'Synced helped us visualize how we imagined our brand’s tone and voice.',
     author: 'Will Waite',
-    role: 'HelpBnk Marketing Director'
-  }
+    role: 'HelpBnk Marketing Director',
+    initialColor: '#00547f',
+    finalColor: '#000810',
+  },
 ]
 
 export default function Testimonials() {
@@ -90,23 +111,16 @@ export default function Testimonials() {
   const rafRef = useRef<number>(0)
 
   useEffect(() => {
-    const speed = 0.5 // px por frame
+    const speed = 0.5
     const container = containerRef.current!
-
     const step = () => {
       const half = container.scrollWidth / 2
-
-      // desplazamos hacia la derecha
       container.scrollLeft -= speed
-
-      // si pasamos del inicio, saltamos a la mitad
       if (container.scrollLeft <= 0) {
         container.scrollLeft += half
       }
-
       rafRef.current = requestAnimationFrame(step)
     }
-
     rafRef.current = requestAnimationFrame(step)
     return () => cancelAnimationFrame(rafRef.current)
   }, [])
@@ -122,59 +136,91 @@ export default function Testimonials() {
         ref={containerRef}
         className="flex gap-8 overflow-x-hidden no-scrollbar px-4"
       >
-        {looped.map((t, i) => (
-          <div
-            key={i}
-            className="inline-block bg-[#0F1521] rounded-2xl flex-shrink-0"
-            style={{ width: 500, height: 360 }}
-          >
-            {/* ─── CABECERA ─── */}
-            <div className="flex items-center h-32 px-10 pt-10 relative">
-              {/* logo de marca */}
-              <div className="relative w-22 h-22 rounded-xl overflow-hidden flex-shrink-0">
-                <Image
-                  src={t.brandLogo}
-                  alt={`Logo de ${t.author}`}
-                  fill
-                  className="object-cover"
-                  unoptimized
-                />
-              </div>
-              {/* avatar + rating */}
-              <div className="flex items-center">
-                {/* avatar desplazado sobre el logo */}
-                <div className="relative w-26 h-26 -translate-x-5 rounded-full overflow-hidden flex-shrink-0 z-10 border-8 border-[#0f1521]">
+        {looped.map((t, i) => {
+          // 1) Creamos exactamente el mismo degradado que usaremos 
+          //    tanto en el fondo de la tarjeta como en el "borde" del avatar.
+          const start = t.initialColor || '#0F1521'
+          const end = t.finalColor || '#000000'
+          const gradientCSS = `linear-gradient(to bottom, ${start}, ${end})`
+
+          return (
+            <div
+              key={i}
+              className="inline-block rounded-2xl flex-shrink-0"
+              style={{
+                width: 500,
+                height: 360,
+                background: gradientCSS, // fondo de la tarjeta
+              }}
+            >
+              {/* ─── CABECERA DEL TESTIMONIAL ─── */}
+              <div className="flex items-center h-32 px-10 pt-10 relative">
+                {/* logo de marca */}
+                <div className="relative w-22 h-22 rounded-xl overflow-hidden flex-shrink-0">
                   <Image
-                    src={t.personPhoto}
-                    alt={`Foto de ${t.author}`}
+                    src={t.brandLogo}
+                    alt={`Logo de ${t.author}`}
                     fill
                     className="object-cover"
                     unoptimized
                   />
                 </div>
-                {/* estrellas */}
-                <div className="flex items-center space-x-1 pl-5">
-                  {Array.from({ length: t.rating }).map((_, k) => (
-                    <span key={k} className="text-yellow-400 text-5xl">★</span>
-                  ))}
-                  {Array.from({ length: 5 - t.rating }).map((_, k) => (
-                    <span key={k} className="text-gray-600 text-5xl">★</span>
-                  ))}
+
+                {/* avatar + rating */}
+                <div className="flex items-center">
+                  {/*
+                    2) Aquí creamos el “borde” degradado de forma que sea
+                       EL MISMO degradadoCSS del fondo. Para ello:
+                         • El wrapper exterior (con rounded-full y padding)
+                           recibe gradientCSS como background.
+                         • El div interior recorta la foto en círculo.
+                  */}
+                  <div
+                    className="rounded-full p-2 flex-shrink-0 -translate-x-3.5 z-10"
+                    style={{
+                      background: gradientCSS, // here reutilizamos EXACTAMENTE el mismo gradiente
+                    }}
+                  >
+                    <div className="relative w-24 h-24 rounded-full overflow-hidden">
+                      <Image
+                        src={t.personPhoto}
+                        alt={`Foto de ${t.author}`}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
+                  </div>
+
+                  {/* estrellas */}
+                  <div className="flex items-center space-x-1 pl-5">
+                    {Array.from({ length: t.rating }).map((_, k) => (
+                      <span key={k} className="text-yellow-400 text-5xl">
+                        ★
+                      </span>
+                    ))}
+                    {Array.from({ length: 5 - t.rating }).map((_, k) => (
+                      <span key={k} className="text-gray-600 text-5xl">
+                        ★
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* ─── TEXTO ─── */}
-            <div className="px-10 pb-10 flex flex-col justify-between h-[calc(100%-128px)]">
-              <p className="pt-8 text-left text-2xl leading-snug break-words">
-                “{t.text}”
-              </p>
-              <p className="text-left text-gray-400 text-lg truncate">
-                {t.author}{t.role && ` – ${t.role}`}
-              </p>
+              {/* ─── CUERPO DEL TESTIMONIAL ─── */}
+              <div className="px-10 pb-10 flex flex-col justify-between h-[calc(100%-128px)]">
+                <p className="pt-8 text-left text-2xl leading-snug break-words">
+                  “{t.text}”
+                </p>
+                <p className="text-left text-gray-200 text-lg truncate">
+                  {t.author}
+                  {t.role && ` – ${t.role}`}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </section>
   )
