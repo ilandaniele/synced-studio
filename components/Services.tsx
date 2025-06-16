@@ -1,12 +1,15 @@
 // components/Services.tsx
 'use client'
 import React from 'react'
+import Image from 'next/image'
 
 const servicesData = [
   {
     title: '3D MODELING',
-    description:
-      'We turn your product into impressive 3D renders that shine across every touchpoint: Shelves, Ads, Social Media, E-commerce, Email Marketing, Billboards, and More.',
+    description: `
+We turn your product into impressive 3D renders that shine across every touchpoint:
+Shelves, Ads, Social Media, E-commerce, Email Marketing, Billboards, and More.
+`,
   },
   {
     title: '3D ANIMATION & VFX',
@@ -23,7 +26,7 @@ const servicesData = [
 const Services: React.FC = () => {
   return (
     <section className="bg-[#160d09] text-white py-28 px-4">
-      <h2 className="text-7xl md:text-8xl font-black mb-30 text-center">
+      <h2 className="text-7xl md:text-8xl font-black mb-30 text-center font-poppins font-bold">
         SERVICES
       </h2>
 
@@ -34,30 +37,33 @@ const Services: React.FC = () => {
             className="
               group
               flex
-              items-baseline                 /* ← 1) Sin hover: alinea número y título por la línea base */
-              group-hover:items-start         /* ← 2) En hover: alinea número y título por el top */
+              items-baseline                 /* Sin hover: baseline */
+              group-hover:items-start        /* Con hover: top */
               space-x-4
               border-b border-gray-600
               pb-8 last:border-b-0
-              h-44 md:h-52                    /* ← altura fija para evitar que 'PROJECTS' suba/baje */
+              h-44 md:h-52                    /* altura fija */
             "
           >
-            {/* ─── Número (Su baseline nunca cambia) ─── */}
-            <span className="text-8xl md:text-9xl font-extrabold leading-none -ml-2">
-              {String(i + 1).padStart(2, '0')}
-            </span>
+            {/* Número convertido en imagen */}
+            <div className="-ml-2 flex-shrink-0">
+              <Image
+                src={`/images/${String(i + 1).padStart(2, '0')}.png`}
+                alt={String(i + 1).padStart(2, '0')}
+                width={170}
+                height={96}
+                className="object-contain"
+                unoptimized
+              />
+            </div>
 
-            {/* ─── Contenido (Título + Descripción) ─── */}
-            <div className="pl-10 flex flex-col justify-center items-start w-full group-hover:-translate-y-17">
-              {/* 
-                Título:
-                  - Sin hover: su línea base coincide con la del número (porque el contenedor es items-baseline).
-                  - Con hover: el contenedor cambia a items-start, así que el top del número y el top del título coinciden.
-                  - Ajustamos el tamaño en hover (text-2xl/md:text-4xl). NO necesitamos ningún translate extra.
-              */}
+            {/* Contenido */}
+            <div className="pl-14 flex flex-col justify-center items-start w-full -translate-y-3 group-hover:-translate-y-17">
+              {/* Título en Poppins Bold */}
               <h3
                 className="
-                  text-4xl md:text-7xl font-semibold tracking-tight text-left
+                  font-poppins font-bold
+                  text-4xl md:text-7xl tracking-tight text-left
                   transition-all duration-300
                   group-hover:text-2xl group-hover:md:text-4xl
                 "
@@ -65,21 +71,25 @@ const Services: React.FC = () => {
                 {svc.title}
               </h3>
 
-              {/* 
-                Descripción (solo visible en hover):
-                  - Sin hover: opacity-0 + max-h-0 => colapsada.
-                  - Con hover: opacity-100 + max-h-40 => aparece justo debajo del título.
-              */}
+              {/* Descripción en Poppins Regular */}
               <p
                 className="
-                  mt-2
-                  text-lg md:text-xl text-gray-300 leading-snug
+                  font-poppins font-normal
+                  mt-2 text-lg md:text-xl text-gray-300 leading-snug
                   opacity-0 max-h-0 overflow-hidden
                   transition-all duration-300
                   group-hover:opacity-100 group-hover:max-h-40
                 "
               >
-                {svc.description}
+                {svc.description
+                  .trim()
+                  .split('\n')
+                  .map((line, idx, arr) => (
+                    <React.Fragment key={idx}>
+                      {line.trim()}
+                      {idx < arr.length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
               </p>
             </div>
           </div>

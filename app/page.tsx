@@ -6,7 +6,7 @@ import TrustedBy from '../components/TrustedBy';
 import Testimonials from '../components/Testimonials';
 import Services from '../components/Services';
 // import Steps from '../components/Steps';
-import AboutUs from '../components/AboutUs';
+// import AboutUs from '../components/AboutUs';
 import Footer from '../components/Footer';
 import FooterOld from '../components/FooterOld';
 // import ContactForm from '../components/ContactForm';
