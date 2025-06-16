@@ -13,13 +13,19 @@ Shelves, Ads, Social Media, E-commerce, Email Marketing, Billboards, and More.
   },
   {
     title: '3D ANIMATION & VFX',
-    description:
-      'We shape visual narratives that grab attention, spark curiosity, and drive sales, through 3D Animations that make your brand impossible to ignore.',
+    description:`
+We shape visual narratives that grab attention, spark curiosity, and drive sales, 
+through 3D Animations that make your brand impossible to ignore.
+`,
   },
   {
     title: 'CREATIVE BRAND DIRECTION',
-    description:
-      'We craft disruptive concepts and brand strategies that elevate your identity across every platform. From campaigns to immersive brand experiences, we make sure your message feels fresh, clear, and unforgettable. Because iconic brands don’t just follow culture, they shape it.',
+    description:`
+We craft disruptive concepts and brand strategies that elevate your identity across
+ every platform. From campaigns to immersive brand experiences, we make sure your 
+ message feels fresh, clear, and unforgettable. Because iconic brands don’t just follow 
+ culture, they shape it.
+ `
   },
 ]
 
