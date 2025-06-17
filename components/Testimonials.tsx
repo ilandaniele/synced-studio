@@ -155,15 +155,15 @@ export default function Testimonials() {
               key={i}
               className="inline-block rounded-2xl flex-shrink-0"
               style={{
-                width: 500,
-                height: 400,
+                width: 370,
+                height: 350,
                 background: gradientCSS,
               }}
             >
               {/* ─── CABECERA DEL TESTIMONIAL ─── */}
-              <div className="flex items-center h-32 px-10 pt-10 relative">
+              <div className="flex items-center h-32 px-9 pt-9 relative">
                 {/* Logo de la marca */}
-                <div className="relative w-22 h-22 rounded-xl overflow-hidden flex-shrink-0">
+                <div className="relative w-17 h-17 rounded-xl overflow-hidden flex-shrink-0 z-0">
                   <Image
                     src={t.brandLogo}
                     alt={`Logo de ${t.author}`}
@@ -176,11 +176,11 @@ export default function Testimonials() {
                 {/* Avatar + estrellas */}
                 <div className="flex items-center">
                   {/* Borde del avatar con el mismo degradado */}
-                  <div
-                    className="rounded-full p-2 flex-shrink-0 -translate-x-[0.5rem] z-10"
-                    style={{ background: gradientCSS }}
-                  >
-                    <div className="relative w-24 h-24 rounded-full overflow-hidden">
+                  {/* ─── Avatar + borde “transparente” ─── */}
+                  <div className="relative flex-shrink-0 -translate-x-[0.5rem] z-10">
+                    {/* 2) La propia imagen del avatar, encima del borde */}
+                    <div className="absolute inset-0 rounded-full border-4 border-transparent pointer-events-none" />
+                    <div className="relative w-18 h-18 rounded-full overflow-hidden">
                       <Image
                         src={t.personPhoto}
                         alt={`Foto de ${t.author}`}
@@ -191,13 +191,14 @@ export default function Testimonials() {
                     </div>
                   </div>
 
+
                   {/* PNG de estrellas (más grande) */}
-                  <div className="pl-4">
+                  <div className="flex-shrink-0">
                     <Image
                       src={getStarsImage(t.rating)}
                       alt={`${t.rating} stars`}
-                      width={240}   /* Aumenté un poco el ancho */
-                      height={140}  /* Aumenté el alto */
+                      width={160}    /* ancho real: 160px */
+                      height={32}    /* alto real: 32px */
                       unoptimized
                     />
                   </div>
@@ -206,10 +207,10 @@ export default function Testimonials() {
 
               {/* ─── CUERPO DEL TESTIMONIAL ─── */}
               <div className="px-10 pb-10 flex flex-col justify-between h-[calc(100%-128px)]">
-                <p className="pt-8 text-left text-2xl leading-snug break-words">
+                <p className="pt-8 text-left text-md leading-snug break-words">
                   “{t.text}”
                 </p>
-                <p className="text-left text-gray-200 text-lg truncate">
+                <p className="text-left text-gray-200 text-sm whitespace-normal overflow-visible">
                   {t.author}
                   {t.role && ` – ${t.role}`}
                 </p>

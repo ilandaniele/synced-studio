@@ -46,9 +46,9 @@ const Services: React.FC = () => {
               items-baseline                 /* Sin hover: baseline */
               group-hover:items-start        /* Con hover: top */
               space-x-4
-              border-b border-gray-600
+              border-b border-white-600
               pb-8 last:border-b-0
-              h-44 md:h-52                    /* altura fija */
+              h-30 md:h-34                    /* altura fija */
             "
           >
             {/* Número convertido en imagen */}
