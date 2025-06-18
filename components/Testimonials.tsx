@@ -40,7 +40,7 @@ const testimonials: Testimonial[] = [
     rating: 4,
     text: 'Synced work was fast, effective and useful. They made our product launch a success with their captivating visuals.',
     author: 'Edward Averdieck',
-    role: 'The Coconut Collab Founder',
+    role: 'The Coconut Collab',
     initialColor: '#006c7f',
     finalColor: '#000c10',
   },
@@ -156,12 +156,12 @@ export default function Testimonials() {
               className="inline-block rounded-2xl flex-shrink-0"
               style={{
                 width: 370,
-                height: 350,
+                height: 'fit-content',
                 background: gradientCSS,
               }}
             >
               {/* ─── CABECERA DEL TESTIMONIAL ─── */}
-              <div className="flex items-center h-32 px-9 pt-9 relative">
+              <div className="flex items-center h-32 px-9 pt-4 relative">
                 {/* Logo de la marca */}
                 <div className="relative w-17 h-17 rounded-xl overflow-hidden flex-shrink-0 z-0">
                   <Image
@@ -206,11 +206,11 @@ export default function Testimonials() {
               </div>
 
               {/* ─── CUERPO DEL TESTIMONIAL ─── */}
-              <div className="px-10 pb-10 flex flex-col justify-between h-[calc(100%-128px)]">
-                <p className="pt-8 text-left text-md leading-snug break-words">
+              <div className="px-10 pb-9 flex flex-col justify-start">
+                <p className="pt-2 text-left text-md leading-snug break-words">
                   “{t.text}”
                 </p>
-                <p className="text-left text-gray-200 text-sm whitespace-normal overflow-visible">
+                <p className="pt-5 text-left text-gray-200 text-sm whitespace-normal overflow-visible">
                   {t.author}
                   {t.role && ` – ${t.role}`}
                 </p>

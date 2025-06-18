@@ -4,17 +4,18 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="bg-[#160d09] text-center text-white py-10">
-      <div className="flex justify-center">
+    <section className="relative w-full h-screen overflow-hidden">
+      <div className="absolute inset-0">
         <Image
-          src="/images/synced-choco.png"
+          src="/images/synced-choco.jpg"
           alt="Synced Chocolate"
-          width={800}
-          height={800}
+          fill
+          className="object-cover"
           priority
         />
       </div>
-    </section>
+    </section> 
+    // <section className="bg-[#160d09] relative w-full h-screen overflow-hidden">
   );
 };
 

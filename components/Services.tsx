@@ -32,7 +32,7 @@ We craft disruptive concepts and brand strategies that elevate your identity acr
 const Services: React.FC = () => {
   return (
     <section className="bg-[#160d09] text-white py-28 px-4">
-      <h2 className="text-7xl md:text-8xl font-black mb-30 text-center font-poppins font-bold">
+      <h2 className="text-7xl md:text-8xl font-black mb-15 text-center font-poppins font-bold">
         SERVICES
       </h2>
 
@@ -47,7 +47,8 @@ const Services: React.FC = () => {
               group-hover:items-start        /* Con hover: top */
               space-x-4
               border-b border-white-600
-              pb-8 last:border-b-0
+              pb-4 last:border-b-0
+              mb-8
               h-30 md:h-34                    /* altura fija */
             "
           >
@@ -64,7 +65,7 @@ const Services: React.FC = () => {
             </div>
 
             {/* Contenido */}
-            <div className="pl-14 flex flex-col justify-center items-start w-full -translate-y-3 group-hover:-translate-y-17">
+            <div className="pl-10 flex flex-col justify-center items-start w-full -translate-y-3 group-hover:-translate-y-17">
               {/* Título en Poppins Bold */}
               <h3
                 className="

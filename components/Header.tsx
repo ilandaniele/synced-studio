@@ -5,8 +5,8 @@ import React from 'react';
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-[#160d09] pt-6 px-4 flex justify-center">
-      <div className="w-full max-w-7xl flex justify-between items-center bg-[#f7e8d3] rounded-full px-8 py-1 shadow-md">
+    <header className="fixed top-0 left-0 w-full z-50 pt-6 px-4 flex justify-center">
+      <div className="w-full max-w-7xl flex justify-between items-center bg-[#faff05] rounded-full px-8 py-1 shadow-md">
         {/* Logo */}
         <Link href="/">
           <Image
