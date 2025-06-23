@@ -65,8 +65,8 @@ const testimonials: Testimonial[] = [
     finalColor: '#010010',
   },
   {
-    brandLogo: '/images/reeses_logo.jpg',
-    personPhoto: '/images/reeses_person.jpg',
+    brandLogo: '/images/Reeses_logo_testimonial.jpg',
+    personPhoto: '/images/Reeses_person.jpg',
     rating: 4,
     text: 'We will definitely use Synced again, good experience.',
     author: 'Fred Trevor',
