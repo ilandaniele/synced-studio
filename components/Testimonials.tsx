@@ -16,8 +16,8 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    brandLogo: '/images/THEREALSTUDIOLOGO.jpg',
-    personPhoto: '/images/THEREALSTUDIOfoto.jpg',
+    brandLogo: '/images/THEREALSTUDIO_logo.jpg',
+    personPhoto: '/images/THEREALSTUDIO_person.jpg',
     rating: 5,
     text: 'Super good! We loved the animation so much that we placed it in our landing page background.',
     author: 'Jose Real',
@@ -26,8 +26,8 @@ const testimonials: Testimonial[] = [
     finalColor: '#0f0f0f',
   },
   {
-    brandLogo: '/images/AlimpLOGO.jpg',
-    personPhoto: '/images/Alimpfoto.jpg',
+    brandLogo: '/images/Alimp_logo.jpg',
+    personPhoto: '/images/Alimp_person.jpg',
     rating: 5,
     text: 'Synced turned a vague idea into stunning 3D visuals that boosted our product and sales, professional, seamless, and highly recommended.',
     author: "Alimp’s Founder",
@@ -35,8 +35,8 @@ const testimonials: Testimonial[] = [
     finalColor: '#100700',
   },
   {
-    brandLogo: '/images/TheCoconutCollabLOGO.jpg',
-    personPhoto: '/images/TheCoconutCollabfoto.jpg',
+    brandLogo: '/images/TheCoconutCollab_logo.jpg',
+    personPhoto: '/images/TheCoconutCollab_person.jpg',
     rating: 4,
     text: 'Synced work was fast, effective and useful. They made our product launch a success with their captivating visuals.',
     author: 'Edward Averdieck',
@@ -45,8 +45,8 @@ const testimonials: Testimonial[] = [
     finalColor: '#000c10',
   },
   {
-    brandLogo: '/images/gladLOGO.jpg',
-    personPhoto: '/images/Gladfoto.jpg',
+    brandLogo: '/images/glad_logo.jpg',
+    personPhoto: '/images/glad_person.jpg',
     rating: 5,
     text: 'They understood my vision from a brief message. Super smooth process, amazing results. Highly recommend for 3D animations!',
     author: 'Katrin Cavalcanti',
@@ -55,8 +55,8 @@ const testimonials: Testimonial[] = [
     finalColor: '#100b00',
   },
   {
-    brandLogo: '/images/AquelakombuchaLOGO.jpg',
-    personPhoto: '/images/Aquelakombuchafoto.jpg',
+    brandLogo: '/images/Aquelakombucha_logo.jpg',
+    personPhoto: '/images/Aquelakombucha_person.jpg',
     rating: 4,
     text: 'The content didn’t just look amazing, it made strangers remember us!',
     author: 'Maria Lima',
@@ -65,8 +65,8 @@ const testimonials: Testimonial[] = [
     finalColor: '#010010',
   },
   {
-    brandLogo: '/images/ReesesLOGO.jpg',
-    personPhoto: '/images/Reesesfoto.jpg',
+    brandLogo: '/images/Reeses_logo.jpg',
+    personPhoto: '/images/Reeses_person.jpg',
     rating: 4,
     text: 'We will definitely use Synced again, good experience.',
     author: 'Fred Trevor',
@@ -75,8 +75,8 @@ const testimonials: Testimonial[] = [
     finalColor: '#100500',
   },
   {
-    brandLogo: '/images/PerfectTedLOGO.jpg',
-    personPhoto: '/images/PerfectTedFoto.jpg',
+    brandLogo: '/images/PerfectTed_logo.jpg',
+    personPhoto: '/images/PerfectTed_person.jpg',
     rating: 4,
     text: 'Our work with Synced was super fast and helpful.',
     author: 'Marisa Poster',
@@ -85,8 +85,8 @@ const testimonials: Testimonial[] = [
     finalColor: '#001005',
   },
   {
-    brandLogo: '/images/helpbnkLOGO.jpg',
-    personPhoto: '/images/helpbnkfoto.jpg',
+    brandLogo: '/images/helpbnk_logo.jpg',
+    personPhoto: '/images/helpbnk_person.jpg',
     rating: 5,
     text: 'Synced helped us visualize how we imagined our brand’s tone and voice.',
     author: 'Will Waite',
@@ -95,8 +95,8 @@ const testimonials: Testimonial[] = [
     finalColor: '#000810',
   },
   {
-    brandLogo: '/images/ModHausLOGO.jpg',
-    personPhoto: '/images/ModHausfoto.jpg',
+    brandLogo: '/images/ModHaus_logo.jpg',
+    personPhoto: '/images/ModHaus_person.jpg',
     rating: 5,
     text: 'Instantly got our brand vision, delivered fast and exceeded my expectations. Great communication throughout. Highly recommend!',
     author: 'Aaron von Kreisler',
