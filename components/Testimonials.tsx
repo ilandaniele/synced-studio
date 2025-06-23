@@ -55,8 +55,8 @@ const testimonials: Testimonial[] = [
     finalColor: '#100b00',
   },
   {
-    brandLogo: '/images/aquelakombucha_logo.jpg',
-    personPhoto: '/images/aquelakombucha_person.jpg',
+    brandLogo: '/images/aquelaKombucha_logo.jpg',
+    personPhoto: '/images/aquelaKombucha_person.jpg',
     rating: 4,
     text: 'The content didn’t just look amazing, it made strangers remember us!',
     author: 'Maria Lima',

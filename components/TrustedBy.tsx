@@ -8,7 +8,7 @@ const logos = [
   { src: "https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/e0288289-5355-4c07-a906-a9432d4a9095/AK+logo.png", alt: "Aquela Kombucha" },
   { src: "https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/757bb5e4-f632-4f6a-94dc-746e35a0494a/Logo.png", alt: "Modhaus" },
   { src: "https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/8176ed26-38ca-4268-a8f3-34245624d0e5/Therealstudio_logo+copy.png", alt: "The Real Studio" },
-  { src: "/images/Reeses_logo.jpg", alt: "Reese's" },
+  { src: "/images/Reeses_logo.png", alt: "Reese's" },
 ];
 
 const TrustedBy: React.FC = () => {
