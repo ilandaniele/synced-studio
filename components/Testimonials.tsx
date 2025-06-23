@@ -26,8 +26,8 @@ const testimonials: Testimonial[] = [
     finalColor: '#0f0f0f',
   },
   {
-    brandLogo: '/images/Alimp_logo.jpg',
-    personPhoto: '/images/Alimp_person.jpg',
+    brandLogo: '/images/alimp_logo.jpg',
+    personPhoto: '/images/alimp_person.jpg',
     rating: 5,
     text: 'Synced turned a vague idea into stunning 3D visuals that boosted our product and sales, professional, seamless, and highly recommended.',
     author: "Alimp’s Founder",
@@ -55,8 +55,8 @@ const testimonials: Testimonial[] = [
     finalColor: '#100b00',
   },
   {
-    brandLogo: '/images/Aquelakombucha_logo.jpg',
-    personPhoto: '/images/Aquelakombucha_person.jpg',
+    brandLogo: '/images/aquelakombucha_logo.jpg',
+    personPhoto: '/images/aquelakombucha_person.jpg',
     rating: 4,
     text: 'The content didn’t just look amazing, it made strangers remember us!',
     author: 'Maria Lima',
@@ -65,8 +65,8 @@ const testimonials: Testimonial[] = [
     finalColor: '#010010',
   },
   {
-    brandLogo: '/images/Reeses_logo.jpg',
-    personPhoto: '/images/Reeses_person.jpg',
+    brandLogo: '/images/reeses_logo.jpg',
+    personPhoto: '/images/reeses_person.jpg',
     rating: 4,
     text: 'We will definitely use Synced again, good experience.',
     author: 'Fred Trevor',
