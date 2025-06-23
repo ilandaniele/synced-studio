@@ -4,7 +4,7 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative w-full overflow-visible">
+    <section className="relative w-full overflow-visible bg-[#160d09]">
       <div className="w-full">
         <Image
           src="/images/synced-choco.jpg"
