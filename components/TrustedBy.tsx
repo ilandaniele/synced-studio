@@ -1,80 +1,82 @@
+// components/TrustedBy.tsx
 'use client'
 import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 
 const logos = [
-  { src: "https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/662cd6dd-41cd-4cff-ab72-e4f605e1dd62/Outlook-ea4djg5y.png", alt: "Glad" },
-  { src: "https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/c88396ae-abc4-490f-849c-1a1a9fe25d8c/Logo.png", alt: "Perfect Ted" },
-  { src: "https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/e0288289-5355-4c07-a906-a9432d4a9095/AK+logo.png", alt: "Aquela Kombucha" },
-  { src: "https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/757bb5e4-f632-4f6a-94dc-746e35a0494a/Logo.png", alt: "Modhaus" },
-  { src: "https://images.squarespace-cdn.com/content/v1/661abfabac9e5c5dad603be9/8176ed26-38ca-4268-a8f3-34245624d0e5/Therealstudio_logo+copy.png", alt: "The Real Studio" },
-  { src: "/images/Reeses_logo.png", alt: "Reese's" },
-];
+  { src: "/images/coconut_bw.png",        alt: "The Coconut Collaborative" },
+  { src: "/images/separator.png",         alt: "" },
+  { src: "/images/aquela_kombucha_bw.png",alt: "Aquela Kombucha" },
+  { src: "/images/separator.png",         alt: "" },
+  { src: "/images/glad_bw.png",           alt: "Glad" },
+  { src: "/images/separator.png",         alt: "" },
+  { src: "/images/perfect_ted_bw.png",    alt: "Perfect Ted" },
+  { src: "/images/separator.png",         alt: "" },
+  { src: "/images/hersheys_bw.png",       alt: "Hershey´s" },
+  { src: "/images/separator.png",         alt: "" },
+  { src: "/images/raise_bw.png",          alt: "Raise" },
+  { src: "/images/separator.png",         alt: "" },
+  { src: "/images/resees_bw.png",         alt: "Reese's" },
+  { src: "/images/separator.png",         alt: "" },
+  { src: "/images/zumino_bw.png",         alt: "Zumino" },
+  { src: "/images/separator.png",         alt: "" },
+]
 
-const TrustedBy: React.FC = () => {
+export default function TrustedBy() {
   const containerRef = useRef<HTMLDivElement>(null)
   const rafRef       = useRef<number>(0)
 
   useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
+    const container = containerRef.current!
+    const speed = 0.5
 
-    // 1) Recogemos todas las <img> y esperamos a que cada una termine de cargar
-    const imgs = Array.from(container.querySelectorAll('img'))
-    const loadPromises = imgs.map(img =>
-      img.complete
-        ? Promise.resolve()
-        : new Promise<void>(resolve => {
-            img.onload = () => resolve()
-            img.onerror = () => resolve()
-          })
-    )
+    // Arrancamos desde la mitad:
+    container.scrollLeft = container.scrollWidth / 2
 
-    Promise.all(loadPromises).then(() => {
-      // 2) Una vez cargadas, medimos scrollWidth correctamente
-      const half = container.scrollWidth / 2
-      container.scrollLeft = half
-
-      const speed = 0.5 // píxeles por frame
-      const step = () => {
-        if (container.scrollLeft <= 0) {
-          container.scrollLeft = half
-        } else {
-          container.scrollLeft -= speed
-        }
-        rafRef.current = requestAnimationFrame(step)
+    const step = () => {
+      if (container.scrollLeft <= 0) {
+        container.scrollLeft = container.scrollWidth / 2
+      } else {
+        container.scrollLeft -= speed
       }
-
       rafRef.current = requestAnimationFrame(step)
-    })
+    }
 
+    step()
     return () => cancelAnimationFrame(rafRef.current)
   }, [])
 
   return (
-    <section className="bg-[#160d09] text-white pb-10 overflow-hidden">
-      <div className="pt-10 max-w-7xl mx-auto text-center">
-        <h2 className="text-sm font-semibold tracking-widest mb-8">TRUSTED BY:</h2>
-        <div
-          ref={containerRef}
-          className="flex items-center gap-8 overflow-hidden whitespace-nowrap px-4 py-4"
-        >
-          {[...logos, ...logos].map((logo, i) => (
-            <div key={i} className="flex-shrink-0" style={{ width: 120, margin: '0 12px' }}>
+    <section className="text-white overflow-hidden">
+      <div
+        ref={containerRef}
+        className="flex items-center gap-0 overflow-hidden whitespace-nowrap px-4 py-4"
+      >
+        {[...logos, ...logos].map((logo, i) => {
+          const isSeparator = logo.alt === ""
+          const containerWidth = isSeparator ? 32 : 140
+          const imgWidth       = isSeparator ? 32 : 140
+          const imgHeight      = isSeparator ? 32 : 80
+          const marginX        = isSeparator ? 8  : 12
+
+          return (
+            <div
+              key={i}
+              className="flex-shrink-0"
+              style={{ width: containerWidth, margin: `0 ${marginX}px` }}
+            >
               <Image
                 src={logo.src}
                 alt={logo.alt}
-                width={120}
-                height={80}
+                width={imgWidth}
+                height={imgHeight}
                 unoptimized
                 className="object-contain w-full h-auto"
               />
             </div>
-          ))}
-        </div>
+          )
+        })}
       </div>
     </section>
   )
 }
-
-export default TrustedBy
