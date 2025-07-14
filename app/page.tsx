@@ -31,7 +31,7 @@ export default function Home() {
       <Steps />
       <ContactForm /> */}
       <Footer />
-      <FooterOld />
+      {/* <FooterOld /> */}
     </main>
   );
 }

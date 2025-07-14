@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
       {/* Imagen de fondo */}
       <div className="w-full">
         <Image
-          src="/images/synced-choco.jpg"
+          src="/images/synced-choco.png"
           alt="Synced Chocolate"
           width={4746}
           height={2855}

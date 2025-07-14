@@ -1,42 +1,50 @@
 // components/Header.tsx
 'use client'
 import Link from 'next/link'
-import Image from 'next/image'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function Header() {
   const navItems = [
-    { href: '/',          label: 'Home',    active: true  },
-    { href: '#services',  label: 'Services'           },
-    { href: '#projects',  label: 'Projects'           },
-    { href: '#comments',  label: 'Comments'           },
-    { href: '#faqs',      label: "FAQ's"              },
+    { href: '/',          label: 'Home'     },
+    { href: '#services',  label: 'Services' },
+    { href: '#projects',  label: 'Projects' },
+    { href: '#comments',  label: 'Comments' },
+    { href: '#faqs',      label: "FAQ'S"    },
   ]
 
-  return (
-    <header className="fixed top-0 left-0 w-full z-50 px-4 py-3 flex justify-center">
-      <div className="flex items-center">
-        {/* Logo sits _outside_ the pill, flush on its left */}
-        <Link href="/" className="-mr-6 z-10">
-          <Image
-            src="/images/logo.png"
-            alt="Logo"
-            width={32}
-            height={32}
-          />
-        </Link>
+  const [activeSection, setActiveSection] = useState('/')
 
-        {/* Only these five links go in the grey pill */}
-        <nav className="bg-[#292929] rounded-full px-6 py-2 flex items-center space-x-10">
-          {navItems.map(({ href, label, active }) => (
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navItems.map(({ href }) => href)
+      let currentSection = '/'
+      for (const section of sections) {
+        const el = document.querySelector(section === '/' ? 'body' : section)
+        if (el && window.scrollY >= el.getBoundingClientRect().top + window.scrollY - 80) {
+          currentSection = section
+        }
+      }
+      setActiveSection(currentSection)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  return (
+    <header className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-center">
+      <div className="flex items-center space-x-4">
+        {/* Navigation pill */}
+        <nav className="bg-black/30 backdrop-blur-md border border-white/20 rounded-full px-8 py-2 flex items-center space-x-10">
+          {navItems.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
               className={`
-                text-sm font-medium transition
-                ${active
-                  ? 'bg-[#faff05] text-black px-4 py-1 rounded-full'
-                  : 'text-white hover:text-[#faff05]'}
+                text-sm font-medium font-poppins transition
+                ${activeSection === href
+                  ? 'text-yellow-400'
+                  : 'text-white hover:text-yellow-400'}
               `}
             >
               {label}
@@ -44,10 +52,10 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Contact Us sits _outside_ the pill, flush on its right */}
+        {/* Contact Us button */}
         <Link
           href="#contact"
-          className="-ml-6 z-10 flex items-center space-x-2 bg-[#faff05] text-black text-sm font-medium px-5 py-2 rounded-full hover:opacity-90 transition"
+          className="flex items-center space-x-2 bg-[#faff05] text-black font-poppins text-sm font-medium px-5 py-2 rounded-full hover:opacity-90 transition"
         >
           <span>Contact Us</span>
           <span className="bg-black rounded-full p-1">
