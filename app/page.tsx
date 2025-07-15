@@ -12,6 +12,7 @@ import FAQs from '../components/FAQs';
 // import ContactForm from '../components/ContactForm';
 import Projects from '../components/Projects';
 import GetInTouch from '../components/GetInTouch';
+import GradientBackground from '../components/GradientBackground';
 
 export default function Home() {
   return (
@@ -20,11 +21,13 @@ export default function Home() {
       <Hero />
       {/* <TrustedBy /> */}
        {/* <AboutUs /> */}
-      <Services />
-      <Projects />
-      <Testimonials />
-      <FAQs />
-      <GetInTouch />
+      <GradientBackground>
+        <Services />
+        <Projects />
+        <Testimonials />
+        <FAQs />
+        <GetInTouch />
+      </GradientBackground>
       {/* <Disadvantages />
       <Advantages />
       <Steps />

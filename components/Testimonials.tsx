@@ -136,9 +136,9 @@ export default function Testimonials() {
   }
 
   return (
-    <section className="bg-black text-white py-16 overflow-hidden">
-      <h2 className="text-4xl md:text-6xl font-medium text-[#F7E8D3] text-center mb-12">
-        What clients are saying
+    <section className="text-white py-16 overflow-hidden">
+      <h2 className="text-4xl md:text-4xl font-bold text-[#faff05] font-poppins text-center mb-12">
+        COMMENTS
       </h2>
       <div
         ref={containerRef}

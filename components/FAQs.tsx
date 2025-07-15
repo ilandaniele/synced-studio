@@ -15,10 +15,10 @@ export default function FAQs() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-[#140a05] via-[#3c1f10] to-[#140a05] text-white">
+    <section className="py-16 px-4 text-white">
       <div className="max-w-3xl mx-auto">
         {/* Heading */}
-        <h2 className="text-center text-3xl font-bold text-[#faff05] mb-8">FAQ’s</h2>
+        <h2 className="text-center text-4xl font-bold text-[#faff05] font-poppins mb-8">FAQ’s</h2>
 
         {/* Accordion */}
         <div className="space-y-4">
