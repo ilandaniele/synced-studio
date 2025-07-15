@@ -8,7 +8,6 @@ import Services from '../components/Services';
 // import Steps from '../components/Steps';
 // import AboutUs from '../components/AboutUs';
 import Footer from '../components/Footer';
-import FooterOld from '../components/FooterOld';
 import FAQs from '../components/FAQs';
 // import ContactForm from '../components/ContactForm';
 import Projects from '../components/Projects';
