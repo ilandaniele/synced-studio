@@ -27,12 +27,13 @@ export default function Home() {
         <Testimonials />
         <FAQs />
         <GetInTouch />
+        <Footer />
       </GradientBackground>
       {/* <Disadvantages />
       <Advantages />
       <Steps />
       <ContactForm /> */}
-      <Footer />
+      
       {/* <FooterOld /> */}
     </main>
   );

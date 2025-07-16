@@ -100,7 +100,7 @@ export default function Projects() {
   return (
     <>
       <section id="projects" className="py-16 px-4">
-        <h2 className="text-4xl font-bold text-center text-[#faff05] mb-4">PROJECTS</h2>
+        <h2 className="text-4xl font-bold font-poppins text-center text-[#faff05] mb-4">PROJECTS</h2>
         <p className="text-center font-poppins text-lg text-white mb-12">
           Behind every design, there’s a purpose. Behind every project, a result.
         </p>
