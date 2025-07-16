@@ -48,6 +48,30 @@ export default function Projects() {
     setActiveGalleryIdx(i => (i + 1) % total)
   }
 
+  const renderPortrait = (src: string, className = '') => {
+    if (src.endsWith('.mp4')) {
+      return (
+        <video
+          src={src}
+          className={`w-full h-auto rounded-lg ${className}`}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      )
+    }
+    return (
+      <Image
+        src={src}
+        alt=""
+        fill
+        className={`object-cover rounded-lg ${className}`}
+        unoptimized
+      />
+    )
+  }
+
   const renderMedia = (src: string, className = '') => {
     if (src.endsWith('.mp4')) {
       return (
@@ -100,10 +124,10 @@ export default function Projects() {
                   p.gallery.length > 0 ? 'cursor-pointer hover:scale-110' : ''
                 ].join(' ')}
               >
-                {hasImage && renderMedia(p.thumb, 'absolute inset-0 object-cover')}
+                {hasImage && renderPortrait(p.thumb, 'absolute inset-0 object-cover')}
 
                 {p.gallery.length > 0 && (
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-end justify-center">
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300 flex items-end justify-center">
                     <span className="
                       mb-4 bg-[#faff05] text-black px-5 py-2 rounded-full 
                       text-sm font-bold font-poppins opacity-0 
