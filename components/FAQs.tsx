@@ -15,7 +15,7 @@ export default function FAQs() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section className="py-16 px-4 text-white">
+    <section id="faqs" className="py-16 px-4 text-white">
       <div className="max-w-3xl mx-auto">
         {/* Heading */}
         <h2 className="text-center text-4xl font-bold text-[#faff05] font-poppins mb-8">FAQ’s</h2>
@@ -25,23 +25,23 @@ export default function FAQs() {
           {faqs.map((item, idx) => {
             const isOpen = idx === open
             return (
-              <div key={idx} className="overflow-hidden rounded-2xl">
+              <div key={idx} className="overflow-hidden rounded-4xl border border-[#ffffff33]">
                 {/* Question */}
                 <button
                   onClick={() => setOpen(isOpen ? null : idx)}
                   className={
-                    `w-full flex items-center justify-between px-6 py-4 rounded-2xl transition-colors ` +
+                    `w-full flex items-center justify-between px-6 py-4 rounded-4xl transition-colors ` +
                     (isOpen ? 'bg-[#312015]' : 'bg-[#2d1b10] hover:bg-[#3a2519]')
                   }
                 >
                   <span className="text-lg">{item.q}</span>
                   {isOpen ? (
                     <div className="p-1 bg-[#faff05] rounded-full">
-                      <ChevronUpIcon className="w-5 h-5 text-[#3c1f10]" />
+                      <ChevronUpIcon className="w-6 h-6 text-[#3c1f10] stroke-2" />
                     </div>
                   ) : (
-                    <div className="p-1 bg-[#3c1f10] rounded-full">
-                      <ChevronDownIcon className="w-5 h-5 text-[#faff05]" />
+                    <div className="p-1 bg-[#f7e8d3] rounded-full">
+                      <ChevronDownIcon className="w-6 h-6 text-[#3c1f10] stroke-2" />
                     </div>
                   )}
                 </button>

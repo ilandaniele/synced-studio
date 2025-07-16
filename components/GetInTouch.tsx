@@ -3,7 +3,7 @@ import React from 'react'
 
 const GetInTouch: React.FC = () => {
   return (
-    <section className="w-full text-white py-12 px-4 flex flex-col items-center gap-8">
+    <section id="contact" className="w-full text-white py-12 px-4 flex flex-col items-center gap-8">
       {/* — Título y mail — */}
       <div className="text-center flex flex-col gap-1">
         <h2 className="text-3xl md:text-4xl font-bold leading-snug text-[#faff05]">

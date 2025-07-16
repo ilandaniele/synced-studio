@@ -99,7 +99,7 @@ export default function Projects() {
 
   return (
     <>
-      <section className="py-16 px-4">
+      <section id="projects" className="py-16 px-4">
         <h2 className="text-4xl font-bold text-center text-[#faff05] mb-4">PROJECTS</h2>
         <p className="text-center font-poppins text-lg text-white mb-12">
           Behind every design, there’s a purpose. Behind every project, a result.
@@ -121,7 +121,7 @@ export default function Projects() {
                   hasImage
                     ? 'bg-[#333] transition-transform duration-300'
                     : 'bg-black/10 border border-white/30 backdrop-blur-sm',
-                  p.gallery.length > 0 ? 'cursor-pointer hover:scale-110' : ''
+                  p.gallery.length > 0 ? 'cursor-pointer hover:scale-120' : ''
                 ].join(' ')}
               >
                 {hasImage && renderPortrait(p.thumb, 'absolute inset-0 object-cover')}

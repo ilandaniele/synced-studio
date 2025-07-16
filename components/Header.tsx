@@ -5,43 +5,47 @@ import Image from 'next/image'
 
 export default function Header() {
   const navItems = [
-    { href: '/',          label: 'Home'     },
+    { href: '#hero',      label: 'Home' },
     { href: '#services',  label: 'Services' },
     { href: '#projects',  label: 'Projects' },
     { href: '#comments',  label: 'Comments' },
-    { href: '#faqs',      label: "FAQ'S"    },
+    { href: '#faqs',      label: "FAQ'S" },
   ]
 
-  const [activeSection, setActiveSection] = useState('/')
+  const sectionRefs = [...navItems, { href: '#contact', label: 'Contact Us' }]
+  const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map(({ href }) => href)
-      let currentSection = '/'
-      for (const section of sections) {
-        const el = document.querySelector(section === '/' ? 'body' : section)
-        if (el && window.scrollY >= el.getBoundingClientRect().top + window.scrollY - 80) {
-          currentSection = section
+      let current = ''
+      sectionRefs.forEach(({ href }) => {
+        const el = document.querySelector(href)
+        if (el) {
+          const offsetTop = el.getBoundingClientRect().top + window.scrollY
+          if (window.scrollY >= offsetTop - 200) {
+            current = href
+          }
         }
-      }
-      setActiveSection(currentSection)
+      })
+      setActiveSection(current)
     }
 
     window.addEventListener('scroll', handleScroll)
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-center">
+    <header className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-center transition-all duration-300">
       <div className="flex items-center space-x-6">
         {/* Logo a la izquierda */}
-        <Link href="/" className="flex-shrink-0">
+        <Link href="#hero" className="flex-shrink-0">
           <Image
             src="/images/synced_logo_yellow.png"
             alt="Synced Logo"
-            width={150}   // Ajusta tamaño si querés
+            width={150}
             height={50}
-            className="object-contain"
+            className="object-contain cursor-pointer"
             unoptimized
           />
         </Link>
@@ -49,25 +53,27 @@ export default function Header() {
         {/* Navigation pill */}
         <nav className="bg-black/30 backdrop-blur-md border border-white/20 rounded-full px-8 py-2 flex items-center space-x-10">
           {navItems.map(({ href, label }) => (
-            <Link
+            <a
               key={href}
               href={href}
               className={`
                 text-sm font-medium font-poppins transition
-                ${activeSection === href
-                  ? 'text-yellow-400'
-                  : 'text-white hover:text-yellow-400'}
+                ${
+                  activeSection === href && activeSection !== '#contact'
+                    ? 'text-yellow-400'
+                    : 'text-white hover:text-yellow-400'
+                }
               `}
             >
               {label}
-            </Link>
+            </a>
           ))}
         </nav>
 
         {/* Contact Us button */}
-        <Link
+        <a
           href="#contact"
-          className="flex items-center space-x-2 bg-[#faff05] text-black font-poppins text-sm font-bold px-5 py-2 rounded-full hover:opacity-90 transition"
+          className={`flex items-center space-x-2 bg-[#faff05] text-black font-poppins text-sm font-bold px-5 py-2 rounded-full hover:opacity-90 transition`}
         >
           <span>Contact Us</span>
           <span className="bg-black rounded-full p-1">
@@ -82,7 +88,7 @@ export default function Header() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </span>
-        </Link>
+        </a>
       </div>
     </header>
   )

@@ -31,7 +31,7 @@ We craft disruptive concepts and brand strategies that elevate your identity acr
 
 const Services: React.FC = () => {
   return (
-    <section className="text-white py-28 px-4">
+    <section id="services" className="text-white py-28 px-4">
       <h2 className="text-7xl md:text-8xl mb-15 text-center font-poppins font-bold text-[#faff05]">
         SERVICES
       </h2>

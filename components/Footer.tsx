@@ -27,22 +27,22 @@ const Footer: React.FC = () => {
             className="mb-4"
           />
           <div className="flex gap-3">
-            <Link href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">
+            <Link href="https://www.tiktok.com/@synced_4k" target="_blank" rel="noopener noreferrer">
               <div className="bg-black rounded-[12px] p-2">
                 <FaTiktok className="text-[#faff05] w-5 h-5" />
               </div>
             </Link>
-            <Link href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+            <Link href="https://www.linkedin.com/company/synced-studio" target="_blank" rel="noopener noreferrer">
               <div className="bg-black rounded-[12px] p-2">
                 <FaLinkedin className="text-[#faff05] w-5 h-5" />
               </div>
             </Link>
-            <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+            <Link href="https://www.instagram.com/synced_4k" target="_blank" rel="noopener noreferrer">
               <div className="bg-black rounded-[12px] p-2">
                 <FaInstagram className="text-[#faff05] w-5 h-5" />
               </div>
             </Link>
-            <Link href="https://www.threads.net" target="_blank" rel="noopener noreferrer">
+            <Link href="https://www.threads.net/@synced_4k" target="_blank" rel="noopener noreferrer">
               <div className="bg-black rounded-[12px] p-2">
                 <PiThreadsLogo className="text-[#faff05] w-5 h-5" />
               </div>
