@@ -5,11 +5,11 @@ import Image from 'next/image'
 
 export default function Header() {
   const navItems = [
-    { href: '#hero',      label: 'Home' },
-    { href: '#services',  label: 'Services' },
-    { href: '#projects',  label: 'Projects' },
-    { href: '#comments',  label: 'Comments' },
-    { href: '#faqs',      label: "FAQ'S" },
+    { href: '#hero', label: 'Home' },
+    { href: '#services', label: 'Services' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#comments', label: 'Comments' },
+    { href: '#faqs', label: "FAQ'S" },
   ]
 
   const sectionRefs = [...navItems, { href: '#contact', label: 'Contact Us' }]
@@ -37,8 +37,8 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-center transition-all duration-300">
-      <div className="flex items-center space-x-6">
-        {/* Logo a la izquierda */}
+      <div className="flex flex-wrap items-center justify-center space-x-6">
+        {/* Logo */}
         <Link href="#hero" className="flex-shrink-0">
           <Image
             src="/images/synced_logo_yellow.png"
@@ -50,20 +50,17 @@ export default function Header() {
           />
         </Link>
 
-        {/* Navigation pill */}
-        <nav className="bg-black/30 backdrop-blur-md border border-white/20 rounded-full px-8 py-2 flex items-center space-x-10">
+        {/* Nav */}
+        <nav className="bg-black/30 backdrop-blur-md border border-white/20 rounded-full px-4 md:px-8 py-2 flex flex-wrap items-center justify-center space-x-4 md:space-x-10">
           {navItems.map(({ href, label }) => (
             <a
               key={href}
               href={href}
-              className={`
-                text-sm font-medium font-poppins transition
-                ${
-                  activeSection === href && activeSection !== '#contact'
-                    ? 'text-yellow-400'
-                    : 'text-white hover:text-yellow-400'
-                }
-              `}
+              className={`text-sm font-medium font-poppins transition ${
+                activeSection === href && activeSection !== '#contact'
+                  ? 'text-yellow-400'
+                  : 'text-white hover:text-yellow-400'
+              }`}
             >
               {label}
             </a>
@@ -73,7 +70,7 @@ export default function Header() {
         {/* Contact Us button */}
         <a
           href="#contact"
-          className={`flex items-center space-x-2 bg-[#faff05] text-black font-poppins text-sm font-bold px-5 py-2 rounded-full hover:opacity-90 transition`}
+          className="flex items-center space-x-2 bg-[#faff05] text-black font-poppins text-sm font-bold px-5 py-2 rounded-full hover:opacity-90 transition"
         >
           <span>Contact Us</span>
           <span className="bg-black rounded-full p-1">
