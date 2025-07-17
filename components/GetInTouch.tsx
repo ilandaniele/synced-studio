@@ -16,10 +16,10 @@ const GetInTouch: React.FC = () => {
 
     emailjs
       .sendForm(
-        'service_abc123',     // ⬅️ tu Service ID
-        'template_xyz456',    // ⬅️ tu Template ID
+        'service_gmail',
+        'template_gmail',
         form.current,
-        'abcDEF12345ghiJKL'   // ⬅️ tu Public Key
+        'KPKEoFmZtywTXlc41'
       )
       .then(
         () => {
