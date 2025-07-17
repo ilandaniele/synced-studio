@@ -22,19 +22,21 @@ const logos = [
 ]
 
 export default function TrustedBy() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const rafRef       = useRef<number>(0)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const rafRef     = useRef<number>(0)
+  const posRef     = useRef<number>(0)
 
   useEffect(() => {
-    const container = containerRef.current!
     const speed = 0.5
-    container.scrollLeft = container.scrollWidth / 2
 
     const step = () => {
-      if (container.scrollLeft <= 0) {
-        container.scrollLeft = container.scrollWidth / 2
-      } else {
-        container.scrollLeft -= speed
+      posRef.current -= speed
+      if (contentRef.current) {
+        const width = contentRef.current.scrollWidth / 2
+        if (Math.abs(posRef.current) >= width) {
+          posRef.current = 0
+        }
+        contentRef.current.style.transform = `translateX(${posRef.current}px)`
       }
       rafRef.current = requestAnimationFrame(step)
     }
@@ -46,8 +48,8 @@ export default function TrustedBy() {
   return (
     <section className="text-white overflow-hidden w-full h-full">
       <div
-        ref={containerRef}
-        className="flex items-center gap-0 overflow-hidden whitespace-nowrap w-full h-full"
+        className="flex items-center gap-0 whitespace-nowrap w-full h-full will-change-transform"
+        ref={contentRef}
       >
         {[...logos, ...logos].map((logo, i) => {
           const isSeparator = logo.alt === ""

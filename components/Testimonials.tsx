@@ -1,4 +1,3 @@
-// components/Testimonials.tsx
 'use client'
 import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
@@ -107,27 +106,31 @@ const testimonials: Testimonial[] = [
 ]
 
 export default function Testimonials() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
   const rafRef = useRef<number>(0)
+  const posRef = useRef<number>(0)
 
   useEffect(() => {
     const speed = 0.5
-    const container = containerRef.current!
+
     const step = () => {
-      const half = container.scrollWidth / 2
-      container.scrollLeft -= speed
-      if (container.scrollLeft <= 0) {
-        container.scrollLeft += half
+      if (contentRef.current) {
+        const width = contentRef.current.scrollWidth / 2
+        posRef.current -= speed
+        if (Math.abs(posRef.current) >= width) {
+          posRef.current = 0
+        }
+        contentRef.current.style.transform = `translateX(${posRef.current}px)`
       }
       rafRef.current = requestAnimationFrame(step)
     }
+
     rafRef.current = requestAnimationFrame(step)
     return () => cancelAnimationFrame(rafRef.current)
   }, [])
 
   const looped = [...testimonials, ...testimonials]
 
-  // Elige el PNG de estrellas según rating (4, 4.5 ó 5)
   function getStarsImage(rating: number) {
     if (rating >= 5) return '/images/5stars.png'
     if (rating >= 4.5) return '/images/4.5stars.png'
@@ -144,11 +147,10 @@ export default function Testimonials() {
         Beyond results, we value relationships. These comments reflect both.
       </p>
       <div
-        ref={containerRef}
-        className="flex gap-8 overflow-x-hidden no-scrollbar px-4"
+        className="flex gap-8 no-scrollbar px-4 will-change-transform"
+        ref={contentRef}
       >
         {looped.map((t, i) => {
-          // Genera el degradado CSS para fondo+avatar
           const start = t.initialColor || '#0F1521'
           const end = t.finalColor || '#000000'
           const gradientCSS = `linear-gradient(to bottom, ${start}, ${end})`
@@ -163,9 +165,7 @@ export default function Testimonials() {
                 background: gradientCSS,
               }}
             >
-              {/* ─── CABECERA DEL TESTIMONIAL ─── */}
               <div className="flex items-center h-32 px-9 pt-4 relative">
-                {/* Logo de la marca */}
                 <div className="relative w-17 h-17 rounded-xl overflow-hidden flex-shrink-0 z-0">
                   <Image
                     src={t.brandLogo}
@@ -175,13 +175,8 @@ export default function Testimonials() {
                     unoptimized
                   />
                 </div>
-
-                {/* Avatar + estrellas */}
                 <div className="flex items-center">
-                  {/* Borde del avatar con el mismo degradado */}
-                  {/* ─── Avatar + borde “transparente” ─── */}
                   <div className="relative flex-shrink-0 -translate-x-[0.5rem] z-10">
-                    {/* 2) La propia imagen del avatar, encima del borde */}
                     <div className="absolute inset-0 rounded-full border-4 border-transparent pointer-events-none" />
                     <div className="relative w-18 h-18 rounded-full overflow-hidden">
                       <Image
@@ -193,22 +188,17 @@ export default function Testimonials() {
                       />
                     </div>
                   </div>
-
-
-                  {/* PNG de estrellas (más grande) */}
                   <div className="flex-shrink-0">
                     <Image
                       src={getStarsImage(t.rating)}
                       alt={`${t.rating} stars`}
-                      width={160}    /* ancho real: 160px */
-                      height={32}    /* alto real: 32px */
+                      width={160}
+                      height={32}
                       unoptimized
                     />
                   </div>
                 </div>
               </div>
-
-              {/* ─── CUERPO DEL TESTIMONIAL ─── */}
               <div className="px-10 pb-9 flex flex-col justify-start">
                 <p className="pt-2 text-left text-md leading-snug break-words">
                   “{t.text}”
