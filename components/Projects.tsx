@@ -150,7 +150,7 @@ export default function Projects() {
           onClick={() => setOpen(false)}
         >
           <div
-            className="relative max-w-4xl w-full px-4"
+            className="relative max-w-7xl w-full px-4"
             onClick={e => e.stopPropagation()}
           >
             <div className="flex items-center justify-center gap-4 overflow-hidden">
