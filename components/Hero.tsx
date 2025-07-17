@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Banda amarilla inclinada, un poco más arriba (bottom-8) */}
-      <div className="absolute bottom-8 left-0 w-full h-20 bg-[#faff05] origin-top-left -rotate-3 overflow-hidden">
+      <div className="absolute bottom-3 sm:bottom-6 2xl:bottom-10 left-0 w-full h-[8.3vw] sm:h-[8.3vw] 2xl:h-[8.3vw] bg-[#faff05] origin-top-left -rotate-[2.8deg] overflow-hidden px-4 sm:px-6 md:px-8">
         {/* Contenedor centrado */}
         <div className="w-full h-full flex items-center justify-center">
           {/* Volvemos a inclinar los logos para que queden paralelos a la banda */}

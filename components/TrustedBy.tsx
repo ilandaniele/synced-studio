@@ -1,4 +1,3 @@
-// components/TrustedBy.tsx
 'use client'
 import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
@@ -29,8 +28,6 @@ export default function TrustedBy() {
   useEffect(() => {
     const container = containerRef.current!
     const speed = 0.5
-
-    // Arrancamos desde la mitad:
     container.scrollLeft = container.scrollWidth / 2
 
     const step = () => {
@@ -47,31 +44,38 @@ export default function TrustedBy() {
   }, [])
 
   return (
-    <section className="text-white overflow-hidden">
+    <section className="text-white overflow-hidden w-full h-full">
       <div
         ref={containerRef}
-        className="flex items-center gap-0 overflow-hidden whitespace-nowrap px-4 py-4"
+        className="flex items-center gap-0 overflow-hidden whitespace-nowrap w-full h-full"
       >
         {[...logos, ...logos].map((logo, i) => {
           const isSeparator = logo.alt === ""
-          const containerWidth = isSeparator ? 32 : 140
-          const imgWidth       = isSeparator ? 32 : 140
-          const imgHeight      = isSeparator ? 32 : 80
-          const marginX        = isSeparator ? 8  : 12
+          const width       = isSeparator ? '6vw' : '15vw'
+          const marginX     = isSeparator ? '0.001vw' : '0.001vw'
 
           return (
             <div
               key={i}
               className="flex-shrink-0"
-              style={{ width: containerWidth, margin: `0 ${marginX}px` }}
+              style={{
+                width: width,
+                height: '100%',
+                margin: `0 ${marginX}`,
+              }}
             >
               <Image
                 src={logo.src}
                 alt={logo.alt}
-                width={imgWidth}
-                height={imgHeight}
+                width={0}
+                height={0}
+                sizes="100vw"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                }}
                 unoptimized
-                className="object-contain w-full h-auto"
               />
             </div>
           )
