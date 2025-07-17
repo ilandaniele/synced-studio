@@ -51,7 +51,7 @@ export default function Header() {
         </Link>
 
         {/* Nav */}
-        <nav className="bg-black/30 backdrop-blur-md border border-white/20 rounded-full px-4 md:px-8 py-2 flex flex-wrap items-center justify-center space-x-4 md:space-x-10">
+        <nav className="bg-black/30 backdrop-blur-md border border-white/20 rounded-full px-3 sm:px-6 md:px-8 py-2 flex flex-wrap items-center justify-center space-x-3 sm:space-x-6 md:space-x-10">
           {navItems.map(({ href, label }) => (
             <a
               key={href}
