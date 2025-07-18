@@ -42,23 +42,27 @@ const Services: React.FC = () => {
         How we shape attention into action.
       </p>
 
-      <div
-        className="max-w-7xl mx-auto md:grid md:grid-cols-3 md:gap-[2vw] flex overflow-x-auto scroll-smooth"
-        style={{
-          scrollSnapType: 'x mandatory',
-          paddingLeft: '10vw',
-          paddingRight: '10vw',
-        }}
-      >
+      <div className="
+        max-w-7xl mx-auto 
+        md:grid md:grid-cols-3 md:gap-[2vw] 
+        flex overflow-x-auto gap-4
+        scroll-smooth snap-x snap-mandatory
+      ">
         {servicesData.map((svc, i) => (
           <div
             key={i}
-            className="relative rounded-xl overflow-hidden w-[80vw] md:w-auto aspect-[15/16] cursor-pointer transition-all duration-500 flex-shrink-0"
+            className={`
+              relative rounded-xl overflow-hidden
+              w-[80vw] md:w-auto
+              aspect-[15/16] md:aspect-[15/16]
+              cursor-pointer transition-all duration-500
+              flex-shrink-0 snap-center
+              ${i === 0 ? 'ml-[10vw] md:ml-0' : ''}
+              ${i === servicesData.length -1 ? 'mr-[10vw] md:mr-0' : ''}
+            `}
             style={{
               background:
                 'linear-gradient(135deg, rgba(250,255,5,0.1) 0%, rgba(26,26,26,1) 100%)',
-              scrollSnapAlign: 'center',
-              marginRight: '4vw',
             }}
             onClick={() => toggleCard(i)}
           >
@@ -76,39 +80,19 @@ const Services: React.FC = () => {
               }}
             >
               <FaChevronDown
-                className={`transition-transform duration-300 ${
-                  activeCard === i ? 'rotate-180' : ''
-                }`}
+                className={`transition-transform duration-300 ${activeCard === i ? 'rotate-180' : ''}`}
               />
             </button>
 
             {/* Contenedor */}
             <div className="absolute inset-0 flex flex-col p-[4vw] md:p-[2vw] justify-between">
-              <div
-                className={`transition-all duration-500 ${
-                  activeCard === i
-                    ? 'mt-[10vw] md:mt-[6vw]'
-                    : 'mt-[20vw] md:mt-[10vw]'
-                }`}
-              >
-                <h3
-                  className={`font-poppins font-bold transition-all duration-500 ${
-                    activeCard === i
-                      ? 'text-[3vw] md:text-[1.3vw]'
-                      : 'text-[4vw] md:text-[2.6vw]'
-                  }`}
-                >
+              <div className={`transition-all duration-500 ${activeCard === i ? 'mt-[10vw] md:mt-[6vw]' : 'mt-[20vw] md:mt-[10vw]'}`}>
+                <h3 className={`font-poppins font-bold transition-all duration-500 ${activeCard === i ? 'text-[3vw] md:text-[1.3vw]' : 'text-[4vw] md:text-[2.6vw]'}`}>
                   {svc.title}
                 </h3>
               </div>
 
-              <p
-                className={`mb-[2vw] md:mb-[1vw] text-[2vw] md:text-[1.3vw] font-poppins text-yellow-500 transition-all duration-500 ${
-                  activeCard === i
-                    ? 'opacity-100 max-h-[60vw] md:max-h-[30vw]'
-                    : 'opacity-0 max-h-0'
-                } overflow-hidden`}
-              >
+              <p className={`mb-[2vw] md:mb-[1vw] text-[2vw] md:text-[1.3vw] font-poppins text-yellow-500 transition-all duration-500 ${activeCard === i ? 'opacity-100 max-h-[60vw] md:max-h-[30vw]' : 'opacity-0 max-h-0'} overflow-hidden`}>
                 {svc.description
                   .trim()
                   .split('\n')
