@@ -112,7 +112,7 @@ export default function Projects() {
 
   return (
     <>
-      <section id="projects" className="py-16 px-10">
+      <section id="projects" className="py-16 px-5 md:px-10">
         <h2 className="text-5xl font-bold font-poppins text-center text-[#faff05]">PROJECTS</h2>
         <p className="text-center font-poppins md:text-lg lg:text-2xl text-white mb-12">
           Behind every design, there’s a purpose. Behind every project, a result.

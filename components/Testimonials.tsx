@@ -199,7 +199,7 @@ export default function Testimonials() {
                   </div>
                 </div>
               </div>
-              <div className="px-10 pb-9 flex flex-col justify-start">
+              <div className="px-10 pb-9 flex flex-col justify-between">
                 <p className="pt-2 text-left text-md leading-snug break-words">
                   “{t.text}”
                 </p>

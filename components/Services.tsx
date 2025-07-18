@@ -1,32 +1,28 @@
-// components/Services.tsx
 'use client'
 import React, { useState } from 'react'
-import Image from 'next/image'
 import { FaChevronDown } from 'react-icons/fa'
 
 const servicesData = [
   {
+    number: '01',
     title: 'LAYOUT DESIGNS & 3D MODELING',
     description: `
-We turn your product into impressive 3D renders that shine across every touchpoint:
-Shelves, Ads, Social Media, E-commerce, Email Marketing, and Billboards.
-`,
+We turn your product into impressive 3D renders that shine across every touchpoint: Shelves, Ads, Social Media, E-commerce, Email Marketing, and Billboards.
+    `,
   },
   {
+    number: '02',
     title: '3D ANIMATION & VFX',
     description: `
-We shape visual narratives that grab attention, spark curiosity, 
-and drive sales, through 3D Animations that make your brand impossible to ignore.
-`,
+We shape visual narratives that grab attention, spark curiosity, and drive sales, through 3D Animations that make your brand impossible to ignore.
+    `,
   },
   {
+    number: '03',
     title: 'CREATIVE BRAND DIRECTION',
     description: `
-We craft disruptive concepts and brand strategies that elevate your identity across 
-every platform. From campaigns to immersive brand experiences, we make sure 
-your message feels fresh, clear, and unforgettable. Because iconic brands don’t 
-follow culture, they shape it.
-`,
+We craft disruptive concepts with strategies that elevate your identity across every platform. Campaigns to immersive brand experiences. Because iconic brands don’t follow culture, they shape it.
+    `,
   },
 ]
 
@@ -38,24 +34,34 @@ const Services: React.FC = () => {
   }
 
   return (
-    <section id="services" className="text-white py-28 px-4">
-      <h2 className="text-5xl text-center font-poppins font-bold text-[#faff05]">
+    <section id="services" className="text-white py-[10vw] px-4">
+      <h2 className="text-[5vw] text-center font-poppins font-bold text-[#faff05]">
         SERVICES
       </h2>
-      <p className="text-center font-poppins lg:text-2xl md:text-xl mb-12 text-gray-300">
+      <p className="text-center font-poppins text-[2vw] mb-[5vw] text-gray-300">
         How we shape attention into action.
       </p>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto md:grid md:grid-cols-3 md:gap-[2vw] flex overflow-x-auto gap-[4vw] scroll-smooth scroll-px-4">
         {servicesData.map((svc, i) => (
           <div
             key={i}
-            className="relative bg-[#1a1a1a] rounded-xl overflow-hidden aspect-[15/16] cursor-pointer transition-all duration-500"
-            onClick={() => setActiveCard(null)}
+            className="relative rounded-xl overflow-hidden w-[80vw] md:w-auto aspect-[15/20] md:aspect-[15/16] cursor-pointer transition-all duration-500 flex-shrink-0"
+            style={{
+              background:
+                'linear-gradient(135deg, rgba(250,255,5,0.1) 0%, rgba(26,26,26,1) 100%)',
+              scrollSnapAlign: 'start',
+            }}
+            onClick={() => toggleCard(i)}
           >
-            {/* Flecha */}
+            {/* Número arriba izq */}
+            <div className="absolute top-[2vw] left-[4vw] md:top-[1vw] md:left-[2vw] z-20 font-poppins font-bold text-[7vw] md:text-[5vw]">
+              {svc.number}
+            </div>
+
+            {/* Flechita arriba der */}
             <button
-              className="absolute top-4 right-4 z-20 bg-[#faff05] text-black rounded-full p-2"
+              className="absolute top-[4vw] right-[4vw] md:top-[2vw] md:right-[2vw] z-20 bg-[#faff05] text-black rounded-full p-[2vw] md:p-[1.3vw]"
               onClick={(e) => {
                 e.stopPropagation()
                 toggleCard(i)
@@ -68,43 +74,44 @@ const Services: React.FC = () => {
               />
             </button>
 
-            {/* Contenido */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-500">
+            {/* Contenedor */}
+            <div className="absolute inset-0 flex flex-col p-[4vw] md:p-[2vw] justify-between">
               <div
-                className={`flex items-center space-x-2 text-center transition-transform duration-500 ${
-                  activeCard === i ? '-translate-y-28' : 'translate-y-0'
+                className={`transition-all duration-500 ${
+                  activeCard === i
+                    ? 'mt-[10vw] md:mt-[6vw]'
+                    : 'mt-[20vw] md:mt-[15vw]'
                 }`}
               >
-                <Image
-                  src={`/images/${String(i + 1).padStart(2, '0')}.png`}
-                  alt={String(i + 1).padStart(2, '0')}
-                  width={60}
-                  height={60}
-                  className="object-contain"
-                  unoptimized
-                />
-                <h3 className="font-poppins font-bold text-xl md:text-2xl">
+                <h3
+                  className={`font-poppins font-bold transition-all duration-500 ${
+                    activeCard === i
+                      ? 'text-[4vw] md:text-[1.3vw]'
+                      : 'text-[5vw] md:text-[2.6vw]'
+                  }`}
+                >
                   {svc.title}
                 </h3>
               </div>
-            </div>
 
-            {/* Descripción */}
-            <p
-              className={`absolute bottom-6 left-6 right-6 text-center font-poppins text-sm md:text-base text-gray-300 px-4 transition-all duration-500 ${
-                activeCard === i ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0'
-              } overflow-hidden`}
-            >
-              {svc.description
-                .trim()
-                .split('\n')
-                .map((line, idx, arr) => (
-                  <React.Fragment key={idx}>
-                    {line.trim()}
-                    {idx < arr.length - 1 && <br />}
-                  </React.Fragment>
-                ))}
-            </p>
+              <p
+                className={`mb-[2vw] md:mb-[1vw] text-[3vw] md:text-[1.3vw] font-poppins text-yellow-500 transition-all duration-500 ${
+                  activeCard === i
+                    ? 'opacity-100 max-h-[60vw] md:max-h-[30vw]'
+                    : 'opacity-0 max-h-0'
+                } overflow-hidden`}
+              >
+                {svc.description
+                  .trim()
+                  .split('\n')
+                  .map((line, idx, arr) => (
+                    <React.Fragment key={idx}>
+                      {line.trim()}
+                      {idx < arr.length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
+              </p>
+            </div>
           </div>
         ))}
       </div>
