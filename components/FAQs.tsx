@@ -18,14 +18,14 @@ export default function FAQs() {
     <section id="faqs" className="py-16 px-4 text-white">
       <div className="max-w-3xl mx-auto">
         {/* Heading */}
-        <h2 className="text-center text-4xl font-bold text-[#faff05] font-poppins mb-8">FAQ’s</h2>
+        <h2 className="text-center text-5xl font-bold text-[#faff05] font-poppins mb-8">FAQ’s</h2>
 
         {/* Accordion */}
         <div className="space-y-4">
           {faqs.map((item, idx) => {
             const isOpen = idx === open
             return (
-              <div key={idx} className="overflow-hidden rounded-4xl border border-[#ffffff33]">
+              <div key={idx} className="overflow-hidden rounded-4xl font-poppins border border-[#ffffff33]">
                 {/* Question */}
                 <button
                   onClick={() => setOpen(isOpen ? null : idx)}

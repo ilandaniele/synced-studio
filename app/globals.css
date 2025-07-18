@@ -39,3 +39,21 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@media (min-width: 810px) {
+  .custom-810-flex {
+    display: flex;
+  }
+  .custom-810-hidden {
+    display: none;
+  }
+}
+
+@media (max-width: 809px) {
+  .custom-810-flex {
+    display: none;
+  }
+  .custom-810-hidden {
+    display: flex;
+  }
+}

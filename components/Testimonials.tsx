@@ -111,7 +111,7 @@ export default function Testimonials() {
   const posRef = useRef<number>(0)
 
   useEffect(() => {
-    const speed = 0.5
+    const speed = 2.5
 
     const step = () => {
       if (contentRef.current) {
@@ -140,7 +140,7 @@ export default function Testimonials() {
 
   return (
     <section id="comments" className="text-white py-16 overflow-hidden">
-      <h2 className="text-4xl md:text-4xl font-bold text-[#faff05] font-poppins text-center mb-4">
+      <h2 className="text-5xl md:text-4xl font-bold text-[#faff05] font-poppins text-center mb-4">
         COMMENTS
       </h2>
       <p className="text-center font-poppins text-lg mb-12 px-4 max-w-2xl mx-auto">

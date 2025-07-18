@@ -6,7 +6,7 @@ import TrustedBy from './TrustedBy'
 
 const Hero: React.FC = () => {
   return (
-    <section id="hero" className="relative w-full overflow-visible bg-[#160d09]">
+    <section id="hero" className="relative w-full overflow-visible bg-[#060503]">
       {/* Imagen de fondo */}
       <div className="w-full">
         <Image

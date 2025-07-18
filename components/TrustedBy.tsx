@@ -27,7 +27,7 @@ export default function TrustedBy() {
   const posRef     = useRef<number>(0)
 
   useEffect(() => {
-    const speed = 0.5
+    const speed = 2.5
 
     const step = () => {
       posRef.current -= speed

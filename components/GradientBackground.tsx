@@ -10,7 +10,7 @@ const GradientBackground: React.FC<GradientBackgroundProps> = ({ children }) => 
   return (
     <div
       style={{
-        background: 'linear-gradient(to bottom, #060503 0%, #160d09 35%, #743610 60%, #160d09 80%, #060503 100%)',
+        background: 'linear-gradient(to bottom, #060503 0%, #140700 35%, #240e01 60%, #140700 80%, #060503 100%)',
       }}
     >
       {children}
