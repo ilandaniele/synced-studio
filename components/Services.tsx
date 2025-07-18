@@ -53,7 +53,7 @@ const Services: React.FC = () => {
             key={i}
             className={`
               relative rounded-xl overflow-hidden
-              w-[80vw] md:w-auto
+              w-[80vw] h-[65vw] md:h-auto md:w-auto
               aspect-[15/16] md:aspect-[15/16]
               cursor-pointer transition-all duration-500
               flex-shrink-0 snap-center
@@ -87,12 +87,12 @@ const Services: React.FC = () => {
             {/* Contenedor */}
             <div className="absolute inset-0 flex flex-col p-[4vw] md:p-[2vw] justify-between">
               <div className={`transition-all duration-500 ${activeCard === i ? 'mt-[10vw] md:mt-[6vw]' : 'mt-[20vw] md:mt-[10vw]'}`}>
-                <h3 className={`font-poppins font-bold transition-all duration-500 ${activeCard === i ? 'text-[3vw] md:text-[1.3vw]' : 'text-[4vw] md:text-[2.6vw]'}`}>
+                <h3 className={`font-poppins font-bold transition-all duration-500 ${activeCard === i ? 'text-[4vw] md:text-[1.3vw]' : 'text-[7vw] md:text-[2.6vw]'}`}>
                   {svc.title}
                 </h3>
               </div>
 
-              <p className={`mb-[2vw] md:mb-[1vw] text-[2vw] md:text-[1.3vw] font-poppins text-yellow-500 transition-all duration-500 ${activeCard === i ? 'opacity-100 max-h-[60vw] md:max-h-[30vw]' : 'opacity-0 max-h-0'} overflow-hidden`}>
+              <p className={`mb-[2vw] md:mb-[1vw] text-[3.8vw] md:text-[1.3vw] font-poppins text-yellow-500 transition-all duration-500 ${activeCard === i ? 'opacity-100 max-h-[60vw] md:max-h-[30vw]' : 'opacity-0 max-h-0'} overflow-hidden`}>
                 {svc.description
                   .trim()
                   .split('\n')
