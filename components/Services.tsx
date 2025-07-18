@@ -46,7 +46,7 @@ const Services: React.FC = () => {
         {servicesData.map((svc, i) => (
           <div
             key={i}
-            className="relative rounded-xl overflow-hidden w-[80vw] md:w-auto aspect-[15/20] md:aspect-[15/16] cursor-pointer transition-all duration-500 flex-shrink-0"
+            className="relative rounded-xl overflow-hidden w-[47vw] md:w-auto aspect-[15/16] md:aspect-[15/16] cursor-pointer transition-all duration-500 flex-shrink-0"
             style={{
               background:
                 'linear-gradient(135deg, rgba(250,255,5,0.1) 0%, rgba(26,26,26,1) 100%)',
@@ -80,14 +80,14 @@ const Services: React.FC = () => {
                 className={`transition-all duration-500 ${
                   activeCard === i
                     ? 'mt-[10vw] md:mt-[6vw]'
-                    : 'mt-[20vw] md:mt-[15vw]'
+                    : 'mt-[20vw] md:mt-[10vw]'
                 }`}
               >
                 <h3
                   className={`font-poppins font-bold transition-all duration-500 ${
                     activeCard === i
-                      ? 'text-[4vw] md:text-[1.3vw]'
-                      : 'text-[5vw] md:text-[2.6vw]'
+                      ? 'text-[3vw] md:text-[1.3vw]'
+                      : 'text-[4vw] md:text-[2.6vw]'
                   }`}
                 >
                   {svc.title}
@@ -95,7 +95,7 @@ const Services: React.FC = () => {
               </div>
 
               <p
-                className={`mb-[2vw] md:mb-[1vw] text-[3vw] md:text-[1.3vw] font-poppins text-yellow-500 transition-all duration-500 ${
+                className={`mb-[2vw] md:mb-[1vw] text-[2vw] md:text-[1.3vw] font-poppins text-yellow-500 transition-all duration-500 ${
                   activeCard === i
                     ? 'opacity-100 max-h-[60vw] md:max-h-[30vw]'
                     : 'opacity-0 max-h-0'
