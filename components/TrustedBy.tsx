@@ -15,7 +15,7 @@ const logos = [
   { src: "/images/separator.png",         alt: "" },
   { src: "/images/raise_bw.png",          alt: "Raise" },
   { src: "/images/separator.png",         alt: "" },
-  { src: "/images/resees_bw.png",         alt: "Reese's" },
+  { src: "/images/reeses_bw.png",         alt: "Reese's" },
   { src: "/images/separator.png",         alt: "" },
   { src: "/images/zumino_bw.png",         alt: "Zumino" },
   { src: "/images/separator.png",         alt: "" },
@@ -27,7 +27,7 @@ export default function TrustedBy() {
   const posRef     = useRef<number>(0)
 
   useEffect(() => {
-    const speed = 2.5
+    const speed = 1.8
 
     const step = () => {
       posRef.current -= speed
@@ -53,8 +53,8 @@ export default function TrustedBy() {
       >
         {[...logos, ...logos].map((logo, i) => {
           const isSeparator = logo.alt === ""
-          const width       = isSeparator ? '6vw' : '15vw'
-          const marginX     = isSeparator ? '0.001vw' : '0.001vw'
+          const width       = isSeparator ? '2vw' : '12vw'
+          const marginX     = isSeparator ? '1vw' : '0.001vw'
 
           return (
             <div

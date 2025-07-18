@@ -37,7 +37,7 @@ export default function Header() {
   }, [])
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 md:px-10 py-4 flex items-center justify-center">
+    <header className="fixed top-0 left-0 w-full z-200 px-4 sm:px-6 md:px-10 py-4 flex items-center justify-center">
       {/* Logo (only visible on md and up) */}
       <Link href="#hero" className="hidden md:flex flex-shrink-0">
         <Image
@@ -51,7 +51,7 @@ export default function Header() {
       </Link>
 
       {/* Center container */}
-      <div className="flex items-center justify-between flex-grow max-w-[800px] mx-2 bg-black/30 backdrop-blur-md border border-white/20 rounded-full px-4 sm:px-6 md:px-8 py-3 w-full">
+      <div className="flex items-center justify-between flex-grow max-w-full md:max-w-[700px] lg:max-w-[800px] mx-2 bg-black/30 backdrop-blur-md border border-white/20 rounded-full px-4 sm:px-6 md:px-8 py-3 w-full">
         {/* Mobile logo inside container (visible only on small screens) */}
         <Link href="#hero" className="flex-shrink-0 md:hidden">
           <Image
@@ -65,7 +65,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav with spaced items */}
-        <nav className="hidden md:flex items-center justify-between gap-x-8 w-full px-4">
+        <nav className="hidden md:flex items-center justify-between gap-x-2 w-full px-15">
           {navItems.map(({ href, label }) => (
             <a
               key={href}
@@ -135,7 +135,7 @@ export default function Header() {
       {/* Desktop Contact Us (outside container) */}
       <a
         href="#contact"
-        className="hidden md:flex items-center space-x-2 bg-[#faff05] text-black font-poppins text-sm sm:text-base font-bold px-5 py-2 rounded-full hover:opacity-90 transition ml-4"
+        className="hidden md:flex items-center space-x-2 bg-[#faff05] text-black font-poppins text-sm sm:text-base font-bold px-4 md:px-5 py-2 rounded-full hover:opacity-90 transition ml-4 whitespace-nowrap"
       >
         <span>Contact Us</span>
         <span className="bg-black rounded-full p-1">

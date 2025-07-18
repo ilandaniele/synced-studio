@@ -35,13 +35,13 @@ const GetInTouch: React.FC = () => {
   }
 
   return (
-    <section id="contact" className="w-full text-white py-12 px-4 flex flex-col items-center gap-8">
+    <section id="contact" className="w-full text-white py-12 px-4 flex flex-col items-center gap-8 mb-24">
       {/* — Título y mail — */}
       <div className="text-center flex flex-col gap-1">
         <h2 className="text-3xl md:text-5xl font-bold font-poppins leading-snug text-[#faff05]">
           LET’S GET IN TOUCH
         </h2>
-        <p className="text-base font-medium font-poppins lowercase">
+        <p className="text-base lg:text-2xl md:text-xl font-medium font-poppins lowercase">
           info@synced-studio.eu
         </p>
       </div>

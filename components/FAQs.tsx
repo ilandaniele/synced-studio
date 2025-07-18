@@ -25,7 +25,7 @@ export default function FAQs() {
           {faqs.map((item, idx) => {
             const isOpen = idx === open
             return (
-              <div key={idx} className="overflow-hidden rounded-4xl font-poppins border border-[#ffffff33]">
+              <div key={idx} className="overflow-hidden rounded-4xl font-poppins border border-[#ffffff33] bg-[#20120b]">
                 {/* Question */}
                 <button
                   onClick={() => setOpen(isOpen ? null : idx)}

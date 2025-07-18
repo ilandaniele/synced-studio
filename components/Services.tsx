@@ -39,10 +39,10 @@ const Services: React.FC = () => {
 
   return (
     <section id="services" className="text-white py-28 px-4">
-      <h2 className="text-5xl mb-4 text-center font-poppins font-bold text-[#faff05]">
+      <h2 className="text-5xl text-center font-poppins font-bold text-[#faff05]">
         SERVICES
       </h2>
-      <p className="text-center font-poppins text-lg md:text-xl mb-12 text-gray-300">
+      <p className="text-center font-poppins lg:text-2xl md:text-xl mb-12 text-gray-300">
         How we shape attention into action.
       </p>
 

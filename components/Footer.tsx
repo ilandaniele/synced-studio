@@ -7,44 +7,46 @@ import { PiThreadsLogo } from 'react-icons/pi'
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-[#faff05] rounded-t-[60px] text-black">
-      <div className="py-12 px-25 flex flex-col md:flex-row justify-between items-center gap-10">
+    <footer className="w-full bg-[#faff05] rounded-t-[30px] md:rounded-t-[60px] text-black">
+      <div className="py-6 md:py-12 px-6 md:px-25 flex flex-col md:flex-row justify-between items-center md:gap-10">
         {/* Left: Text and contact */}
-        <div className="text-left">
-          <h3 className="text-xl font-bold font-poppins mb-2">
-            We design Visual experiences to connect and convert.
+        <div className="w-full md:w-auto text-left mb-4 md:mb-0">
+          <h3 className="text-base md:text-xl font-bold font-poppins mb-1 md:mb-2">
+            We design Visual experiences that connect and convert.
           </h3>
-          <p className="text-md font-poppins">Contact: info@synced-studio.eu</p>
+          <p className="text-sm md:text-md font-poppins">
+            Contact: info@synced-studio.eu
+          </p>
         </div>
 
-        {/* Right: Logo and social icons */}
-        <div className="flex flex-col items-center md:items-end">
+        {/* Logo + Social icons (responsive) */}
+        <div className="w-full md:w-auto flex items-center justify-start md:flex-col md:justify-end md:items-end gap-4">
           <Image
             src="/images/synced_logo.png"
             alt="Synced Logo"
-            width={180}   // AGRANDADO
+            width={200} // bigger on mobile
             height={60}
-            className="mb-4"
+            className="md:w-[180px] md:h-[60px]"
           />
           <div className="flex gap-3">
             <Link href="https://www.tiktok.com/@synced_4k" target="_blank" rel="noopener noreferrer">
-              <div className="bg-black rounded-[12px] p-2">
-                <FaTiktok className="text-[#faff05] w-5 h-5" />
+              <div className="bg-black rounded-[12px] md:rounded-[12px] p-2.5 md:p-2">
+                <FaTiktok className="text-[#faff05] w-6 h-6 md:w-5 md:h-5" />
               </div>
             </Link>
             <Link href="https://www.linkedin.com/company/synced-studio" target="_blank" rel="noopener noreferrer">
-              <div className="bg-black rounded-[12px] p-2">
-                <FaLinkedin className="text-[#faff05] w-5 h-5" />
+              <div className="bg-black rounded-[12px] md:rounded-[12px] p-2.5 md:p-2">
+                <FaLinkedin className="text-[#faff05] w-6 h-6 md:w-5 md:h-5" />
               </div>
             </Link>
             <Link href="https://www.instagram.com/synced_4k" target="_blank" rel="noopener noreferrer">
-              <div className="bg-black rounded-[12px] p-2">
-                <FaInstagram className="text-[#faff05] w-5 h-5" />
+              <div className="bg-black rounded-[12px] md:rounded-[12px] p-2.5 md:p-2">
+                <FaInstagram className="text-[#faff05] w-6 h-6 md:w-5 md:h-5" />
               </div>
             </Link>
             <Link href="https://www.threads.net/@synced_4k" target="_blank" rel="noopener noreferrer">
-              <div className="bg-black rounded-[12px] p-2">
-                <PiThreadsLogo className="text-[#faff05] w-5 h-5" />
+              <div className="bg-black rounded-[12px] md:rounded-[12px] p-2.5 md:p-2">
+                <PiThreadsLogo className="text-[#faff05] w-6 h-6 md:w-5 md:h-5" />
               </div>
             </Link>
           </div>
@@ -52,13 +54,13 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Bottom bar */}
-      <div className="w-full bg-[#b7b329] py-4 px-25 flex flex-col md:flex-row justify-between items-center text-base">
-        <div className="flex gap-4 text-black font-poppins underline mb-2 md:mb-0">
+      <div className="w-full bg-[#b7b329] py-2.5 md:py-4 px-6 md:px-25 flex flex-col items-center text-center text-sm md:text-base">
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4 text-black font-poppins underline mb-1 md:mb-2">
           <Link href="/cookies">Política de cookies</Link>
           <Link href="/privacy">Política de privacidad</Link>
           <Link href="/legal">Aviso legal</Link>
         </div>
-        <div className="text-black text-xl font-poppins">
+        <div className="text-black text-sm md:text-base font-poppins">
           © 2025 Synced Studio - All rights reserved
         </div>
       </div>

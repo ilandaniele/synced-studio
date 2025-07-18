@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 interface Project {
@@ -29,9 +29,22 @@ export default function Projects() {
   const [open, setOpen] = useState(false)
   const [activeProjectIdx, setActiveProjectIdx] = useState<number>(0)
   const [activeGalleryIdx, setActiveGalleryIdx] = useState<number>(0)
+  const [isMobile, setIsMobile] = useState(false)
 
-  const openCarousel = (idx: number) => {
-    setActiveProjectIdx(idx)
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 780)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const filteredProjects = isMobile
+    ? projects.filter(p => p.title !== '' && p.thumb !== '')
+    : projects
+
+  const openCarousel = (filteredIdx: number) => {
+    const realIdx = projects.findIndex(p => p.id === filteredProjects[filteredIdx].id)
+    setActiveProjectIdx(realIdx)
     setActiveGalleryIdx(0)
     setOpen(true)
   }
@@ -77,7 +90,7 @@ export default function Projects() {
       return (
         <video
           src={src}
-          className={`w-full h-auto rounded-lg ${className}`}
+          className={`w-full h-auto max-h-[80vh] rounded-lg object-contain ${className}`}
           autoPlay
           loop
           muted
@@ -91,7 +104,7 @@ export default function Projects() {
         alt=""
         width={800}
         height={600}
-        className={`w-full h-auto rounded-lg ${className}`}
+        className={`w-full h-auto max-h-[80vh] rounded-lg object-contain ${className}`}
         unoptimized
       />
     )
@@ -99,14 +112,14 @@ export default function Projects() {
 
   return (
     <>
-      <section id="projects" className="py-16 px-16">
-        <h2 className="text-5xl font-bold font-poppins text-center text-[#faff05] mb-4">PROJECTS</h2>
-        <p className="text-center font-poppins text-lg text-white mb-12">
+      <section id="projects" className="py-16 px-10">
+        <h2 className="text-5xl font-bold font-poppins text-center text-[#faff05]">PROJECTS</h2>
+        <p className="text-center font-poppins md:text-lg lg:text-2xl text-white mb-12">
           Behind every design, there’s a purpose. Behind every project, a result.
         </p>
 
         <div className="columns-2 md:columns-4 gap-4 space-y-4 relative">
-          {projects.map((p, i) => {
+          {filteredProjects.map((p, i) => {
             const hasImage = !!p.thumb
 
             return (
@@ -145,52 +158,78 @@ export default function Projects() {
       </section>
 
       {open && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black/90"
-          onClick={() => setOpen(false)}
-        >
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div
-            className="relative max-w-7xl w-full px-4"
-            onClick={e => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-center gap-4 overflow-hidden">
-              {total === 1 ? (
-                <div className="flex-shrink-0 w-1/3 transform transition-all duration-300 scale-100 opacity-100">
-                  {renderMedia(gallery[0], 'object-contain')}
-                </div>
-              ) : (
-                [activeGalleryIdx - 1, activeGalleryIdx, activeGalleryIdx + 1].map((offset, pos) => {
-                  const idx = (offset + total) % total
-                  return (
-                    <div
-                      key={pos}
-                      className={[
-                        'flex-shrink-0 w-1/3 transform transition-all duration-300',
-                        pos === 1 ? 'scale-100 opacity-100' : 'scale-75 opacity-100',
-                      ].join(' ')}
-                    >
-                      {renderMedia(gallery[idx], 'object-contain')}
+            className="absolute inset-0 bg-black/90 backdrop-blur-md"
+            onClick={() => setOpen(false)}
+          />
+
+          <div className="relative max-w-7xl w-full px-4 z-10 mt-12">
+            <button
+              onClick={() => setOpen(false)}
+              className="absolute top-4 right-4 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition"
+              aria-label="Close"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <div className={`flex items-center ${isMobile ? 'overflow-x-auto scroll-snap-x snap-x snap-mandatory' : 'justify-center gap-8 overflow-hidden'}`}>
+              {isMobile ? (
+                gallery.map((src, idx) => (
+                  <div
+                    key={idx}
+                    className="flex-shrink-0 w-full max-w-[500px] snap-center flex justify-center"
+                  >
+                    <div className="w-full">
+                      {renderMedia(src, 'object-contain')}
                     </div>
-                  )
-                })
+                  </div>
+                ))
+              ) : (
+                total === 1 ? (
+                  <div className="flex-shrink-0 w-1/4 transform transition-all duration-300 scale-100 opacity-100">
+                    {renderMedia(gallery[0], 'object-contain')}
+                  </div>
+                ) : (
+                  [activeGalleryIdx - 1, activeGalleryIdx, activeGalleryIdx + 1].map((offset, pos) => {
+                    const idx = (offset + total) % total
+                    return (
+                      <div
+                        key={pos}
+                        className={[
+                          'flex-shrink-0 w-1/4 transform transition-all duration-300',
+                          pos === 1 ? 'scale-100 opacity-100' : 'scale-75 opacity-100',
+                        ].join(' ')}
+                      >
+                        {renderMedia(gallery[idx], 'object-contain')}
+                      </div>
+                    )
+                  })
+                )
               )}
             </div>
 
-            {total > 1 && (
+            {total > 1 && !isMobile && (
               <>
                 <button
                   onClick={prev}
-                  className="absolute top-1/2 left-2 -translate-y-1/2 text-white text-3xl hover:scale-125 transition"
+                  className="absolute top-1/2 left-4 -translate-y-1/2 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition"
                   aria-label="Previous"
                 >
-                  ←
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
                 </button>
                 <button
                   onClick={next}
-                  className="absolute top-1/2 right-2 -translate-y-1/2 text-white text-3xl hover:scale-125 transition"
+                  className="absolute top-1/2 right-4 -translate-y-1/2 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition"
                   aria-label="Next"
                 >
-                  →
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
                 </button>
               </>
             )}
