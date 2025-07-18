@@ -42,15 +42,23 @@ const Services: React.FC = () => {
         How we shape attention into action.
       </p>
 
-      <div className="max-w-7xl mx-auto md:grid md:grid-cols-3 md:gap-[2vw] flex overflow-x-auto gap-[4vw] scroll-smooth scroll-px-4">
+      <div
+        className="max-w-7xl mx-auto md:grid md:grid-cols-3 md:gap-[2vw] flex overflow-x-auto scroll-smooth"
+        style={{
+          scrollSnapType: 'x mandatory',
+          paddingLeft: '10vw',
+          paddingRight: '10vw',
+        }}
+      >
         {servicesData.map((svc, i) => (
           <div
             key={i}
-            className="relative rounded-xl overflow-hidden w-[47vw] md:w-auto aspect-[15/16] md:aspect-[15/16] cursor-pointer transition-all duration-500 flex-shrink-0"
+            className="relative rounded-xl overflow-hidden w-[80vw] md:w-auto aspect-[15/16] cursor-pointer transition-all duration-500 flex-shrink-0"
             style={{
               background:
                 'linear-gradient(135deg, rgba(250,255,5,0.1) 0%, rgba(26,26,26,1) 100%)',
-              scrollSnapAlign: 'start',
+              scrollSnapAlign: 'center',
+              marginRight: '4vw',
             }}
             onClick={() => toggleCard(i)}
           >
