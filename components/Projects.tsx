@@ -175,7 +175,7 @@ export default function Projects() {
               </svg>
             </button>
 
-            <div className={`flex items-center ${isMobile ? 'overflow-x-auto scroll-snap-x snap-x snap-mandatory' : 'justify-center gap-8 overflow-hidden'}`}>
+            <div className={`flex items-center ${isMobile ? 'overflow-x-auto scroll-snap-x snap-x snap-mandatory scrollbar-hide' : 'justify-center gap-8 overflow-hidden'}`}>
               {isMobile ? (
                 gallery.map((src, idx) => (
                   <div

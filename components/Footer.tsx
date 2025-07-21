@@ -20,33 +20,33 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Logo + Social icons (responsive) */}
-        <div className="w-full md:w-auto flex items-center justify-start md:flex-col md:justify-end md:items-end gap-4">
+        <div className="w-full md:w-auto flex items-center justify-start md:flex-col md:justify-end md:items-end gap-3">
           <Image
             src="/images/synced_logo.png"
             alt="Synced Logo"
-            width={200} // bigger on mobile
+            width={180}
             height={60}
-            className="md:w-[180px] md:h-[60px]"
+            className="w-[40vw] md:w-[180px] md:h-[60px]" // ~40% viewport width on mobile
           />
-          <div className="flex gap-3">
+          <div className="flex gap-2">
             <Link href="https://www.tiktok.com/@synced_4k" target="_blank" rel="noopener noreferrer">
-              <div className="bg-black rounded-[12px] md:rounded-[12px] p-2.5 md:p-2">
-                <FaTiktok className="text-[#faff05] w-6 h-6 md:w-5 md:h-5" />
+              <div className="bg-black rounded-[12px] p-[1.8vw] md:p-2.5">
+                <FaTiktok className="text-[#faff05] w-[4vw] h-[4vw] md:w-6 md:h-6" />
               </div>
             </Link>
             <Link href="https://www.linkedin.com/company/synced-studio" target="_blank" rel="noopener noreferrer">
-              <div className="bg-black rounded-[12px] md:rounded-[12px] p-2.5 md:p-2">
-                <FaLinkedin className="text-[#faff05] w-6 h-6 md:w-5 md:h-5" />
+              <div className="bg-black rounded-[12px] p-[1.8vw] md:p-2.5">
+                <FaLinkedin className="text-[#faff05] w-[4vw] h-[4vw] md:w-6 md:h-6" />
               </div>
             </Link>
             <Link href="https://www.instagram.com/synced_4k" target="_blank" rel="noopener noreferrer">
-              <div className="bg-black rounded-[12px] md:rounded-[12px] p-2.5 md:p-2">
-                <FaInstagram className="text-[#faff05] w-6 h-6 md:w-5 md:h-5" />
+              <div className="bg-black rounded-[12px] p-[1.8vw] md:p-2.5">
+                <FaInstagram className="text-[#faff05] w-[4vw] h-[4vw] md:w-6 md:h-6" />
               </div>
             </Link>
             <Link href="https://www.threads.net/@synced_4k" target="_blank" rel="noopener noreferrer">
-              <div className="bg-black rounded-[12px] md:rounded-[12px] p-2.5 md:p-2">
-                <PiThreadsLogo className="text-[#faff05] w-6 h-6 md:w-5 md:h-5" />
+              <div className="bg-black rounded-[12px] p-[1.8vw] md:p-2.5">
+                <PiThreadsLogo className="text-[#faff05] w-[4vw] h-[4vw] md:w-6 md:h-6" />
               </div>
             </Link>
           </div>
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
 
       {/* Bottom bar */}
       <div className="w-full bg-[#b7b329] py-2.5 md:py-4 px-6 md:px-25 flex flex-col items-center text-center text-sm md:text-base">
-        <div className="flex flex-wrap justify-center gap-3 md:gap-4 text-black font-poppins underline mb-1 md:mb-2">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-black font-poppins underline mb-1 md:mb-2">
           <Link href="/cookies">Política de cookies</Link>
           <Link href="/privacy">Política de privacidad</Link>
           <Link href="/legal">Aviso legal</Link>

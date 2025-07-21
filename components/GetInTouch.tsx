@@ -49,17 +49,41 @@ const GetInTouch: React.FC = () => {
       {/* — Formulario — */}
       <form ref={form} onSubmit={sendEmail} className="w-full max-w-md flex flex-col gap-4 relative">
         {/* Inputs */}
-        <input name="full_name" type="text" placeholder="Full Name *" required className="w-full h-12 px-5 bg-[rgba(78,58,46,0.3)] placeholder-gray-500 text-white text-lg font-poppins rounded-full focus:outline-none" />
-        <input name="email" type="email" placeholder="Email *" required className="w-full h-12 px-5 bg-[rgba(78,58,46,0.3)] placeholder-gray-500 text-white text-lg font-poppins rounded-full focus:outline-none" />
-        <input name="phone" type="tel" placeholder="Phone" className="w-full h-12 px-5 bg-[rgba(78,58,46,0.3)] placeholder-gray-500 text-white text-lg font-poppins rounded-full focus:outline-none" />
+        <input
+          name="full_name"
+          type="text"
+          placeholder="Full Name *"
+          required
+          className="w-full h-12 px-5 bg-[rgba(78,58,46,0.3)] placeholder-gray-500 text-white text-lg font-poppins rounded-full focus:outline-none"
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Email *"
+          required
+          className="w-full h-12 px-5 bg-[rgba(78,58,46,0.3)] placeholder-gray-500 text-white text-lg font-poppins rounded-full focus:outline-none"
+        />
+        <input
+          name="phone"
+          type="tel"
+          placeholder="Phone"
+          className="w-full h-12 px-5 bg-[rgba(78,58,46,0.3)] placeholder-gray-500 text-white text-lg font-poppins rounded-full focus:outline-none"
+        />
 
         {/* Select */}
         <div className="relative group">
-          <select name="service" required className="w-full h-12 px-5 bg-[rgba(78,58,46,0.3)] text-white text-lg font-poppins rounded-full focus:outline-none appearance-none">
-            <option value="" disabled hidden>Select a service you’re interested in</option>
-            <option>3D Modeling</option>
-            <option>3D Animation & VFX</option>
-            <option>Creative Brand Direction</option>
+          <select
+            name="service"
+            required
+            defaultValue=""
+            className="w-full h-12 px-5 bg-[rgba(78,58,46,0.3)] text-white text-lg font-poppins rounded-full focus:outline-none appearance-none"
+          >
+            <option value="" disabled hidden>
+              Select a service you’re interested in
+            </option>
+            <option value="3D Modeling">3D Modeling</option>
+            <option value="3D Animation & VFX">3D Animation & VFX</option>
+            <option value="Creative Brand Direction">Creative Brand Direction</option>
           </select>
           <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 border border-gray-500 rounded-full p-1 transition-transform group-focus-within:rotate-180">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" className="w-4 h-4 text-gray-300">
@@ -69,10 +93,20 @@ const GetInTouch: React.FC = () => {
         </div>
 
         {/* Textarea */}
-        <textarea name="message" rows={4} placeholder="Message" required className="w-full px-5 py-4 bg-[rgba(78,58,46,0.2)] placeholder-gray-500 text-white text-lg font-poppins rounded-2xl focus:outline-none resize-none" />
+        <textarea
+          name="message"
+          rows={4}
+          placeholder="Message"
+          required
+          className="w-full px-5 py-4 bg-[rgba(78,58,46,0.2)] placeholder-gray-500 text-white text-lg font-poppins rounded-2xl focus:outline-none resize-none"
+        />
 
         {/* Botón */}
-        <button type="submit" disabled={loading} className="mt-2 w-full h-12 bg-[#faff05] text-black font-bold font-poppins text-lg rounded-full hover:opacity-90 transition">
+        <button
+          type="submit"
+          disabled={loading}
+          className="mt-2 w-full h-12 bg-[#faff05] text-black font-bold font-poppins text-lg rounded-full hover:opacity-90 transition"
+        >
           {loading ? 'Sending...' : 'Send'}
         </button>
 

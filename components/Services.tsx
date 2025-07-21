@@ -46,7 +46,7 @@ const Services: React.FC = () => {
         max-w-7xl mx-auto 
         md:grid md:grid-cols-3 md:gap-[2vw] 
         flex overflow-x-auto gap-4
-        scroll-smooth snap-x snap-mandatory
+        scroll-smooth snap-x snap-mandatory scrollbar-hide
       ">
         {servicesData.map((svc, i) => (
           <div

@@ -36,11 +36,11 @@ export default function FAQs() {
                 >
                   <span className="text-lg">{item.q}</span>
                   {isOpen ? (
-                    <div className="p-1 bg-[#faff05] rounded-full">
+                    <div className="ml-5 p-1 bg-[#faff05] rounded-full">
                       <ChevronUpIcon className="w-6 h-6 text-[#3c1f10] stroke-2" />
                     </div>
                   ) : (
-                    <div className="p-1 bg-[#f7e8d3] rounded-full">
+                    <div className="ml-5 p-1 bg-[#f7e8d3] rounded-full">
                       <ChevronDownIcon className="w-6 h-6 text-[#3c1f10] stroke-2" />
                     </div>
                   )}
