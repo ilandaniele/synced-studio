@@ -166,10 +166,9 @@ export default function Projects() {
             onClick={() => setOpen(false)}
           />
 
-          {/* ✅ Close button fijo en viewport */}
           <button
             onClick={() => setOpen(false)}
-            className="fixed top-[14vw] right-[3vw] md:top-[5vw] md:right-[4vw] bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition z-[100]"
+            className="fixed top-6 right-6 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition z-[100]"
             aria-label="Close"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -178,12 +177,12 @@ export default function Projects() {
           </button>
 
           <div className="relative max-w-7xl w-full px-4 z-10 mt-12">
-            <div className={`flex items-center ${isMobile ? 'overflow-x-auto scroll-snap-x snap-x snap-mandatory scrollbar-hide' : 'justify-center gap-8 overflow-hidden'}`}>
+            <div className={`flex items-center ${isMobile ? 'overflow-x-auto scroll-snap-x snap-x snap-mandatory scrollbar-hide gap-4' : 'justify-center gap-8 overflow-hidden'}`}>
               {isMobile ? (
                 gallery.map((src, idx) => (
                   <div
                     key={idx}
-                    className="flex-shrink-0 w-[90%] max-w-[500px] snap-center flex justify-center"
+                    className="flex-shrink-0 w-[85%] max-w-[500px] snap-center flex justify-center px-2"
                   >
                     <div className="w-full">
                       {renderMedia(src, 'object-contain')}
@@ -214,7 +213,7 @@ export default function Projects() {
               )}
             </div>
 
-            {total > 1 && !isMobile && (
+            {total > 1 && (
               <>
                 <button
                   onClick={prev}
