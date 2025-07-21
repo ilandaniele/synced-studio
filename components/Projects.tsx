@@ -32,7 +32,7 @@ export default function Projects() {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 780)
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
@@ -56,11 +56,11 @@ export default function Projects() {
   const total = gallery.length
 
   const prev = () => {
-    setActiveGalleryIdx(i => (i - 1 + total) % total)
+    if (total > 0) setActiveGalleryIdx(i => (i - 1 + total) % total)
   }
 
   const next = () => {
-    setActiveGalleryIdx(i => (i + 1) % total)
+    if (total > 0) setActiveGalleryIdx(i => (i + 1) % total)
   }
 
   const renderPortrait = (src: string, className = '') => {
@@ -123,7 +123,6 @@ export default function Projects() {
         <div className="columns-2 md:columns-4 gap-4 space-y-4 relative">
           {filteredProjects.map((p, i) => {
             const hasImage = !!p.thumb
-
             return (
               <div
                 key={p.id}
@@ -140,7 +139,6 @@ export default function Projects() {
                 ].join(' ')}
               >
                 {hasImage && renderPortrait(p.thumb, 'absolute inset-0 object-cover')}
-
                 {p.gallery.length > 0 && (
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300 flex items-end justify-center">
                     <span className="
@@ -168,7 +166,7 @@ export default function Projects() {
 
           <button
             onClick={() => setOpen(false)}
-            className="fixed top-6 right-6 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition z-[100]"
+            className={`fixed ${isMobile ? 'top-16' : 'top-6'} right-6 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition z-[100]`}
             aria-label="Close"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -215,24 +213,28 @@ export default function Projects() {
 
             {total > 1 && (
               <>
-                <button
-                  onClick={prev}
-                  className="absolute top-1/2 left-4 -translate-y-1/2 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition"
-                  aria-label="Previous"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                <button
-                  onClick={next}
-                  className="absolute top-1/2 right-4 -translate-y-1/2 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition"
-                  aria-label="Next"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
+                {activeGalleryIdx > 0 && (
+                  <button
+                    onClick={prev}
+                    className="absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition"
+                    aria-label="Previous"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                )}
+                {activeGalleryIdx < total - 1 && (
+                  <button
+                    onClick={next}
+                    className="absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition"
+                    aria-label="Next"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                )}
               </>
             )}
           </div>
