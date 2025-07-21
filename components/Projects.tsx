@@ -167,7 +167,7 @@ export default function Projects() {
           <div className="relative max-w-7xl w-full px-4 z-10 mt-12">
             <button
               onClick={() => setOpen(false)}
-              className="absolute top-4 right-4 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition"
+              className="absolute top-[3vw] right-4 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition"
               aria-label="Close"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>

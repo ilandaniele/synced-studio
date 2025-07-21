@@ -87,7 +87,7 @@ const Services: React.FC = () => {
 
             <div className="absolute inset-0 flex flex-col p-[4vw] md:p-[2vw] justify-between">
               <div className={`transition-all duration-500 ${activeCard === i ? 'mt-[10vw] md:mt-[6vw]' : 'mt-[20vw] md:mt-[10vw]'}`}>
-                <h3 className={`font-poppins font-bold transition-all duration-500 ${activeCard === i ? 'text-[4vw] md:text-[1.3vw]' : 'text-[7vw] md:text-[2.6vw]'}`}>
+                <h3 className={`font-poppins font-bold transition-all duration-500 ${activeCard === i ? 'text-[4vw] md:text-[1.3vw]' : 'text-[7vw] md:text-[2.0vw]'}`}>
                   {svc.title}
                 </h3>
               </div>
