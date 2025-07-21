@@ -44,13 +44,15 @@ export default function Projects() {
 
   const openCarousel = (filteredIdx: number) => {
     const realIdx = projects.findIndex(p => p.id === filteredProjects[filteredIdx].id)
-    setActiveProjectIdx(realIdx)
-    setActiveGalleryIdx(0)
-    setOpen(true)
+    if (realIdx !== -1) {
+      setActiveProjectIdx(realIdx)
+      setActiveGalleryIdx(0)
+      setOpen(true)
+    }
   }
 
-  const project = projects[activeProjectIdx]
-  const gallery = project.gallery
+  const project = projects[activeProjectIdx] || { gallery: [] }
+  const gallery = project.gallery || []
   const total = gallery.length
 
   const prev = () => {
@@ -90,7 +92,7 @@ export default function Projects() {
       return (
         <video
           src={src}
-          className={`w-full h-auto max-h-[80vh] rounded-lg object-contain ${className}`}
+          className={`w-full h-auto max-h-[70vh] rounded-lg object-contain ${className}`}
           autoPlay
           loop
           muted
@@ -102,9 +104,9 @@ export default function Projects() {
       <Image
         src={src}
         alt=""
-        width={800}
-        height={600}
-        className={`w-full h-auto max-h-[80vh] rounded-lg object-contain ${className}`}
+        width={700}
+        height={500}
+        className={`w-full h-auto max-h-[70vh] rounded-lg object-contain ${className}`}
         unoptimized
       />
     )
@@ -164,23 +166,24 @@ export default function Projects() {
             onClick={() => setOpen(false)}
           />
 
-          <div className="relative max-w-7xl w-full px-4 z-10 mt-12">
-            <button
-              onClick={() => setOpen(false)}
-              className="absolute top-[3vw] right-4 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition"
-              aria-label="Close"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+          {/* ✅ Close button fijo en viewport */}
+          <button
+            onClick={() => setOpen(false)}
+            className="fixed top-[14vw] right-[3vw] md:top-[5vw] md:right-[4vw] bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition z-[100]"
+            aria-label="Close"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
 
+          <div className="relative max-w-7xl w-full px-4 z-10 mt-12">
             <div className={`flex items-center ${isMobile ? 'overflow-x-auto scroll-snap-x snap-x snap-mandatory scrollbar-hide' : 'justify-center gap-8 overflow-hidden'}`}>
               {isMobile ? (
                 gallery.map((src, idx) => (
                   <div
                     key={idx}
-                    className="flex-shrink-0 w-full max-w-[500px] snap-center flex justify-center"
+                    className="flex-shrink-0 w-[90%] max-w-[500px] snap-center flex justify-center"
                   >
                     <div className="w-full">
                       {renderMedia(src, 'object-contain')}
@@ -189,7 +192,7 @@ export default function Projects() {
                 ))
               ) : (
                 total === 1 ? (
-                  <div className="flex-shrink-0 w-1/4 transform transition-all duration-300 scale-100 opacity-100">
+                  <div className="flex-shrink-0 w-[300px] transform transition-all duration-300 scale-100 opacity-100">
                     {renderMedia(gallery[0], 'object-contain')}
                   </div>
                 ) : (
@@ -199,7 +202,7 @@ export default function Projects() {
                       <div
                         key={pos}
                         className={[
-                          'flex-shrink-0 w-1/4 transform transition-all duration-300',
+                          'flex-shrink-0 w-[300px] transform transition-all duration-300',
                           pos === 1 ? 'scale-100 opacity-100' : 'scale-75 opacity-100',
                         ].join(' ')}
                       >
