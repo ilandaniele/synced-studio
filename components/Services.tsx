@@ -35,10 +35,10 @@ const Services: React.FC = () => {
 
   return (
     <section id="services" className="text-white py-[10vw] px-4">
-      <h2 className="text-[5vw] text-center font-poppins font-bold text-[#faff05]">
+      <h2 className="text-5xl text-center font-poppins font-bold text-[#faff05]">
         SERVICES
       </h2>
-      <p className="text-center font-poppins text-[2vw] mb-[5vw] text-gray-300">
+      <p className="text-center font-poppins md:text-lg lg:text-2xl text-white mb-[5vw] text-white">
         How we shape attention into action.
       </p>
 
@@ -59,10 +59,11 @@ const Services: React.FC = () => {
               flex-shrink-0 snap-center
               ${i === 0 ? 'ml-[10vw] md:ml-0' : ''}
               ${i === servicesData.length -1 ? 'mr-[10vw] md:mr-0' : ''}
+              border border-yellow-200/20
             `}
             style={{
               background:
-                'linear-gradient(135deg, rgba(250,255,5,0.1) 0%, rgba(26,26,26,1) 100%)',
+                'linear-gradient(145deg, rgba(250,255,5,0.1), rgba(26,26,26,0.9) 30%, rgba(26,26,26,0.9) 70%, rgba(250,255,5,0.1))',
             }}
             onClick={() => toggleCard(i)}
           >
@@ -84,7 +85,6 @@ const Services: React.FC = () => {
               />
             </button>
 
-            {/* Contenedor */}
             <div className="absolute inset-0 flex flex-col p-[4vw] md:p-[2vw] justify-between">
               <div className={`transition-all duration-500 ${activeCard === i ? 'mt-[10vw] md:mt-[6vw]' : 'mt-[20vw] md:mt-[10vw]'}`}>
                 <h3 className={`font-poppins font-bold transition-all duration-500 ${activeCard === i ? 'text-[4vw] md:text-[1.3vw]' : 'text-[7vw] md:text-[2.6vw]'}`}>

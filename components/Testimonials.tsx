@@ -9,8 +9,6 @@ interface Testimonial {
   text: string
   author: string
   role?: string
-  initialColor?: string
-  finalColor?: string
 }
 
 const testimonials: Testimonial[] = [
@@ -21,8 +19,6 @@ const testimonials: Testimonial[] = [
     text: 'Super good! We loved the animation so much that we placed it in our landing page background.',
     author: 'Jose Real',
     role: 'The Real Studio Founder',
-    initialColor: '#373737',
-    finalColor: '#0f0f0f',
   },
   {
     brandLogo: '/images/alimp_logo.jpg',
@@ -30,8 +26,6 @@ const testimonials: Testimonial[] = [
     rating: 5,
     text: 'Synced turned a vague idea into stunning 3D visuals that boosted our product and sales, professional, seamless, and highly recommended.',
     author: "Alimp’s Founder",
-    initialColor: '#802d1a',
-    finalColor: '#100700',
   },
   {
     brandLogo: '/images/TheCoconutCollab_logo.jpg',
@@ -40,8 +34,6 @@ const testimonials: Testimonial[] = [
     text: 'Synced work was fast, effective and useful. They made our product launch a success with their captivating visuals.',
     author: 'Edward Averdieck',
     role: 'The Coconut Collab',
-    initialColor: '#006c7f',
-    finalColor: '#000c10',
   },
   {
     brandLogo: '/images/glad_logo.jpg',
@@ -50,8 +42,6 @@ const testimonials: Testimonial[] = [
     text: 'They understood my vision from a brief message. Super smooth process, amazing results. Highly recommend for 3D animations!',
     author: 'Katrin Cavalcanti',
     role: "Glad’s Founder",
-    initialColor: '#7f6000',
-    finalColor: '#100b00',
   },
   {
     brandLogo: '/images/aquelaKombucha_logo.jpg',
@@ -60,8 +50,6 @@ const testimonials: Testimonial[] = [
     text: 'The content didn’t just look amazing, it made strangers remember us!',
     author: 'Maria Lima',
     role: "Aquela Kombucha’s Founder",
-    initialColor: '#00217f',
-    finalColor: '#010010',
   },
   {
     brandLogo: '/images/Reeses_logo_testimonial.jpg',
@@ -70,8 +58,6 @@ const testimonials: Testimonial[] = [
     text: 'We will definitely use Synced again, good experience.',
     author: 'Fred Trevor',
     role: "Reese’s Graphic Designer",
-    initialColor: '#7f2500',
-    finalColor: '#100500',
   },
   {
     brandLogo: '/images/PerfectTed_logo.jpg',
@@ -80,8 +66,6 @@ const testimonials: Testimonial[] = [
     text: 'Our work with Synced was super fast and helpful.',
     author: 'Marisa Poster',
     role: "PerfectTed’s Founder",
-    initialColor: '#007f48',
-    finalColor: '#001005',
   },
   {
     brandLogo: '/images/helpbnk_logo.jpg',
@@ -90,8 +74,6 @@ const testimonials: Testimonial[] = [
     text: 'Synced helped us visualize how we imagined our brand’s tone and voice.',
     author: 'Will Waite',
     role: 'HelpBnk Marketing Director',
-    initialColor: '#00547f',
-    finalColor: '#000810',
   },
   {
     brandLogo: '/images/ModHaus_logo.jpg',
@@ -100,8 +82,6 @@ const testimonials: Testimonial[] = [
     text: 'Instantly got our brand vision, delivered fast and exceeded my expectations. Great communication throughout. Highly recommend!',
     author: 'Aaron von Kreisler',
     role: "ModHaus’s Founder",
-    initialColor: '#7f2500',
-    finalColor: '#100500',
   },
 ]
 
@@ -150,69 +130,64 @@ export default function Testimonials() {
         className="flex gap-8 no-scrollbar px-4 will-change-transform"
         ref={contentRef}
       >
-        {looped.map((t, i) => {
-          const start = t.initialColor || '#0F1521'
-          const end = t.finalColor || '#000000'
-          const gradientCSS = `linear-gradient(to bottom, ${start}, ${end})`
-
-          return (
-            <div
-              key={i}
-              className="inline-block rounded-2xl flex-shrink-0"
-              style={{
-                width: 370,
-                height: 'fit-content',
-                background: gradientCSS,
-              }}
-            >
-              <div className="flex items-center h-32 px-9 pt-4 relative">
-                <div className="relative w-17 h-17 rounded-xl overflow-hidden flex-shrink-0 z-0">
-                  <Image
-                    src={t.brandLogo}
-                    alt={`Logo de ${t.author}`}
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                </div>
-                <div className="flex items-center">
-                  <div className="relative flex-shrink-0 -translate-x-[0.5rem] z-10">
-                    <div className="absolute inset-0 rounded-full border-4 border-transparent pointer-events-none" />
-                    <div className="relative w-18 h-18 rounded-full overflow-hidden">
-                      <Image
-                        src={t.personPhoto}
-                        alt={`Foto de ${t.author}`}
-                        fill
-                        className="object-cover"
-                        unoptimized
-                      />
-                    </div>
-                  </div>
-                  <div className="flex-shrink-0">
+        {looped.map((t, i) => (
+          <div
+            key={i}
+            className="inline-block rounded-2xl flex-shrink-0 border border-yellow-200/30"
+            style={{
+              width: 370,
+              minHeight: 240,
+              background:
+                'linear-gradient(135deg, rgba(255,255,0,0.05) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.6) 70%, rgba(255,255,0,0.05) 100%)',
+            }}
+          >
+            <div className="flex items-center h-32 px-9 pt-4 relative">
+              <div className="relative w-17 h-17 rounded-xl overflow-hidden flex-shrink-0 z-0">
+                <Image
+                  src={t.brandLogo}
+                  alt={`Logo de ${t.author}`}
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
+              </div>
+              <div className="flex items-center">
+                <div className="relative flex-shrink-0 -translate-x-[0.5rem] z-10">
+                  <div className="absolute inset-0 rounded-full border-4 border-transparent pointer-events-none" />
+                  <div className="relative w-18 h-18 rounded-full overflow-hidden">
                     <Image
-                      src={getStarsImage(t.rating)}
-                      alt={`${t.rating} stars`}
-                      width={160}
-                      height={32}
+                      src={t.personPhoto}
+                      alt={`Foto de ${t.author}`}
+                      fill
+                      className="object-cover"
                       unoptimized
                     />
                   </div>
                 </div>
-              </div>
-              <div className="px-10 pb-9 flex flex-col justify-between h-full" style={{ minHeight: 180 }}>
-                <div className="flex-grow">
-                  <p className="pt-2 text-left text-md leading-snug break-words min-h-[80px]">
-                    “{t.text}”
-                  </p>
+                <div className="flex-shrink-0">
+                  <Image
+                    src={getStarsImage(t.rating)}
+                    alt={`${t.rating} stars`}
+                    width={160}
+                    height={32}
+                    unoptimized
+                  />
                 </div>
-                <p className="text-left text-gray-200 text-sm whitespace-normal overflow-visible">
-                  {t.author}
-                  {t.role && ` – ${t.role}`}
-                </p>
               </div>
             </div>
-          )
-        })}
+            <div className="px-10 pb-9 flex flex-col justify-between h-full">
+              <div className="flex-grow">
+                <p className="pt-2 text-left text-md leading-snug break-words min-h-[80px]">
+                  “{t.text}”
+                </p>
+              </div>
+              <p className="pt-5 text-left text-gray-200 text-sm whitespace-normal overflow-visible">
+                {t.author}
+                {t.role && ` – ${t.role}`}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   )
