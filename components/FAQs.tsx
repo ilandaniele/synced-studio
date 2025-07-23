@@ -4,11 +4,45 @@ import React, { useState } from 'react'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid'
 
 const faqs = [
-  { q: 'What is your 3D modeling process?', a: 'We start with a deep dive into your brand, gather references, sculpt in ZBrush or Blender, then refine textures and lighting until it’s pixel-perfect.' },
-  { q: 'How long does a typical animation take?', a: 'Most 15–30s animations take 2–3 weeks from brief to final render, depending on complexity and feedback rounds.' },
-  { q: 'Can you match our existing brand guidelines?', a: 'Absolutely—we work from your color palette, typography and moodboards to make sure everything feels on-brand.' },
-  { q: 'What deliverables do we get?', a: 'You’ll receive high-res PNGs, MP4/WebM loops, layered PSDs or Blender scenes—whatever you need to deploy instantly.' },
-  { q: 'What’s your revision policy?', a: 'We include two free rounds of minor tweaks. After that, revisions are billed at our standard hourly rate.' }
+  {
+    q: 'Why is 3D content better than a traditional photoshoot?',
+    a: [
+      'Traditional photoshoots are slow, expensive, and hard to change once they’re done.',
+      'With 3D, you get total flexibility: we can tweak lighting, colors, camera angles, or even product variants without having to reshoot anything.',
+      'It’s faster, more scalable, and built for brands that need volume, consistency, and creative control.',
+    ],
+  },
+  {
+    q: 'What’s the typical timeline for a project?',
+    a: [
+      'Most projects take 1 to 2 weeks, depending on the scope.',
+      'If you need something faster, we can prioritize it, just let us know your deadline and we’ll make it work.',
+    ],
+  },
+  {
+    q: 'Can you match the style of our current branding?',
+    a: [
+      '100%. We study your brand assets, packaging, and previous campaigns to match your visual identity perfectly, or push it to the next level if that’s what you’re looking for.',
+    ],
+  },
+  {
+    q: 'What do i actually receive at the end of a project?',
+    a: [
+      'You get high-resolution visuals, optimized for your use case:',
+      '- Static images (for web, ads, social)',
+      '- Animations (for reels, ads, product demos)',
+      '- Source files (on request)',
+      '- Plus, you own full usage rights.',
+    ],
+  },
+  {
+    q: 'What if I need changes or edits after delivery?',
+    a: [
+      'Every project includes 1–2 revision rounds, depending on the scope.',
+      'We always review with you before final delivery to avoid surprises.',
+      'And if you need extra edits later, we’re fast and fair about it.',
+    ],
+  },
 ]
 
 export default function FAQs() {
@@ -17,43 +51,39 @@ export default function FAQs() {
   return (
     <section id="faqs" className="py-16 px-4 text-white">
       <div className="max-w-3xl mx-auto">
-        {/* Heading */}
         <h2 className="text-center text-5xl font-bold text-[#faff05] font-poppins mb-8">FAQ’s</h2>
 
-        {/* Accordion */}
         <div className="space-y-4">
           {faqs.map((item, idx) => {
             const isOpen = idx === open
             return (
               <div key={idx} className="overflow-hidden rounded-4xl font-poppins border border-[#ffffff33] bg-[#20120b]">
-                {/* Question */}
                 <button
                   onClick={() => setOpen(isOpen ? null : idx)}
-                  className={
-                    `w-full flex items-center justify-between px-6 py-4 rounded-4xl transition-colors ` +
-                    (isOpen ? 'bg-[#312015]' : 'bg-[#2d1b10] hover:bg-[#3a2519]')
-                  }
+                  className={`w-full flex items-center justify-between px-6 py-4 rounded-4xl transition-colors ${
+                    isOpen ? 'bg-[#312015]' : 'bg-[#2d1b10] hover:bg-[#3a2519]'
+                  }`}
                 >
                   <span className="text-lg">{item.q}</span>
-                  {isOpen ? (
-                    <div className="ml-5 p-1 bg-[#faff05] rounded-full">
+                  <div className="ml-5 p-1 rounded-full" style={{ backgroundColor: isOpen ? '#faff05' : '#f7e8d3' }}>
+                    {isOpen ? (
                       <ChevronUpIcon className="w-6 h-6 text-[#3c1f10] stroke-2" />
-                    </div>
-                  ) : (
-                    <div className="ml-5 p-1 bg-[#f7e8d3] rounded-full">
+                    ) : (
                       <ChevronDownIcon className="w-6 h-6 text-[#3c1f10] stroke-2" />
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </button>
 
-                {/* Answer */}
                 <div
-                  className={
-                    `px-6 overflow-hidden transition-[max-height] duration-300 ease-out ` +
-                    (isOpen ? 'max-h-40 py-4 bg-[#20120b]' : 'max-h-0 py-0')
-                  }
+                  className={`px-6 overflow-hidden transition-[max-height] duration-300 ease-out ${
+                    isOpen ? 'max-h-[600px] py-4 bg-[#20120b]' : 'max-h-0 py-0'
+                  }`}
                 >
-                  <p className="text-gray-200 leading-relaxed">{item.a}</p>
+                  <div className="text-gray-200 leading-relaxed space-y-2">
+                    {item.a.map((line, i) => (
+                      <p key={i}>{line}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
             )

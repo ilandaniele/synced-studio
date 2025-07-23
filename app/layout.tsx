@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Synced Studio",
   description: "Synced Studio - Transforming Ideas into Stunning 3D Visuals",
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 export default function RootLayout({

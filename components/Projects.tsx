@@ -141,12 +141,7 @@ export default function Projects() {
                 {hasImage && renderPortrait(p.thumb, 'absolute inset-0 object-cover')}
                 {p.gallery.length > 0 && (
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300 flex items-end justify-center">
-                    <span className="
-                      mb-4 bg-[#faff05] text-black px-5 py-2 rounded-full 
-                      text-sm font-bold font-poppins opacity-0 
-                      group-hover:opacity-100 transition-opacity duration-300
-                      shadow-lg uppercase
-                    ">
+                    <span className="mb-4 bg-[#faff05] text-black px-5 py-2 rounded-full text-sm font-bold font-poppins opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg uppercase">
                       View More
                     </span>
                   </div>
@@ -160,22 +155,24 @@ export default function Projects() {
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div
-            className="absolute inset-0 bg-black/90 backdrop-blur-md"
+            className="absolute inset-0 bg-black/90 backdrop-blur-md z-10"
             onClick={() => setOpen(false)}
           />
 
-          <button
-            onClick={() => setOpen(false)}
-            className={`fixed ${isMobile ? 'top-16' : 'top-6'} right-6 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition z-[100]`}
-            aria-label="Close"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+          <div className="relative max-w-7xl w-full px-4 z-20 mt-12">
+            {/* Botón cerrar */}
+              <button
+                onClick={() => setOpen(false)}
+                className={`absolute ${isMobile ? 'top-2 right-2' : 'top-2 right-4'} bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition z-50`}
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            <div className={`flex items-center relative ${isMobile ? 'overflow-x-auto scroll-snap-x snap-x snap-mandatory scrollbar-hide gap-4' : 'justify-center gap-8 overflow-hidden'}`}>
+              
 
-          <div className="relative max-w-7xl w-full px-4 z-10 mt-12">
-            <div className={`flex items-center ${isMobile ? 'overflow-x-auto scroll-snap-x snap-x snap-mandatory scrollbar-hide gap-4' : 'justify-center gap-8 overflow-hidden'}`}>
               {isMobile ? (
                 gallery.map((src, idx) => (
                   <div
@@ -216,7 +213,7 @@ export default function Projects() {
                 {activeGalleryIdx > 0 && (
                   <button
                     onClick={prev}
-                    className="absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition"
+                    className="absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition z-30"
                     aria-label="Previous"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -227,7 +224,7 @@ export default function Projects() {
                 {activeGalleryIdx < total - 1 && (
                   <button
                     onClick={next}
-                    className="absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition"
+                    className="absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition z-30"
                     aria-label="Next"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
