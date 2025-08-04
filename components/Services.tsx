@@ -68,7 +68,7 @@ const Services: React.FC = () => {
             onClick={() => toggleCard(i)}
           >
             {/* Número arriba izq */}
-            <div className="absolute top-[2vw] left-[4vw] md:top-[1vw] md:left-[2vw] z-20 font-poppins font-bold text-[7vw] md:text-[5vw]">
+            <div className="absolute top-[2vw] left-[4vw] md:top-[1vw] md:left-[2vw] z-20 font-poppins font-bold text-[7vw] md:text-[4vw]">
               {svc.number}
             </div>
 
@@ -84,15 +84,15 @@ const Services: React.FC = () => {
                 className={`transition-transform duration-300 ${activeCard === i ? 'rotate-180' : ''}`}
               />
             </button>
-
+            {/*  md:pt-[10vw] */}
             <div className="absolute inset-0 flex flex-col p-[4vw] md:p-[2vw] justify-between">
-              <div className={`transition-all duration-500 ${activeCard === i ? 'mt-[10vw] md:mt-[6vw]' : 'mt-[20vw] md:mt-[10vw]'}`}>
-                <h3 className={`font-poppins font-bold transition-all duration-500 ${activeCard === i ? 'text-[4vw] md:text-[1.3vw]' : 'text-[7vw] md:text-[2.0vw]'}`}>
+              <div className={`transition-all duration-500 ${activeCard === i ? 'mt-[10vw] md:mt-[6vw]' : 'mt-[32vw] md:mt-[17vw]'}`}>
+                <h3 className={`font-poppins font-bold transition-all duration-500 ${activeCard === i ? 'text-[4vw] md:text-[1.3vw]' : 'text-[7vw] md:text-[2.5vw]'}`}>
                   {svc.title}
                 </h3>
               </div>
 
-              <p className={`mb-[2vw] md:mb-[1vw] text-[3.8vw] md:text-[1.3vw] font-poppins text-yellow-500 transition-all duration-500 ${activeCard === i ? 'opacity-100 max-h-[60vw] md:max-h-[30vw]' : 'opacity-0 max-h-0'} overflow-hidden`}>
+              <p className={`mb-[2vw] md:mb-[1vw] text-[3.5vw] md:text-[1vw] font-poppins text-yellow-500 transition-all duration-500 ${activeCard === i ? 'opacity-100 max-h-[60vw] md:max-h-[30vw]' : 'opacity-0 max-h-0'} overflow-hidden`}>
                 {svc.description
                   .trim()
                   .split('\n')

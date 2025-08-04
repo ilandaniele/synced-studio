@@ -39,10 +39,10 @@ const GetInTouch: React.FC = () => {
       {/* — Título y mail — */}
       <div className="text-center flex flex-col gap-1">
         <h2 className="text-3xl md:text-5xl font-bold font-poppins leading-snug text-[#faff05]">
-          LET’S GET IN TOUCH
+          LET’S CREATE SOMETHING THAT SELLS
         </h2>
         <p className="text-base lg:text-2xl md:text-xl font-medium font-poppins lowercase">
-          info@synced-studio.eu
+          Book a free call to see how your product could look better
         </p>
       </div>
 
