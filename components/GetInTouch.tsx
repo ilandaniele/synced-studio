@@ -35,7 +35,7 @@ const GetInTouch: React.FC = () => {
   }
 
   return (
-    <section id="contact" className="w-full text-white py-12 px-4 flex flex-col items-center gap-8 mb-24">
+    <section id="contact" className="w-full text-white py-22 md:py-18 px-4 flex flex-col items-center gap-8 mb-24">
       {/* — Título y mail — */}
       <div className="text-center flex flex-col gap-1">
         <h2 className="text-3xl md:text-5xl font-bold font-poppins leading-snug text-[#faff05]">

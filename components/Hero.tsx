@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
   return (
     <section id="hero" className="relative w-full overflow-hidden bg-[#060503] flex flex-col items-center justify-center mt-30 md:mt-1">
       {/* Texto arriba de la imagen */}
-      <div className="absolute top-[2vw] md:top-[5vw] w-full flex justify-center px-4">
+      <div className="absolute top-[2vw] md:top-[6vw] w-full flex flex-col justify-center px-4">
         <h1
           className="font-poppins font-bold text-center text-[6vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[3vw] xl:text-[2.8vw] leading-tight bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient"
           style={{
@@ -18,10 +18,9 @@ const Hero: React.FC = () => {
             color: 'transparent',
           }}
         >
-          We design Visual experiences{' '}
-          <br className="hidden sm:block" />
-          that connect and convert.
+          Your product deserves to look irresistible
         </h1>
+        <p className="font-poppins text-center">Traditional photoshoots aren’t built for today’s speed, volume, and creative iteration. <b>We are.</b></p>
       </div>
 
       {/* Imagen de fondo */}

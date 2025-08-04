@@ -34,7 +34,7 @@ const Services: React.FC = () => {
   }
 
   return (
-    <section id="services" className="text-white py-[10vw] px-4">
+    <section id="services" className="text-white py-[14vw] md:py-[6vw] px-4">
       <h2 className="text-5xl text-center font-poppins font-bold text-[#faff05]">
         SERVICES
       </h2>

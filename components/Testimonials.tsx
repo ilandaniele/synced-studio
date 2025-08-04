@@ -91,7 +91,7 @@ export default function Testimonials() {
   const posRef = useRef<number>(0)
 
   useEffect(() => {
-    const speed = 1.8
+    const speed = 0.0//1.8
 
     const step = () => {
       if (contentRef.current) {
@@ -119,7 +119,7 @@ export default function Testimonials() {
   }
 
   return (
-    <section id="comments" className="text-white py-16 overflow-hidden">
+    <section id="comments" className="text-white py-[14vw] md:py-[6vw] overflow-hidden">
       <h2 className="text-5xl md:text-4xl font-bold text-[#faff05] font-poppins text-center">
         COMMENTS
       </h2>
@@ -175,13 +175,11 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
-            <div className="px-10 pb-9 flex flex-col justify-between h-full">
-              <div className="flex-grow">
-                <p className="pt-2 text-left text-md leading-snug break-words min-h-[80px]">
-                  “{t.text}”
-                </p>
-              </div>
-              <p className="pt-5 text-left text-gray-200 text-sm whitespace-normal overflow-visible">
+            <div className="px-10 pb-9 flex flex-col justify-betwen h-auto">
+              <p className="pt-2 text-left text-md leading-snug break-words">
+                “{t.text}”
+              </p>
+              <p className="text-left text-gray-200 text-sm whitespace-normal">
                 {t.author}
                 {t.role && ` – ${t.role}`}
               </p>
