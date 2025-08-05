@@ -91,7 +91,7 @@ export default function Testimonials() {
   const posRef = useRef<number>(0)
 
   useEffect(() => {
-    const speed = 0.0//1.8
+    const speed = 1.8
 
     const step = () => {
       if (contentRef.current) {
@@ -133,7 +133,7 @@ export default function Testimonials() {
         {looped.map((t, i) => (
           <div
             key={i}
-            className="inline-block rounded-2xl flex-shrink-0 border border-yellow-200/30"
+            className="rounded-2xl flex-shrink-0 border border-yellow-200/30 flex flex-col"
             style={{
               width: 370,
               minHeight: 240,
@@ -175,7 +175,7 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
-            <div className="px-10 pb-9 flex flex-col justify-betwen h-auto">
+            <div className="px-10 pt-4 pb-6 flex flex-col justify-between h-3/4">
               <p className="pt-2 text-left text-md leading-snug break-words">
                 “{t.text}”
               </p>
