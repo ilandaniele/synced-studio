@@ -124,7 +124,7 @@ export default function Testimonials() {
         COMMENTS
       </h2>
       <p className="text-center font-poppins lg:text-2xl md:text-xl mb-12 px-4 max-w-2xl mx-auto">
-        Results That Speak for Themselves
+        Results that speak for themselves
       </p>
       <div
         className="flex gap-8 no-scrollbar px-4 will-change-transform"

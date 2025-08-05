@@ -41,7 +41,7 @@ const GetInTouch: React.FC = () => {
         <h2 className="text-3xl md:text-5xl font-bold font-poppins leading-snug text-[#faff05]">
           LET’S CREATE SOMETHING THAT SELLS
         </h2>
-        <p className="text-base lg:text-2xl md:text-xl font-medium font-poppins lowercase">
+        <p className="text-base lg:text-2xl md:text-xl font-medium font-poppins">
           Book a free call to see how your product could look better
         </p>
       </div>
