@@ -179,7 +179,7 @@ export default function Testimonials() {
               <p className="pt-2 text-left text-md leading-snug break-words">
                 “{t.text}”
               </p>
-              <p className="text-left text-gray-200 text-sm whitespace-normal">
+              <p className="text-left text-gray-200 text-sm whitespace-normal  opacity-50">
                 {t.author}
                 {t.role && ` – ${t.role}`}
               </p>
