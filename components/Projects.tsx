@@ -149,7 +149,7 @@ export default function Projects() {
             <div
               className={`absolute ${
                 isMobile
-                  ? 'top-[10px] left-1/2 -translate-x-1/2 w-[95vw] max-w-[480px] px-4 py-3 gap-3'
+                  ? 'top-[-16vw] left-1/2 -translate-x-1/2 w-[95vw] max-w-[480px] px-4 py-3 gap-3'
                   : '-top-20 left-1/2 -translate-x-1/2 px-6 py-4 gap-4'
               } bg-black border border-white/20 rounded-xl flex items-center justify-between z-30 shadow-lg`}
             >
