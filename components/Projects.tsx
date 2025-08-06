@@ -145,16 +145,24 @@ export default function Projects() {
           />
 
           <div className="relative max-w-7xl w-full px-4 z-20 mt-12">
-
-            {/* ✅ Header con título + botón X */}
-            <div className="absolute top-[-10vw] left-1/2 -translate-x-1/2 md:top-[-4vw] bg-black border border-white/20 px-4 py-2 rounded-full flex items-center gap-4 z-30">
-              <div className="text-white font-poppins text-sm md:text-md">
-                <div className="font-bold">{project.title}</div>
-                <div className="text-white/70">{project.subtitle}</div>
+            {/* ✅ Recuadro negro con texto */}
+            <div
+              className={`absolute ${
+                isMobile
+                  ? 'top-[10px] left-1/2 -translate-x-1/2 w-[95vw] max-w-[480px] px-4 py-3 gap-3'
+                  : '-top-20 left-1/2 -translate-x-1/2 px-6 py-4 gap-4'
+              } bg-black border border-white/20 rounded-xl flex items-center justify-between z-30 shadow-lg`}
+            >
+              <div
+                className={`text-white font-poppins text-sm md:text-md truncate`}
+                style={{ maxWidth: isMobile ? 'calc(100% - 48px)' : 'none' }}
+              >
+                <div className="font-bold leading-tight">{project.title}</div>
+                <div className="text-white/70 leading-tight">{project.subtitle}</div>
               </div>
               <button
                 onClick={() => setOpen(false)}
-                className="bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition"
+                className="bg-[#faff05] text-black rounded-full p-2 hover:scale-125 transition flex-shrink-0"
                 aria-label="Close"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
