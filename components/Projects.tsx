@@ -149,13 +149,12 @@ export default function Projects() {
             <div
               className={`absolute ${
                 isMobile
-                  ? 'top-[-16vw] left-1/2 -translate-x-1/2 w-[95vw] max-w-[480px] px-4 py-3 gap-3'
-                  : '-top-20 left-1/2 -translate-x-1/2 px-6 py-4 gap-4'
-              } bg-black border border-white/20 rounded-xl flex items-center justify-between z-30 shadow-lg`}
+                  ? 'top-[-16vw] left-1/2 -translate-x-1/2 w-[95vw] max-w-[480px]'
+                  : '-top-20 left-1/2 -translate-x-1/2 max-w-[700px]'
+              } bg-black border border-white/20 rounded-full flex items-center justify-between z-30 shadow-lg px-4 md:px-6 py-3 md:py-4 gap-4`}
             >
               <div
-                className={`text-white font-poppins text-sm md:text-md truncate`}
-                style={{ maxWidth: isMobile ? 'calc(100% - 48px)' : 'none' }}
+                className="text-white font-poppins text-sm md:text-md flex flex-col flex-grow truncate"
               >
                 <div className="font-bold leading-tight">{project.title}</div>
                 <div className="text-white/70 leading-tight">{project.subtitle}</div>
@@ -170,6 +169,7 @@ export default function Projects() {
                 </svg>
               </button>
             </div>
+
 
             <div className={`flex items-center relative ${isMobile ? 'overflow-x-auto scroll-snap-x snap-x snap-mandatory scrollbar-hide gap-4' : 'justify-center gap-8 overflow-hidden'}`}>
               {isMobile ? (
