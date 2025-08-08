@@ -28,7 +28,6 @@ We craft disruptive concepts with strategies that elevate your identity across e
 
 const Services: React.FC = () => {
   const [activeCard, setActiveCard] = useState<number | null>(null)
-
   const toggleCard = (index: number) => {
     setActiveCard(prev => (prev === index ? null : index))
   }
@@ -38,71 +37,94 @@ const Services: React.FC = () => {
       <h2 className="text-5xl text-center font-poppins font-bold text-[#faff05]">
         SERVICES
       </h2>
-      <p className="text-center font-poppins md:text-lg lg:text-2xl text-white mb-[5vw] text-white">
+      <p className="text-center font-poppins md:text-lg lg:text-2xl text-white mb-[5vw]">
         How we shape attention into action.
       </p>
 
-      <div className="
-        max-w-7xl mx-auto 
-        md:grid md:grid-cols-3 md:gap-[2vw] 
-        flex overflow-x-auto gap-4
-        scroll-smooth snap-x snap-mandatory scrollbar-hide
-      ">
+      {/* < md => carrusel ; ≥ md => fila única con 3 tarjetas sin wrap */}
+      <div
+        className="
+          mx-auto
+          flex gap-2 scroll-smooth scrollbar-hide
+          overflow-x-auto snap-x snap-mandatory
+          md:overflow-visible md:snap-none
+          md:flex-row md:flex-nowrap md:justify-center
+          md:gap-10
+        "
+      >
         {servicesData.map((svc, i) => (
           <div
             key={i}
+            onClick={() => toggleCard(i)}
             className={`
-              relative rounded-xl overflow-hidden
-              w-[80vw] h-[65vw] md:h-auto md:w-auto
-              aspect-[15/16] md:aspect-[15/16]
-              cursor-pointer transition-all duration-500
-              flex-shrink-0 snap-center
+              relative rounded-xl overflow-hidden border border-yellow-200/20
+              transition-all duration-500 cursor-pointer
+              w-[80vw] h-[65vw] flex-shrink-0 snap-center
               ${i === 0 ? 'ml-[10vw] md:ml-0' : ''}
-              ${i === servicesData.length -1 ? 'mr-[10vw] md:mr-0' : ''}
-              border border-yellow-200/20
+              ${i === servicesData.length - 1 ? 'mr-[10vw] md:mr-0' : ''}
+              md:flex-col md:max-w-[22vw]
+              md:h-[min(28vw,440px)] lg:h-[min(26vw,480px)] xl:h-[min(22vw,520px)] 2xl:h-[min(20vw,560px)]
             `}
             style={{
               background:
                 'linear-gradient(145deg, rgba(250,255,5,0.1), rgba(26,26,26,0.9) 30%, rgba(26,26,26,0.9) 70%, rgba(250,255,5,0.1))',
             }}
-            onClick={() => toggleCard(i)}
           >
-            {/* Número arriba izq */}
-            <div className="absolute top-[2vw] left-[4vw] md:top-[1vw] md:left-[2vw] z-20 font-poppins font-bold text-[7vw] md:text-[4vw]">
-              {svc.number}
-            </div>
+            {/* CONTENEDOR INTERNO: dos bloques en puntas */}
+            <div className="absolute inset-0 flex flex-col justify-between p-[4vw] md:p-[1.6vw]">
+              {/* Bloque superior: número + botón */}
+              <div className="flex items-center justify-between">
+                <div className="font-poppins font-bold text-[7vw] md:text-[3vw] xl:text-[3.5vw]">
+                  {svc.number}
+                </div>
 
-            {/* Flechita arriba der */}
-            <button
-              className="absolute top-[4vw] right-[4vw] md:top-[2vw] md:right-[2vw] z-20 bg-[#faff05] text-black rounded-full p-[2vw] md:p-[1.3vw]"
-              onClick={(e) => {
-                e.stopPropagation()
-                toggleCard(i)
-              }}
-            >
-              <FaChevronDown
-                className={`transition-transform duration-300 ${activeCard === i ? 'rotate-180' : ''}`}
-              />
-            </button>
-            {/*  md:pt-[10vw] */}
-            <div className="absolute inset-0 flex flex-col p-[4vw] md:p-[2vw] justify-between">
-              <div className={`transition-all duration-500 ${activeCard === i ? 'mt-[10vw] md:mt-[6vw]' : 'mt-[32vw] md:mt-[17vw]'}`}>
-                <h3 className={`font-poppins font-bold transition-all duration-500 ${activeCard === i ? 'text-[4vw] md:text-[1.3vw]' : 'text-[7vw] md:text-[2.5vw]'}`}>
-                  {svc.title}
-                </h3>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    toggleCard(i)
+                  }}
+                  aria-label="Toggle service"
+                  className="bg-[#faff05] text-black rounded-full p-[2vw] md:p-[0.9vw] xl:p-[0.8vw] transition-transform"
+                >
+                  <FaChevronDown
+                    className={`transition-transform duration-300 ${activeCard === i ? 'rotate-180' : ''}`}
+                  />
+                </button>
               </div>
 
-              <p className={`mb-[2vw] md:mb-[1vw] text-[3.5vw] md:text-[1vw] font-poppins text-yellow-500 transition-all duration-500 ${activeCard === i ? 'opacity-100 max-h-[60vw] md:max-h-[30vw]' : 'opacity-0 max-h-0'} overflow-hidden`}>
-                {svc.description
-                  .trim()
-                  .split('\n')
-                  .map((line, idx, arr) => (
-                    <React.Fragment key={idx}>
-                      {line.trim()}
-                      {idx < arr.length - 1 && <br />}
-                    </React.Fragment>
-                  ))}
-              </p>
+              {/* Bloque inferior: título + descripción */}
+              <div>
+                <h3
+                  className={`
+                    font-poppins font-bold transition-all duration-300
+                    ${activeCard === i ? 'text-[4vw]' : 'text-[7vw]'}
+                    ${activeCard === i
+                      ? 'md:text-[clamp(20px,1.6vw,28px)] 2xl:text-[clamp(22px,1.4vw,32px)]'
+                      : 'md:text-[clamp(28px,2.4vw,42px)] 2xl:text-[clamp(32px,2vw,48px)]'}
+                  `}
+                >
+                  {svc.title}
+                </h3>
+
+                <p
+                  className={`
+                    text-yellow-500 font-poppins transition-all duration-300 overflow-hidden
+                    mt-[2vw] md:mt-[1vw]
+                    text-[3.5vw] md:text-[clamp(14px,0.95vw,18px)]
+                    ${activeCard === i ? 'opacity-100 max-h-[60vw] md:max-h-[18vw]' : 'opacity-0 max-h-0'}
+                  `}
+                >
+                  {svc.description
+                    .trim()
+                    .split('\n')
+                    .map((line, idx, arr) => (
+                      <React.Fragment key={idx}>
+                        {line.trim()}
+                        {idx < arr.length - 1 && <br />}
+                      </React.Fragment>
+                    ))}
+                </p>
+              </div>
             </div>
           </div>
         ))}
