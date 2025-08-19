@@ -57,7 +57,7 @@ const Services: React.FC = () => {
             key={i}
             onClick={() => toggleCard(i)}
             className={`
-              relative rounded-xl overflow-hidden border border-yellow-200/20
+              relative rounded-3xl overflow-hidden border border-yellow-200/20
               transition-all duration-500 cursor-pointer
               w-[80vw] h-[65vw] flex-shrink-0 snap-center
               ${i === 0 ? 'ml-[10vw] md:ml-0' : ''}
@@ -71,7 +71,7 @@ const Services: React.FC = () => {
             }}
           >
             {/* CONTENEDOR INTERNO: dos bloques en puntas */}
-            <div className="absolute inset-0 flex flex-col justify-between p-[4vw] md:p-[1.6vw]">
+            <div className="absolute inset-0 flex flex-col justify-between pt-[4vw] pb-[2vw] px-[6vw] md:pt-[0.7vw] md:pb-[0.4vw] md:px-[2.2vw]">
               {/* Bloque superior: número + botón */}
               <div className="flex items-center justify-between">
                 <div className="font-poppins font-bold text-[7vw] md:text-[3vw] xl:text-[3.5vw]">

@@ -91,7 +91,7 @@ export default function Testimonials() {
   const posRef = useRef<number>(0)
 
   useEffect(() => {
-    const speed = 1.8
+    const speed = 0.0//1.8
 
     const step = () => {
       if (contentRef.current) {
@@ -133,7 +133,7 @@ export default function Testimonials() {
         {looped.map((t, i) => (
           <div
             key={i}
-            className="rounded-2xl flex-shrink-0 border border-yellow-200/30 flex flex-col"
+            className="rounded-4xl flex-shrink-0 border border-yellow-200/30 flex flex-col"
             style={{
               width: 370,
               minHeight: 240,
@@ -141,7 +141,7 @@ export default function Testimonials() {
                 'linear-gradient(135deg, rgba(255,255,0,0.05) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.6) 70%, rgba(255,255,0,0.05) 100%)',
             }}
           >
-            <div className="flex items-center h-32 px-9 pt-4 relative">
+            <div className="flex items-center h-32 px-9 pt-6 relative">
               <div className="relative w-17 h-17 rounded-xl overflow-hidden flex-shrink-0 z-0">
                 <Image
                   src={t.brandLogo}
