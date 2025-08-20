@@ -5,9 +5,19 @@ type BoostCardProps = {
   on: boolean
   onToggle: () => void
   className?: string
+  /** nuevo: deshabilita interacción (click/teclado) */
+  interactive?: boolean
+  /** nuevo: deshabilita animación del knob */
+  animateKnob?: boolean
 }
 
-const BoostCard: React.FC<BoostCardProps> = ({ on, onToggle, className = '' }) => {
+const BoostCard: React.FC<BoostCardProps> = ({
+  on,
+  onToggle,
+  className = '',
+  interactive = true,
+  animateKnob = true
+}) => {
   const metrics = on
     ? [
         { title: 'Sales & Conversion', value: '21%', helper: 'Your product stand out', on: true },
@@ -20,22 +30,23 @@ const BoostCard: React.FC<BoostCardProps> = ({ on, onToggle, className = '' }) =
         { title: 'Brand Perception', value: '23%', helper: 'Your content gets scrolled past', on: false },
       ]
 
-  // Header: fondo depende de "on"
-  const headerClass =
-    on
-      ? 'bg-gradient-to-r from-[#1b1711] via-[#2a2516] to-[rgba(250,255,5,0.25)] border-white/12'
-      : 'bg-white/[0.02] border-white/10'
+  const headerClass = on
+    ? 'bg-gradient-to-r from-[#1b1711] via-[#2a2516] to-[rgba(250,255,5,0.25)] border-white/12'
+    : 'bg-white/[0.02] border-white/10'
 
   return (
     <button
       type="button"
       aria-pressed={on}
-      onClick={onToggle}
+      onClick={interactive ? onToggle : undefined}
+      aria-disabled={!interactive}
+      tabIndex={interactive ? 0 : -1}
       className={`
         ${className}
         rounded-4xl border border-white/12 bg-[#0b0a08]/80 backdrop-blur
         p-0 shadow-[0_8px_20px_rgba(0,0,0,0.4)]
         font-poppins text-left
+        ${interactive ? '' : 'pointer-events-none'}
       `}
     >
       {/* Encabezado */}
@@ -49,7 +60,7 @@ const BoostCard: React.FC<BoostCardProps> = ({ on, onToggle, className = '' }) =
           <span className="text-white/95 font-semibold tracking-[0.06em] uppercase text-[10px] md:text-[1.2vw]">
             Synced Boost
           </span>
-          <ToggleSwitch on={on} />
+          <ToggleSwitch on={on} animate={animateKnob} />
         </div>
       </div>
 
@@ -67,11 +78,9 @@ export default BoostCard
 
 /* ---------- Subcomponentes ---------- */
 
-function ToggleSwitch({ on }: { on: boolean }) {
-  // Track siempre sólido: oscuro en off, amarillo en on
-  const trackClass = on
-    ? 'border-white/10 bg-[#555014]'
-    : 'bg-white/[0.08] border-white/15'
+function ToggleSwitch({ on, animate = true }: { on: boolean; animate?: boolean }) {
+  const trackClass = on ? 'border-white/10 bg-[#555014]' : 'bg-white/[0.08] border-white/15'
+  const knobTransition = animate ? 'transition-all' : ''
 
   return (
     <span
@@ -86,7 +95,7 @@ function ToggleSwitch({ on }: { on: boolean }) {
         className={`
           absolute top-1/2 -translate-y-1/2 rounded-full shadow
           h-[14px] w-[14px] md:h-[18px] md:w-[18px]
-          transition-all
+          ${knobTransition}
           ${on ? 'right-[2px] bg-[#faff05]' : 'left-[2px] bg-white'}
         `}
       />

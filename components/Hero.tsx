@@ -8,11 +8,11 @@ const Hero: React.FC = () => {
   const [boostOn, setBoostOn] = React.useState(true)
 
   return (
-    <section id="hero" className="relative w-full overflow-hidden bg-[#060503] flex flex-col items-center justify-center mt-30 md:mt-1">
+    <section id="hero" className="relative w-full overflow-hidden bg-[#060503] flex flex-col items-center justify-center pt-30 mt-20 md:mt-1">
       {/* Texto */}
-      <div className="absolute top-[4vw] md:top-[4vw] w-full flex flex-col justify-center px-4">
+      <div className="absolute top-[3vw] md:top-[5.5vw] w-full flex flex-col justify-center px-35">
         <h1
-          className="font-poppins font-bold text-center text-[7vw] md:text-[3.5vw] lg:text-[3vw] xl:text-[2.8vw] leading-tight bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient"
+          className="font-poppins font-bold text-center text-[5vw] md:text-[3.3vw] lg:text-[2.8vw] xl:text-[2.6vw] leading-tight bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient"
           style={{
             backgroundImage: 'linear-gradient(90deg, #faff05, #d4af37, #faff05)',
             backgroundSize: '200% 200%',
@@ -21,9 +21,17 @@ const Hero: React.FC = () => {
             color: 'transparent',
           }}
         >
-          Your product deserves to look irresistible
+          Your product deserves to look irresistible.
         </h1>
-        <p className="font-poppins text-center text-[4vw] md:text-[2vw]">
+        <p className="font-poppins text-center text-[2vw] md:text-[1vw]"
+          style={{
+              backgroundImage: 'linear-gradient(90deg, #faff05, #d4af37, #faff05)',
+              backgroundSize: '200% 200%',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+            }}
+        >
           Traditional photoshoots aren’t built for today’s speed, volume, and creative iteration. <b>We are.</b>
         </p>
       </div>
@@ -52,11 +60,27 @@ const Hero: React.FC = () => {
         />
       </div>
 
-      {/* Tarjeta separada */}
+      {/* Tarjeta mobile (igual que antes) */}
       <BoostCard
         on={boostOn}
         onToggle={() => setBoostOn(v => !v)}
-        className="absolute z-10 right-[2vw] md:right-[3vw] top-[35vw] md:top-[12vw] xl:top-[16vw] w-[35w] max-w-[35vw] md:w-[40vw] md:max-w-[25vw]"
+        className="absolute z-10 md:hidden top-[30vw] w-[55vw] max-w-[60vw]"
+      />
+
+      {/* Tarjetas desktop: izquierda (off) y derecha (on), sin interacción */}
+      <BoostCard
+        on={false}
+        onToggle={() => {}}
+        interactive={false}
+        animateKnob={false}
+        className="hidden md:block absolute z-10 md:left-[3vw] md:top-[12vw] xl:top-[16vw] md:w-[40vw] md:max-w-[25vw]"
+      />
+      <BoostCard
+        on={true}
+        onToggle={() => {}}
+        interactive={false}
+        animateKnob={false}
+        className="hidden md:block absolute z-10 md:right-[3vw] md:top-[12vw] xl:top-[16vw] md:w-[40vw] md:max-w-[25vw]"
       />
 
       {/* Banda amarilla */}
