@@ -57,7 +57,8 @@ export default function FAQs() {
           {faqs.map((item, idx) => {
             const isOpen = idx === open
             return (
-              <div key={idx} className="overflow-hidden rounded-4xl font-poppins border border-[#ffffff33] bg-[#20120b]">
+              <div key={idx} className="overflow-hidden rounded-4xl font-poppins border border-[#ffffff33] bg-[#1a0f0b99]"
+              >
                 <button
                   onClick={() => setOpen(isOpen ? null : idx)}
                   className={`w-full flex items-center justify-between px-6 py-4 rounded-4xl transition-colors ${
@@ -76,8 +77,17 @@ export default function FAQs() {
 
                 <div
                   className={`px-6 overflow-hidden transition-[max-height] duration-300 ease-out ${
-                    isOpen ? 'max-h-[600px] py-4 bg-[#20120b]' : 'max-h-0 py-0'
+                    isOpen ? 'max-h-[600px] py-4 bg-[#1a0f0b99]' : 'max-h-0 py-0'
                   }`}
+
+                  // style={
+                  //   isOpen
+                  //     ? {
+                  //         background:
+                  //           'linear-gradient(135deg, rgba(255,255,0,0.05) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.6) 70%, rgba(255,255,0,0.05) 100%)',
+                  //       }
+                  //     : {}
+                  // }
                 >
                   <div className="text-gray-200 leading-relaxed space-y-2">
                     {item.a.map((line, i) => (
