@@ -8,9 +8,9 @@ const Hero: React.FC = () => {
   const [boostOn, setBoostOn] = React.useState(true)
 
   return (
-    <section id="hero" className="relative w-full overflow-hidden bg-[#060503] flex flex-col items-center justify-center pt-30 mt-20 md:mt-1">
+    <section id="hero" className="relative w-full overflow-hidden bg-[#060503] flex flex-col items-center justify-center pt-30 md:pt-0 mt-20 md:mt-1">
       {/* Texto */}
-      <div className="absolute top-[3vw] md:top-[5.5vw] w-full flex flex-col justify-center px-35">
+      <div className="absolute top-[3vw] md:top-[5.5vw] w-full flex flex-col justify-center md:px-35 px-20">
         <h1
           className="font-poppins font-bold text-center text-[5vw] md:text-[3.3vw] lg:text-[2.8vw] xl:text-[2.6vw] leading-tight bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient"
           style={{
@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
       <BoostCard
         on={boostOn}
         onToggle={() => setBoostOn(v => !v)}
-        className="absolute z-10 md:hidden top-[30vw] w-[55vw] max-w-[60vw]"
+        className="absolute z-10 md:hidden md:top-[30vw] top-[25vw] w-[75vw] max-w-[80vw] md:w-[55vw] md:max-w-[60vw]"
       />
 
       {/* Tarjetas desktop: izquierda (off) y derecha (on), sin interacción */}
@@ -73,14 +73,14 @@ const Hero: React.FC = () => {
         onToggle={() => {}}
         interactive={false}
         animateKnob={false}
-        className="hidden md:block absolute z-10 md:left-[3vw] md:top-[12vw] xl:top-[16vw] md:w-[40vw] md:max-w-[25vw]"
+        className="hidden md:block absolute z-10 md:left-[3vw] md:top-[12vw] xl:top-[16vw] md:w-[40vw] md:max-w-[28vw]"
       />
       <BoostCard
         on={true}
         onToggle={() => {}}
         interactive={false}
         animateKnob={false}
-        className="hidden md:block absolute z-10 md:right-[3vw] md:top-[12vw] xl:top-[16vw] md:w-[40vw] md:max-w-[25vw]"
+        className="hidden md:block absolute z-10 md:right-[3vw] md:top-[12vw] xl:top-[16vw] md:w-[30vw] md:max-w-[28vw]"
       />
 
       {/* Banda amarilla */}

@@ -41,7 +41,6 @@ const Services: React.FC = () => {
         How we shape attention into action.
       </p>
 
-      {/* < md => carrusel ; ≥ md => fila única con 3 tarjetas sin wrap */}
       <div
         className="
           mx-auto
@@ -67,11 +66,17 @@ const Services: React.FC = () => {
             `}
             style={{
               background:
-                'linear-gradient(145deg, rgba(250,255,5,0.1), rgba(26,26,26,0.9) 30%, rgba(26,26,26,0.9) 70%, rgba(250,255,5,0.1))',
+                'linear-gradient(135deg, rgba(255,255,0,0.05) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.6) 70%, rgba(255,255,0,0.05) 100%)',
             }}
           >
-            {/* CONTENEDOR INTERNO: dos bloques en puntas */}
-            <div className="absolute inset-0 flex flex-col justify-between pt-[4vw] pb-[2vw] px-[6vw] md:pt-[0.7vw] md:pb-[0.4vw] md:px-[2.2vw]">
+            {/* CONTENEDOR INTERNO */}
+            <div
+              className={`
+                absolute inset-0 flex flex-col pt-[4vw] pb-[2vw] px-[6vw]
+                md:pt-[0.7vw] md:pb-[0.4vw] md:px-[2.2vw]
+                justify-between
+              `}
+            >
               {/* Bloque superior: número + botón */}
               <div className="flex items-center justify-between">
                 <div className="font-poppins font-bold text-[7vw] md:text-[3vw] xl:text-[3.5vw]">
@@ -93,14 +98,18 @@ const Services: React.FC = () => {
               </div>
 
               {/* Bloque inferior: título + descripción */}
-              <div>
+              <div
+                className={`
+                  flex flex-col
+                  ${activeCard === i ? 'mt-auto mb-[4vw] md:mb-[1.2vw]' : 'justify-end'}
+                `}
+              >
                 <h3
                   className={`
                     font-poppins font-bold transition-all duration-300
-                    ${activeCard === i ? 'text-[4vw]' : 'text-[7vw]'}
                     ${activeCard === i
-                      ? 'md:text-[clamp(20px,1.6vw,28px)] 2xl:text-[clamp(22px,1.4vw,32px)]'
-                      : 'md:text-[clamp(28px,2.4vw,42px)] 2xl:text-[clamp(32px,2vw,48px)]'}
+                      ? 'text-[4vw] md:text-[clamp(20px,1.6vw,28px)] 2xl:text-[1.0vw]'
+                      : 'text-[7vw] md:text-[clamp(28px,2.4vw,42px)] 2xl:text-[clamp(32px,2vw,48px)]'}
                   `}
                 >
                   {svc.title}
