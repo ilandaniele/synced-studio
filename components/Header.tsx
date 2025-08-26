@@ -43,8 +43,8 @@ export default function Header() {
         <Image
           src="/images/synced_logo_yellow.png"
           alt="Synced Logo"
-          width={150}
-          height={50}
+          width={195}
+          height={65}
           className="object-contain cursor-pointer"
           unoptimized
         />
@@ -57,8 +57,8 @@ export default function Header() {
           <Image
             src="/images/synced_logo_yellow.png"
             alt="Synced Logo"
-            width={130}
-            height={45}
+            width={169}
+            height={59}
             className="object-contain cursor-pointer"
             unoptimized
           />

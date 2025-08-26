@@ -10,9 +10,9 @@ const Hero: React.FC = () => {
   return (
     <section id="hero" className="relative w-full overflow-hidden bg-[#060503] flex flex-col items-center justify-center pt-30 md:pt-0 mt-20 md:mt-1">
       {/* Texto */}
-      <div className="absolute top-[3vw] md:top-[5.5vw] w-full flex flex-col justify-center md:px-35 px-20">
+      <div className="absolute top-[3vw] md:top-[5.5vw] w-full flex flex-col justify-center md:px-35 px-10">
         <h1
-          className="font-poppins font-bold text-center text-[5vw] md:text-[3.3vw] lg:text-[2.8vw] xl:text-[2.6vw] leading-tight bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient"
+          className="font-poppins font-bold text-center text-[5.5vw] md:text-[3.3vw] lg:text-[2.8vw] xl:text-[2.6vw] leading-tight bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient"
           style={{
             backgroundImage: 'linear-gradient(90deg, #faff05, #d4af37, #faff05)',
             backgroundSize: '200% 200%',
@@ -21,18 +21,23 @@ const Hero: React.FC = () => {
             color: 'transparent',
           }}
         >
-          Your product deserves to look irresistible.
+          Your product deserves 
+          <br className="block md:hidden" />
+          to look irresistible.
         </h1>
-        <p className="font-poppins text-center text-[2vw] md:text-[1vw]"
+        <p
+          className="font-poppins text-center text-[2.5vw] md:text-[1vw]"
           style={{
-              backgroundImage: 'linear-gradient(90deg, #faff05, #d4af37, #faff05)',
-              backgroundSize: '200% 200%',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              color: 'transparent',
-            }}
+            backgroundImage: 'linear-gradient(90deg, #faff05, #d4af37, #faff05)',
+            backgroundSize: '200% 200%',
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            color: 'transparent',
+          }}
         >
-          Traditional photoshoots aren’t built for today’s speed, volume, and creative iteration. <b>We are.</b>
+          Traditional photoshoots aren’t built for
+          <br className="block md:hidden" />
+          today’s speed, volume, and creative iteration. <b>We are.</b>
         </p>
       </div>
 
@@ -60,11 +65,11 @@ const Hero: React.FC = () => {
         />
       </div>
 
-      {/* Tarjeta mobile (igual que antes) */}
+      {/* Tarjeta mobile */}
       <BoostCard
         on={boostOn}
         onToggle={() => setBoostOn(v => !v)}
-        className="absolute z-10 md:hidden md:top-[30vw] top-[25vw] w-[75vw] max-w-[80vw] md:w-[55vw] md:max-w-[60vw]"
+        className="absolute z-10 md:hidden md:top-[30vw] top-[26vw] w-[65vw] max-w-[65vw] md:w-[55vw] md:max-w-[60vw]"
       />
 
       {/* Tarjetas desktop: izquierda (off) y derecha (on), sin interacción */}

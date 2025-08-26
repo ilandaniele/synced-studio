@@ -56,7 +56,7 @@ const Services: React.FC = () => {
             key={i}
             onClick={() => toggleCard(i)}
             className={`
-              relative rounded-3xl overflow-hidden border border-yellow-200/20
+              relative rounded-4xl overflow-hidden border border-yellow-200/20
               transition-all duration-500 cursor-pointer
               w-[80vw] h-[65vw] flex-shrink-0 snap-center
               ${i === 0 ? 'ml-[10vw] md:ml-0' : ''}
