@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
         <p
           className="font-poppins text-center text-[2.5vw] md:text-[1vw]"
           style={{
-            backgroundImage: 'linear-gradient(90deg, #faff05, #d4af37, #faff05)',
+            backgroundImage: 'linear-gradient(90deg, #faff05, #fcff82, #faff05)',
             backgroundSize: '200% 200%',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
       <BoostCard
         on={boostOn}
         onToggle={() => setBoostOn(v => !v)}
-        className="absolute z-10 md:hidden md:top-[30vw] top-[26vw] w-[65vw] max-w-[65vw] md:w-[55vw] md:max-w-[60vw]"
+        className="absolute z-10 md:hidden md:top-[30vw] top-[26vw] w-[90vw] max-w-[90vw] md:w-[55vw] md:max-w-[60vw]"
       />
 
       {/* Tarjetas desktop: izquierda (off) y derecha (on), sin interacción */}

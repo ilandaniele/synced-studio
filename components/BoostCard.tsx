@@ -57,7 +57,7 @@ const BoostCard: React.FC<BoostCardProps> = ({
             border ${headerClass}
           `}
         >
-          <span className="text-white/95 font-semibold tracking-[0.06em] uppercase text-[3.5vw] md:text-[1.2vw]">
+          <span className="text-white/95 font-semibold tracking-[0.06em] uppercase text-[5vw] md:text-[1.2vw]">
             With Synced
           </span>
           <ToggleSwitch on={on} animate={animateKnob} />
@@ -112,14 +112,14 @@ type ItemRowProps = {
 
 function ItemRow({ title, value, helper, on = false }: ItemRowProps) {
   return (
-    <div className="rounded-full border border-white/10 bg-white/[0.02] py-2 px-5 md:py-3 md:px-[1.8vw]">
+    <div className="rounded-full border border-white/10 bg-white/[0.02] py-2 px-[5vw] md:py-3 md:px-[1.8vw]">
       <div className="flex items-center justify-between">
         <div className="flex flex-col">
-          <span className="uppercase tracking-[0.05em] text-white/90 text-[2.2vw] md:text-[0.8vw] font-semibold">
+          <span className="uppercase tracking-[0.05em] text-white/90 text-[3vw] md:text-[0.8vw] font-semibold">
             {title}
           </span>
           <span
-            className={`flex items-center gap-1.5 text-[2.3vw] md:text-[0.8vw]
+            className={`flex items-center gap-1.5 text-[3vw] md:text-[0.8vw]
                         ${on ? 'text-yellow-200/95' : 'text-red-300/90'}`}
           >
             <span
