@@ -10,9 +10,9 @@ const Hero: React.FC = () => {
   return (
     <section id="hero" className="relative w-full overflow-hidden bg-[#060503] flex flex-col items-center justify-center pt-30 md:pt-0 mt-20 md:mt-1">
       {/* Texto */}
-      <div className="absolute top-[3vw] md:top-[5.5vw] w-full flex flex-col justify-center md:px-35 px-10">
+      <div className="absolute top-[7.5vw] md:top-[7vw] w-full flex flex-col justify-center md:px-35 px-10">
         <h1
-          className="font-poppins font-bold text-center text-[5.5vw] md:text-[3.3vw] lg:text-[2.8vw] xl:text-[2.6vw] leading-tight bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient"
+          className="font-poppins font-bold text-center text-[7vw] md:text-[3.3vw] lg:text-[2.8vw] xl:text-[2.6vw] leading-tight bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient"
           style={{
             backgroundImage: 'linear-gradient(90deg, #faff05, #d4af37, #faff05)',
             backgroundSize: '200% 200%',
@@ -21,9 +21,10 @@ const Hero: React.FC = () => {
             color: 'transparent',
           }}
         >
-          Your product deserves 
+          Your product deserves
           <br className="block md:hidden" />
-          to look irresistible.
+          <span className="hidden md:inline">&nbsp;</span>
+           to look irresistible.
         </h1>
         <p
           className="font-poppins text-center text-[2.5vw] md:text-[1vw]"
@@ -69,7 +70,7 @@ const Hero: React.FC = () => {
       <BoostCard
         on={boostOn}
         onToggle={() => setBoostOn(v => !v)}
-        className="absolute z-10 md:hidden md:top-[30vw] top-[26vw] w-[90vw] max-w-[90vw] md:w-[55vw] md:max-w-[60vw]"
+        className="absolute z-10 md:hidden md:top-[30vw] top-[40vw] w-[90vw] max-w-[90vw] md:w-[55vw] md:max-w-[60vw]"
       />
 
       {/* Tarjetas desktop: izquierda (off) y derecha (on), sin interacción */}
@@ -78,14 +79,14 @@ const Hero: React.FC = () => {
         onToggle={() => {}}
         interactive={false}
         animateKnob={false}
-        className="hidden md:block absolute z-10 md:left-[3vw] md:top-[12vw] xl:top-[16vw] md:w-[40vw] md:max-w-[28vw]"
+        className="hidden md:block absolute z-10 md:left-[7vw] md:top-[12vw] xl:top-[16vw] md:w-[40vw] md:max-w-[28vw]"
       />
       <BoostCard
         on={true}
         onToggle={() => {}}
         interactive={false}
         animateKnob={false}
-        className="hidden md:block absolute z-10 md:right-[3vw] md:top-[12vw] xl:top-[16vw] md:w-[30vw] md:max-w-[28vw]"
+        className="hidden md:block absolute z-10 md:right-[5vw] md:top-[12vw] xl:top-[16vw] md:w-[30vw] md:max-w-[28vw]"
       />
 
       {/* Banda amarilla */}
