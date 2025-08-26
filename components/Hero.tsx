@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
   return (
     <section id="hero" className="relative w-full overflow-hidden bg-[#060503] flex flex-col items-center justify-center pt-30 md:pt-0 mt-20 md:mt-1">
       {/* Texto */}
-      <div className="absolute top-[7.5vw] md:top-[7vw] w-full flex flex-col justify-center md:px-35 px-[5vw]">
+      <div className="absolute top-[7.5vw] md:top-[6.5vw] w-full flex flex-col justify-center md:px-35 px-[5vw]">
         <h1
           className="font-poppins font-bold text-center text-[6.5vw] md:text-[3.3vw] lg:text-[2.8vw] xl:text-[2.6vw] leading-tight bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient"
           style={{
@@ -43,9 +43,9 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Imagen responsive */}
-      <div className="w-full">
+      <div className="w-full -mt-[65vw] md:-mt-[3vw]">
         <Image
-          src="/images/synced-choco-mobile.png"
+          src="/images/synced-choco-mobile.webp"
           alt="Synced Chocolate Mobile"
           width={1000}
           height={600}
