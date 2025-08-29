@@ -65,7 +65,7 @@ export default function FAQs() {
                 <button
                   onClick={() => setOpen(isOpen ? null : idx)}
                   className="w-full flex items-center justify-between pl-6 pr-5 py-4 transition-colors relative z-10 rounded-full
-                             bg-[linear-gradient(135deg,rgba(250,255,5,0.1)_0%,rgba(0,0,0,0.6)_30%,rgba(0,0,0,0.6)_70%,rgba(250,255,5,0.1)_100%)]
+                             bg-[linear-gradient(135deg,rgba(250,255,5,0.0)_0%,rgba(0,0,0,0.6)_30%,rgba(0,0,0,0.6)_70%,rgba(250,255,5,0.2)_100%)]
                              hover:opacity-95 border-0"
                 >
                   <span className="text-left text-lg">{item.q}</span>
