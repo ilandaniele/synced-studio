@@ -5,9 +5,7 @@ type BoostCardProps = {
   on: boolean
   onToggle: () => void
   className?: string
-  /** nuevo: deshabilita interacción (click/teclado) */
   interactive?: boolean
-  /** nuevo: deshabilita animación del knob */
   animateKnob?: boolean
 }
 
@@ -30,9 +28,12 @@ const BoostCard: React.FC<BoostCardProps> = ({
         { title: 'Brand Perception', value: '23%', helper: 'Your content gets scrolled past', on: false },
       ]
 
+  // Gradiente sólo a la derecha:
+  // ON => highlight amarillo a la derecha
+  // OFF => highlight rojo a la derecha
   const headerClass = on
     ? 'bg-gradient-to-r from-[#1b1711] via-[#2a2516] to-[rgba(250,255,5,0.25)] border-white/12'
-    : 'bg-white/[0.02] border-white/10'
+    : 'bg-gradient-to-r from-[#1b1711] via-[#2a2516] to-[rgba(255,77,77,0.28)] border-red-200/20'
 
   return (
     <button
@@ -79,19 +80,13 @@ export default BoostCard
 /* ---------- Subcomponentes ---------- */
 
 function ToggleSwitch({ on, animate = true }: { on: boolean; animate?: boolean }) {
-  // Track cálido cuando ON; rojizo tenue cuando OFF
   const trackClass = on
     ? 'border-white/10 bg-[#292703]'
     : 'bg-[#2a0a0a]/70 border-red-200/20'
 
-  // Animación opcional del knob
   const knobTransition = animate ? 'transition-all' : ''
-
-  // Knob styles: amarillo ON, rojo OFF (con glow)
-  const knobOn =
-    'bg-[#faff05] '
-  const knobOff =
-    'bg-[#ff4d4d] '
+  const knobOn = 'bg-[#faff05]'
+  const knobOff = 'bg-[#ff4d4d]'
 
   return (
     <span
