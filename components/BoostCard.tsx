@@ -79,8 +79,19 @@ export default BoostCard
 /* ---------- Subcomponentes ---------- */
 
 function ToggleSwitch({ on, animate = true }: { on: boolean; animate?: boolean }) {
-  const trackClass = on ? 'border-white/10 bg-[#292703]' : 'bg-white/[0.08] border-white/15'
+  // Track cálido cuando ON; rojizo tenue cuando OFF
+  const trackClass = on
+    ? 'border-white/10 bg-[#292703]'
+    : 'bg-[#2a0a0a]/70 border-red-200/20'
+
+  // Animación opcional del knob
   const knobTransition = animate ? 'transition-all' : ''
+
+  // Knob styles: amarillo ON, rojo OFF (con glow)
+  const knobOn =
+    'bg-[#faff05] '
+  const knobOff =
+    'bg-[#ff4d4d] '
 
   return (
     <span
@@ -93,10 +104,10 @@ function ToggleSwitch({ on, animate = true }: { on: boolean; animate?: boolean }
     >
       <span
         className={`
-          absolute top-1/2 -translate-y-1/2 rounded-full shadow
+          absolute top-1/2 -translate-y-1/2 rounded-full
           h-[5.5vw] w-[5.5vw] md:h-[1.5vw] md:w-[1.5vw]
           ${knobTransition}
-          ${on ? 'right-[2px] bg-[#faff05]' : 'left-[2px] bg-white'}
+          ${on ? `right-[2px] ${knobOn}` : `left-[2px] ${knobOff}`}
         `}
       />
     </span>

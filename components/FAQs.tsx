@@ -57,16 +57,22 @@ export default function FAQs() {
           {faqs.map((item, idx) => {
             const isOpen = idx === open
             return (
-              <div key={idx} className="overflow-hidden rounded-4xl font-poppins border border-[#ffffff33] bg-[#1a0f0b99]"
+              <div
+                key={idx}
+                className="overflow-hidden font-poppins border border-[#ffffff33] bg-[#1a0f0b99] !rounded-[10vw] md:!rounded-[3vw]"
               >
+                {/* Header SIN borde */}
                 <button
                   onClick={() => setOpen(isOpen ? null : idx)}
-                  className={`w-full flex items-center justify-between px-6 py-4 rounded-4xl transition-colors ${
-                    isOpen ? 'bg-[#312015]' : 'bg-[#2d1b10] hover:bg-[#3a2519]'
-                  }`}
+                  className="w-full flex items-center justify-between pl-6 pr-5 py-4 transition-colors relative z-10 rounded-full
+                             bg-[linear-gradient(135deg,rgba(250,255,5,0.1)_0%,rgba(0,0,0,0.6)_30%,rgba(0,0,0,0.6)_70%,rgba(250,255,5,0.1)_100%)]
+                             hover:opacity-95 border-0"
                 >
-                  <span className="text-lg">{item.q}</span>
-                  <div className="ml-5 p-1 rounded-full" style={{ backgroundColor: isOpen ? '#faff05' : '#f7e8d3' }}>
+                  <span className="text-left text-lg">{item.q}</span>
+                  <div
+                    className="p-1 !rounded-[10vw] md:!rounded-[3vw]"
+                    style={{ backgroundColor: isOpen ? '#faff05' : '#f7e8d3' }}
+                  >
                     {isOpen ? (
                       <ChevronUpIcon className="w-6 h-6 text-[#3c1f10] stroke-2" />
                     ) : (
@@ -75,19 +81,11 @@ export default function FAQs() {
                   </div>
                 </button>
 
+                {/* Contenido */}
                 <div
-                  className={`px-6 overflow-hidden transition-[max-height] duration-300 ease-out ${
-                    isOpen ? 'max-h-[600px] py-4 bg-[#1a0f0b99]' : 'max-h-0 py-0'
-                  }`}
-
-                  // style={
-                  //   isOpen
-                  //     ? {
-                  //         background:
-                  //           'linear-gradient(135deg, rgba(255,255,0,0.05) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.6) 70%, rgba(255,255,0,0.05) 100%)',
-                  //       }
-                  //     : {}
-                  // }
+                  className={`px-6 overflow-hidden transition-[max-height] duration-300 ease-out
+                    ${isOpen ? 'max-h-[600px] py-4 bg-[#0f070599] rounded-b-4xl' : 'max-h-0 py-0'}
+                  `}
                 >
                   <div className="text-gray-200 leading-relaxed space-y-2">
                     {item.a.map((line, i) => (

@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
         <h1
           className="font-poppins font-bold text-center text-[6.5vw] md:text-[3.3vw] lg:text-[2.8vw] xl:text-[2.6vw] leading-tight bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient"
           style={{
-            backgroundImage: 'linear-gradient(90deg, #faff05, #d4af37, #faff05)',
+            backgroundImage: 'linear-gradient(90deg, #faff05, #fcff82, #faff05)',
             backgroundSize: '200% 200%',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',

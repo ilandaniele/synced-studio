@@ -121,7 +121,7 @@ export default function Testimonials() {
   return (
     <section id="comments" className="text-white py-[14vw] md:py-[6vw] overflow-hidden">
       <h2 className="text-5xl md:text-4xl font-bold text-[#faff05] font-poppins text-center">
-        COMMENTS
+        PARTNERS REVIEWS
       </h2>
       <p className="text-center font-poppins lg:text-2xl md:text-xl mb-12 px-4 max-w-2xl mx-auto">
         Results that speak for themselves
@@ -138,7 +138,7 @@ export default function Testimonials() {
               width: 370,
               minHeight: 240,
               background:
-                'linear-gradient(135deg, rgba(255,255,0,0.05) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.6) 70%, rgba(255,255,0,0.05) 100%)',
+                'linear-gradient(135deg, rgba(255,255,5,0.05) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.6) 70%, rgba(255,255,5,0.4) 100%)',
             }}
           >
             <div className="flex items-center h-32 px-9 pt-6 relative">
@@ -152,7 +152,7 @@ export default function Testimonials() {
                 />
               </div>
               <div className="flex items-center">
-                <div className="relative flex-shrink-0 -translate-x-[0.5rem] z-10">
+                <div className="relative flex-shrink-0 -translate-x-[0.5rem] z-10 outline outline-[6px] outline-black rounded-full" >
                   <div className="absolute inset-0 rounded-full border-4 border-transparent pointer-events-none" />
                   <div className="relative w-18 h-18 rounded-full overflow-hidden">
                     <Image
