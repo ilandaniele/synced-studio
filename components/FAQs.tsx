@@ -59,7 +59,7 @@ export default function FAQs() {
             return (
               <div
                 key={idx}
-                className="overflow-hidden font-poppins border border-[#ffffff33] bg-[#1a0f0b99] !rounded-[10vw] md:!rounded-[3vw]"
+                className="overflow-hidden font-poppins border border-yellow-200/30 bg-[#1a0f0b99] !rounded-[10vw] md:!rounded-[3vw]"
               >
                 {/* Header SIN borde */}
                 <button
