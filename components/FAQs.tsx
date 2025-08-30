@@ -59,18 +59,18 @@ export default function FAQs() {
             return (
               <div
                 key={idx}
-                className="overflow-hidden font-poppins border border-yellow-200/30 bg-[#1a0f0b99] !rounded-[10vw] md:!rounded-[3vw]"
+                className="overflow-hidden font-poppins border border-yellow-200/30 bg-[#000] !rounded-[10vw] md:!rounded-[3vw]"
               >
-                {/* Header SIN borde */}
+                {/* Header (sin radios: el contenedor define la forma) */}
                 <button
                   onClick={() => setOpen(isOpen ? null : idx)}
-                  className="w-full flex items-center justify-between pl-6 pr-5 py-4 transition-colors relative z-10 rounded-full
-                             bg-[linear-gradient(135deg,rgba(250,255,5,0.0)_0%,rgba(0,0,0,0.6)_30%,rgba(0,0,0,0.6)_70%,rgba(250,255,5,0.2)_100%)]
+                  className="w-full flex items-center justify-between pl-6 pr-5 py-4 transition-colors relative z-10 rounded-none
+                             bg-[linear-gradient(135deg,rgba(0,0,0,1)_0%,rgba(0,0,0,1)_50%,rgba(250,255,5,0.2)_100%)]
                              hover:opacity-95 border-0"
                 >
                   <span className="text-left text-lg">{item.q}</span>
                   <div
-                    className="p-1 !rounded-[10vw] md:!rounded-[3vw]"
+                    className="p-1 rounded-full"
                     style={{ backgroundColor: isOpen ? '#faff05' : '#f7e8d3' }}
                   >
                     {isOpen ? (
@@ -81,16 +81,14 @@ export default function FAQs() {
                   </div>
                 </button>
 
-                {/* Contenido */}
+                {/* Body (sin radios) */}
                 <div
-                  className={`px-6 overflow-hidden transition-[max-height] duration-300 ease-out
-                    ${isOpen ? 'max-h-[600px] py-4 bg-[#0f070599] rounded-b-4xl' : 'max-h-0 py-0'}
+                  className={`px-6 overflow-hidden transition-[max-height] duration-300 ease-out bg-[#000]
+                    ${isOpen ? 'max-h-[600px] py-4' : 'max-h-0 py-0'}
                   `}
                 >
                   <div className="text-gray-200 leading-relaxed space-y-2">
-                    {item.a.map((line, i) => (
-                      <p key={i}>{line}</p>
-                    ))}
+                    {item.a.map((line, i) => (<p key={i}>{line}</p>))}
                   </div>
                 </div>
               </div>

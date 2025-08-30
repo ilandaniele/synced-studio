@@ -138,7 +138,7 @@ export default function Testimonials() {
               width: 370,
               minHeight: 240,
               background:
-                'linear-gradient(135deg, rgba(255,255,5,0) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.6) 70%, rgba(255,255,5,0.3) 100%)',
+                'linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(255,255,5,0.05) 100%)',
             }}
           >
             <div className="flex items-center h-32 px-9 pt-6 relative">

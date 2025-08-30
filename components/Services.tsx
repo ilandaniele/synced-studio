@@ -1,5 +1,4 @@
 'use client'
-import Image from 'next/image'
 import React from 'react'
 
 type Service = {
@@ -16,7 +15,10 @@ const services: Service[] = [
     imgAlt: '3D gold can',
     title: 'Fast & Flexible\n3D Product Images',
     copy:
-      'Accelerate your go to market. Our 3D product visuals let you test, launch, and sell faster, without waiting for production. Eye catching, cost effective, and built to convert.',
+      'Accelerate your go to market. Our 3D product\n' +
+      'visuals let you test, launch, and sell faster,\n' +
+      'without waiting for production. Eye catching,\n' +
+      'cost effective, and built to convert.',
     cta: 'See Examples',
   },
   {
@@ -24,7 +26,10 @@ const services: Service[] = [
     imgAlt: 'Gold clapperboard',
     title: 'Cinematic 3D\nAnimation & VFX',
     copy:
-      'Stories sell. We create cinematic 3D content that hooks your audience in seconds, boosts engagement, and drives real sales impact across every platform.',
+      'Stories sell. We create cinematic 3D content\n' +
+      'that hooks your audience in seconds, boosts\n' +
+      'engagement, and drives real sales impact\n' +
+      'across every platform.',
     cta: 'Watch Demo',
   },
   {
@@ -32,7 +37,10 @@ const services: Service[] = [
     imgAlt: 'Gold lightbulb',
     title: 'Creative\nBrand Direction',
     copy:
-      'Consistency builds brands. We craft clear, strategic visuals that strengthen recognition, maximize shelf impact, and position you ahead of the competition.',
+      'Consistency builds brands. We craft clear,\n' +
+      'strategic visuals that strengthen recognition,\n' +
+      'maximize shelf impact, and position you\n' +
+      'ahead of the competition.',
     cta: "Let’s Strategy",
   },
 ]
@@ -40,35 +48,46 @@ const services: Service[] = [
 const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta }) => (
   <div
     className="
-      relative rounded-[24px] overflow-hidden
+      relative isolate rounded-[24px] overflow-hidden
       border border-yellow-200/20
-      shadow-[0_0_30px_rgba(250,255,5,0.05)]
       flex flex-col h-full
-      bg-[radial-gradient(120%_100%_at_50%_0%,rgba(250,255,5,0.05)_0%,rgba(0,0,0,0.85)_40%,rgba(0,0,0,0.85)_100%)]
+      bg-black
+      pt-10
+      pb-7
+      md:px-9
     "
   >
-    <div className="relative w-full h-[240px] md:h-[280px] lg:h-[300px]">
-      <Image
-        src={img}
-        alt={imgAlt}
-        fill
-        priority
-        className="object-contain p-3 md:p-4"
-        sizes="(max-width: 768px) 90vw, (max-width: 1400px) 33vw, 460px"
-      />
-      <div className="pointer-events-none absolute inset-0 rounded-[24px] ring-1 ring-black/30" />
-    </div>
+    {/* Bloque de imagen */}
+    <div
+      role="img"
+      aria-label={imgAlt}
+      className="relative w-full h-[170px] md:h-[150px] lg:h-[170px] rounded-[24px]"
+      style={{
+        backgroundImage: `url(${img})`,
+        backgroundBlendMode: 'screen',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        backgroundSize: 'contain',
+      }}
+    />
 
-    <div className="flex flex-col flex-1 items-center text-center gap-3 px-6 pb-6 md:pb-7 -mt-1">
+    {/* Overlay de fade */}
+    <div className="pointer-events-none absolute inset-0 rounded-[24px]
+                    bg-gradient-to-t from-black/30 via-black/10 to-transparent" />
+
+    {/* Contenido textual */}
+    <div className="flex flex-col flex-1 items-center text-center gap-5 pb-2 md:pb-2 pt-6 relative z-10">
       <h3 className="font-poppins font-extrabold text-white leading-[1.05]
-                     text-[clamp(22px,2.2vw,32px)] tracking-tight">
+                     text-[7.5vw] md:text-[clamp(22px,2.2vw,32px)] tracking-normal">
         {title.split('\n').map((line, i) => (
           <span key={i} className="block">{line}</span>
         ))}
       </h3>
 
-      <p className="font-poppins text-[#faff05] text-[clamp(13px,0.95vw,16px)]
-                    leading-relaxed max-w-[46ch]">
+      <p
+        className="font-poppins text-[#faff05] text-[3.3vw] md:text-[clamp(10px,0.95vw,14px)] pb-2
+                   leading-snug max-w-[80ch] whitespace-pre-line"
+      >
         {copy}
       </p>
 
@@ -79,7 +98,6 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta }) => (
           rounded-full px-5 py-2.5
           bg-[#faff05] text-black font-poppins font-semibold
           text-[15px]
-          shadow-[0_8px_24px_rgba(250,255,5,0.22)]
           hover:translate-y-[-1px] active:translate-y-[0]
           transition-transform
         "
@@ -87,8 +105,6 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta }) => (
         {cta}
       </button>
     </div>
-
-    <div className="pointer-events-none absolute inset-x-6 bottom-3 h-6 rounded-full blur-lg bg-[#faff05]/10" />
   </div>
 )
 
@@ -117,13 +133,12 @@ const Services: React.FC = () => {
                 <Card {...s} />
               </div>
             ))}
-            {/* pequeño espacio final para centrar bien el último slide */}
             <div className="shrink-0 w-[4vw]" />
           </div>
         </div>
 
         {/* Desktop: 3 columnas */}
-        <div className="hidden md:grid grid-cols-3 gap-6">
+        <div className="hidden md:flex justify-center gap-6">
           {services.map((s, i) => (
             <Card key={i} {...s} />
           ))}
