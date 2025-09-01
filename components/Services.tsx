@@ -48,65 +48,78 @@ const services: Service[] = [
 const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta }) => (
   <div
     className="
-      relative isolate rounded-[24px] overflow-hidden
+      relative isolate overflow-hidden rounded-[24px]
       border border-yellow-200/20
-      flex flex-col h-full
-      bg-black
-      pt-10
-      pb-7
-      md:px-9
+      flex flex-col h-full pt-10 pb-7 md:px-9 bg-black
     "
+    style={{
+      // inner stroke + glow muy suave (no ensombrece la imagen)
+      boxShadow:
+        'inset 0 0 0 1px rgba(250,255,5,0.06), inset 0 -80px 120px rgba(160,160,0,0.18)'
+    }}
   >
-    {/* Bloque de imagen */}
+    {/* línea interior tenue */}
+    <span
+      aria-hidden
+      className="pointer-events-none absolute inset-[2px] rounded-[22px]"
+      style={{ boxShadow: 'inset 0 0 0 1px rgba(250,255,5,0.08)' }}
+    />
+
+    {/* IMAGEN */}
     <div
       role="img"
       aria-label={imgAlt}
-      className="relative w-full h-[170px] md:h-[150px] lg:h-[170px] rounded-[24px]"
+      className="relative z-0 w-full h-[170px] md:h-[150px] lg:h-[170px] rounded-[24px]"
       style={{
         backgroundImage: `url(${img})`,
-        backgroundBlendMode: 'screen',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundSize: 'contain',
+        backgroundSize: 'contain'
       }}
     />
 
-    {/* Overlay de fade */}
-    <div className="pointer-events-none absolute inset-0 rounded-[24px]
-                    bg-gradient-to-t from-black/30 via-black/10 to-transparent" />
+    {/* OVERLAY ENCIMA DE LA IMAGEN (NO OSCURECE) */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 rounded-[24px] z-[2]"
+      style={{
+        // solo ilumina: no baja la opacidad de la imagen
+        mixBlendMode: 'screen',
+        backgroundImage: `
+          /* brillo oliva desde abajo */
+          radial-gradient(120% 70% at 50% 100%,
+            rgba(170,180,0,0.36) 0%,
+            rgba(120,120,0,0.22) 28%,
+            rgba(80,80,0,0.10) 55%,
+            rgba(0,0,0,0.00) 72%),
+          /* highlight superior muy leve */
+          radial-gradient(140% 35% at 50% 0%,
+            rgba(255,255,200,0.12) 0%,
+            rgba(255,255,200,0.06) 12%,
+            rgba(0,0,0,0.00) 32%)
+        `,
+        // que afecte principalmente la franja inferior (30–40%)
+        WebkitMaskImage:
+          'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 38%, rgba(255,255,255,0) 70%)'
+      }}
+    />
 
-    {/* Contenido textual */}
-    <div className="flex flex-col flex-1 items-center text-center gap-5 pb-2 md:pb-2 pt-6 relative z-10">
-      <h3 className="font-poppins font-extrabold text-white leading-[1.05]
-                     text-[7.5vw] md:text-[clamp(22px,2.2vw,32px)] tracking-normal">
-        {title.split('\n').map((line, i) => (
-          <span key={i} className="block">{line}</span>
-        ))}
+    {/* CONTENIDO por encima de todo */}
+    <div className="relative z-10 flex flex-col flex-1 items-center text-center gap-5 pb-2 md:pb-2 pt-6">
+      <h3 className="font-poppins font-extrabold text-white leading-[1.05] text-[7.5vw] md:text-[clamp(22px,2.2vw,32px)]">
+        {title.split('\n').map((line, i) => <span key={i} className="block">{line}</span>)}
       </h3>
-
-      <p
-        className="font-poppins text-[#faff05] text-[3.3vw] md:text-[clamp(10px,0.95vw,14px)] pb-2
-                   leading-snug max-w-[80ch] whitespace-pre-line"
-      >
+      <p className="font-poppins text-[#faff05] text-[3.3vw] md:text-[clamp(10px,0.95vw,14px)] pb-2 leading-snug max-w-[80ch] whitespace-pre-line">
         {copy}
       </p>
-
-      <button
-        className="
-          mt-auto
-          inline-flex items-center justify-center
-          rounded-full px-5 py-2.5
-          bg-[#faff05] text-black font-poppins font-semibold
-          text-[15px]
-          hover:translate-y-[-1px] active:translate-y-[0]
-          transition-transform
-        "
-      >
+      <button className="mt-auto inline-flex items-center justify-center rounded-full px-5 py-2.5 bg-[#faff05] text-black font-poppins font-semibold text-[15px] hover:-translate-y-[1px] transition-transform">
         {cta}
       </button>
     </div>
   </div>
 )
+
+
 
 const Services: React.FC = () => {
   return (

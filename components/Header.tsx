@@ -72,8 +72,8 @@ export default function Header() {
               href={href}
               className={`text-sm sm:text-base font-medium font-poppins transition ${
                 activeSection === href && activeSection !== '#contact'
-                  ? 'text-yellow-400'
-                  : 'text-white hover:text-yellow-400'
+                  ? 'text-[#faff05]'
+                  : 'text-white hover:text-[#faff05]'
               }`}
             >
               {label}
@@ -122,7 +122,7 @@ export default function Header() {
               <a
                 key={href}
                 href={href}
-                className="px-4 py-2 text-white hover:text-yellow-400 text-sm font-poppins transition"
+                className="px-4 py-2 text-white hover:text-[#faff05] text-sm font-poppins transition"
                 onClick={() => setMenuOpen(false)}
               >
                 {label}

@@ -57,16 +57,17 @@ export default function FAQs() {
           {faqs.map((item, idx) => {
             const isOpen = idx === open
             return (
-              <div
-                key={idx}
-                className="overflow-hidden font-poppins border border-yellow-200/30 bg-[#000] !rounded-[10vw] md:!rounded-[3vw]"
-              >
-                {/* Header (sin radios: el contenedor define la forma) */}
+              <div key={idx} className="font-poppins">
+                {/* HEADER (pill SIEMPRE redondeado) */}
                 <button
+                  aria-expanded={isOpen}
                   onClick={() => setOpen(isOpen ? null : idx)}
-                  className="w-full flex items-center justify-between pl-6 pr-5 py-4 transition-colors relative z-10 rounded-none
-                             bg-[linear-gradient(135deg,rgba(0,0,0,1)_0%,rgba(0,0,0,1)_50%,rgba(250,255,5,0.2)_100%)]
-                             hover:opacity-95 border-0"
+                  className="w-full flex items-center justify-between pl-6 pr-5 py-4 transition-colors relative z-10
+                             !rounded-[10vw] md:!rounded-[3vw]
+                             border border-yellow-200/20
+                             bg-[#1a0f0b]
+                             bg-[linear-gradient(135deg,rgba(0,0,0,1)_0%,rgba(0,0,0,1)_50%,rgba(255,255,5,0.05)_100%)]
+                             hover:opacity-95"
                 >
                   <span className="text-left text-lg">{item.q}</span>
                   <div
@@ -81,11 +82,13 @@ export default function FAQs() {
                   </div>
                 </button>
 
-                {/* Body (sin radios) */}
+                {/* BODY (solo redondea abajo; no afecta al item de arriba) */}
                 <div
-                  className={`px-6 overflow-hidden transition-[max-height] duration-300 ease-out bg-[#000]
-                    ${isOpen ? 'max-h-[600px] py-4' : 'max-h-0 py-0'}
-                  `}
+                  className={`transition-[max-height] overflow-hidden ease-out duration-300
+                    ${isOpen
+                      ? 'max-h-[600px] px-6 py-4 bg-black border-x border-b border-yellow-200/20 rounded-b-[10vw] md:rounded-b-[3vw]'
+                      : 'max-h-0 px-6 py-0'
+                    }`}
                 >
                   <div className="text-gray-200 leading-relaxed space-y-2">
                     {item.a.map((line, i) => (<p key={i}>{line}</p>))}

@@ -5,7 +5,27 @@ import TrustedBy from './TrustedBy'
 import BoostCard from './BoostCard'
 
 const Hero: React.FC = () => {
+  // Mobile (sigue igual: cambia contenido con el toggle)
   const [boostOn, setBoostOn] = React.useState(true)
+
+  // Desktop: exclusión mutua
+  const [panelAOn, setPanelAOn] = React.useState(false) // A arranca gris (off)
+  const [panelBOn, setPanelBOn] = React.useState(true)  // B arranca amarillo (on)
+
+  const handleToggleA = () => {
+    setPanelAOn(prev => {
+      const next = !prev
+      if (next) setPanelBOn(false) // si A se activa (rojo), B -> gris
+      return next
+    })
+  }
+  const handleToggleB = () => {
+    setPanelBOn(prev => {
+      const next = !prev
+      if (next) setPanelAOn(false) // si B se activa (amarillo), A -> gris
+      return next
+    })
+  }
 
   return (
     <section id="hero" className="relative w-full overflow-hidden bg-[#060503] flex flex-col items-center justify-center pt-30 md:pt-0 mt-20 md:mt-1">
@@ -24,7 +44,7 @@ const Hero: React.FC = () => {
           Your product deserves
           <br className="block md:hidden" />
           <span className="hidden md:inline">&nbsp;</span>
-           to look irresistible.
+          to look irresistible.
         </h1>
         <p
           className="font-poppins text-center text-[3.0vw] md:text-[1vw] mt-[1vw] md:mt-[0.1vw]"
@@ -66,26 +86,38 @@ const Hero: React.FC = () => {
         />
       </div>
 
-      {/* Tarjeta mobile */}
+      {/* Mobile: contenido cambia según toggle */}
       <BoostCard
         on={boostOn}
         onToggle={() => setBoostOn(v => !v)}
+        title={boostOn ? 'With Synced' : 'Without Synced'}
+        contentVariant={boostOn ? 'positive' : 'negative'}
         className="absolute z-10 md:hidden md:top-[30vw] top-[40vw] w-[90vw] max-w-[90vw] md:w-[55vw] md:max-w-[60vw]"
       />
 
-      {/* Tarjetas desktop: izquierda (off) y derecha (on), sin interacción */}
+      {/* Desktop: Panel A (izq) -> título y contenido fijos NEGATIVOS */}
       <BoostCard
-        on={false}
-        onToggle={() => {}}
-        interactive={false}
-        animateKnob={false}
+        on={panelAOn}
+        onToggle={handleToggleA}
+        interactive={true}
+        animateKnob={true}
+        title="Without Synced"
+        contentVariant="negative"
+        activeColor="red"
+        inactiveColor="gray"
         className="hidden md:block absolute z-10 md:left-[7vw] md:top-[12vw] xl:top-[16vw] md:w-[40vw] md:max-w-[28vw]"
       />
+
+      {/* Desktop: Panel B (der) -> título y contenido fijos POSITIVOS */}
       <BoostCard
-        on={true}
-        onToggle={() => {}}
-        interactive={false}
-        animateKnob={false}
+        on={panelBOn}
+        onToggle={handleToggleB}
+        interactive={true}
+        animateKnob={true}
+        title="With Synced"
+        contentVariant="positive"
+        activeColor="yellow"
+        inactiveColor="gray"
         className="hidden md:block absolute z-10 md:right-[5vw] md:top-[12vw] xl:top-[16vw] md:w-[30vw] md:max-w-[28vw]"
       />
 

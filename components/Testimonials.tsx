@@ -91,7 +91,7 @@ export default function Testimonials() {
   const posRef = useRef<number>(0)
 
   useEffect(() => {
-    const speed = 1.8
+    const speed = 0.0 //1.8
 
     const step = () => {
       if (contentRef.current) {
@@ -133,7 +133,7 @@ export default function Testimonials() {
         {looped.map((t, i) => (
           <div
             key={i}
-            className="rounded-4xl flex-shrink-0 border border-yellow-200/30 flex flex-col"
+            className="rounded-4xl flex-shrink-0 border border-yellow-200/20 flex flex-col"
             style={{
               width: 370,
               minHeight: 240,
