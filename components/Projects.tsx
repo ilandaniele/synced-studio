@@ -13,16 +13,16 @@ interface Project {
 const projects: Project[] = [
   { id: 1,  title: "Hershey's",     subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/hersheys/1.jpg',        gallery: ['/images/projects/hersheys/1.jpg'] },
   { id: 2,  title: 'Huel',          subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/huel/1.jpg',            gallery: ['/images/projects/huel/1.jpg', '/images/projects/huel/2.png', '/images/projects/huel/3.jpg', '/images/projects/huel/4.mp4'] },
-  { id: 3,  title: '', subtitle: '', thumb: '', gallery: [] },
-  { id: 4,  title: 'Perfect Ted',   subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/perfect_ted/1.jpg',     gallery: ['/images/projects/perfect_ted/1.jpg', '/images/projects/perfect_ted/2.jpg'] },
-  { id: 5,  title: 'Raise',         subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/raise/1.jpg',           gallery: ['/images/projects/raise/1.jpg', '/images/projects/raise/2.jpg', '/images/projects/raise/3.jpg', '/images/projects/raise/4.jpg', '/images/projects/raise/5.jpg', '/images/projects/raise/6.jpg'] },
-  { id: 6,  title: 'Aquela Kombucha', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/aquela_kombucha/1.jpg', gallery: ['/images/projects/aquela_kombucha/1.jpg', '/images/projects/aquela_kombucha/2.jpg', '/images/projects/aquela_kombucha/3.mp4', '/images/projects/aquela_kombucha/4.jpg', '/images/projects/aquela_kombucha/5.jpg', '/images/projects/aquela_kombucha/6.jpg'] },
-  { id: 7,  title: "Diana's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/dianas/1.jpg',          gallery: ['/images/projects/dianas/1.jpg'] },
-  { id: 8,  title: "Reese's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/reeses/1.jpg',          gallery: ['/images/projects/reeses/1.jpg', '/images/projects/reeses/2.jpg', '/images/projects/reeses/3.jpg', '/images/projects/reeses/4.jpg', '/images/projects/reeses/5.jpg', '/images/projects/reeses/6.mp4', '/images/projects/reeses/7.jpg'] },
-  { id: 9,  title: '', subtitle: '', thumb: '', gallery: [] },
-  { id: 10, title: 'Almonds & Chocos', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/almonds/1.jpg',      gallery: ['/images/projects/almonds/1.jpg', '/images/projects/almonds/2.jpg', '/images/projects/almonds/3.jpg', '/images/projects/almonds/4.jpg', '/images/projects/almonds/5.jpg'] },
-  { id: 11, title: 'Zumino',        subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/zumino/1.jpg',          gallery: ['/images/projects/zumino/1.jpg', '/images/projects/zumino/2.mp4'] },
-  { id: 12, title: 'Glad',          subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/glad/1.jpg',            gallery: ['/images/projects/glad/1.jpg', '/images/projects/glad/2.jpg', '/images/projects/glad/3.jpg'] },
+  { id: 3,  title: 'Perfect Ted',   subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/perfect_ted/1.jpg',     gallery: ['/images/projects/perfect_ted/1.jpg', '/images/projects/perfect_ted/2.jpg'] },
+  { id: 4,  title: 'Raise',         subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/raise/1.jpg',           gallery: ['/images/projects/raise/1.jpg', '/images/projects/raise/2.jpg', '/images/projects/raise/3.jpg', '/images/projects/raise/4.jpg', '/images/projects/raise/5.jpg', '/images/projects/raise/6.jpg'] },
+  { id: 5,  title: 'Aquela Kombucha', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/aquela_kombucha/1.jpg', gallery: ['/images/projects/aquela_kombucha/1.jpg', '/images/projects/aquela_kombucha/2.jpg', '/images/projects/aquela_kombucha/3.mp4', '/images/projects/aquela_kombucha/4.jpg', '/images/projects/aquela_kombucha/5.jpg', '/images/projects/aquela_kombucha/6.jpg'] },
+  { id: 6,  title: "Diana's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/dianas/1.jpg',          gallery: ['/images/projects/dianas/1.jpg'] },
+  { id: 7,  title: "Reese's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/reeses/1.jpg',          gallery: ['/images/projects/reeses/1.jpg', '/images/projects/reeses/2.jpg', '/images/projects/reeses/3.jpg', '/images/projects/reeses/4.jpg', '/images/projects/reeses/5.jpg', '/images/projects/reeses/6.mp4', '/images/projects/reeses/7.jpg'] },
+  { id: 8, title: 'Almonds & Chocos', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/almonds/1.jpg',      gallery: ['/images/projects/almonds/1.jpg', '/images/projects/almonds/2.jpg', '/images/projects/almonds/3.jpg', '/images/projects/almonds/4.jpg', '/images/projects/almonds/5.jpg'] },
+  { id: 9, title: 'Zumino',        subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/zumino/1.jpg',          gallery: ['/images/projects/zumino/1.jpg', '/images/projects/zumino/2.mp4'] },
+  { id: 10, title: 'Glad',          subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/glad/1.jpg',            gallery: ['/images/projects/glad/1.jpg', '/images/projects/glad/2.jpg', '/images/projects/glad/3.jpg'] },
+  { id: 11,  title: '', subtitle: '', thumb: '', gallery: [] },
+  { id: 12,  title: '', subtitle: '', thumb: '', gallery: [] }
 ]
 
 export default function Projects() {
