@@ -21,7 +21,7 @@ const projects: Project[] = [
   { id: 8, title: 'Almonds & Chocos', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/almonds/1.jpg',      gallery: ['/images/projects/almonds/1.jpg', '/images/projects/almonds/2.jpg', '/images/projects/almonds/3.jpg', '/images/projects/almonds/4.jpg', '/images/projects/almonds/5.jpg'] },
   { id: 9, title: 'Zumino',        subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/zumino/1.jpg',          gallery: ['/images/projects/zumino/1.jpg', '/images/projects/zumino/2.mp4'] },
   { id: 10, title: 'Glad',          subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/glad/1.jpg',            gallery: ['/images/projects/glad/1.jpg', '/images/projects/glad/2.jpg', '/images/projects/glad/3.jpg'] },
-  { id: 11,  title: '', subtitle: '', thumb: '', gallery: [] },
+  { id: 11,  title: 'Monaco', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/monaco/1.jpg', gallery: ['/images/projects/monaco/1.jpg'] },
   { id: 12,  title: '', subtitle: '', thumb: '', gallery: [] }
 ]
 
@@ -103,68 +103,90 @@ export default function Projects() {
           Behind every design, there’s a purpose. Behind every project, a result.
         </p>
 
-        {/* WRAPPER GRID + OVERLAY + BUTTON */}
+        {/* LISTA DE PROYECTOS - FLEX WRAP CENTRADO */}
         <div className="relative pb-20 md:pb-24">
-          {/* GRID 4:3 */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+          {/* centramos TODO el conjunto y damos un gutter mínimo */}
+          <div className="flex flex-wrap justify-center">
             {visibleProjects.map((p, i) => {
               const hasImage = !!p.thumb
               return (
                 <div
                   key={p.id}
+                  className="w-1/2 md:w-1/4  mb-3 bg-[#140700]"
                   onClick={() => p.gallery.length > 0 && openCarousel(i)}
-                  className={[
-                    'relative w-full rounded-xl overflow-hidden',
-                    'aspect-[4/3] group',
-                    p.gallery.length > 0 ? 'cursor-pointer hover:scale-[1.02] md:hover:scale-[1.06] transition-transform duration-300' : '',
-                    hasImage ? 'bg-[#222]' : 'bg-transparent'
-                  ].join(' ')}
                 >
-                  {hasImage ? (
-                    <>
-                      <Image
-                        src={p.thumb}
-                        alt=""
-                        fill
-                        className="absolute inset-0 object-cover"
-                        unoptimized
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-end justify-center">
-                        {p.gallery.length > 0 && (
-                          <span className="mb-3 bg-[#faff05] text-black px-4 py-2 rounded-full text-xs md:text-sm font-bold font-poppins opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg uppercase">
-                            View More
-                          </span>
-                        )}
-                      </div>
-                    </>
-                  ) : (
-                    <Placeholder />
-                  )}
+                  <div
+                    className={[
+                      // antes: 'w-full'
+                      'relative mx-auto w-[88%] md:w-[82%] aspect-[3/4] rounded-xl overflow-hidden group',
+                      hasImage ? 'bg-[#111] border border-white/10' : 'bg-transparent',
+                      p.gallery.length > 0 ? 'cursor-pointer hover:scale-[1.02] md:hover:scale-[1.04] transition-transform duration-300' : ''
+                    ].join(' ')}
+                  >
+                    {hasImage ? (
+                      <>
+                        <Image
+                          src={p.thumb}
+                          alt=""
+                          fill
+                          unoptimized
+                          sizes="(max-width:768px) 50vw, 25vw"
+                          className="absolute inset-0 object-contain"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-end justify-center">
+                          {p.gallery.length > 0 && (
+                            <span className="mb-3 bg-[#faff05] text-black px-4 py-2 rounded-full text-xs md:text-sm font-bold font-poppins opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg uppercase">
+                              View More
+                            </span>
+                          )}
+                        </div>
+                      </>
+                    ) : (
+                      <Placeholder />
+                    )}
+                  </div>
                 </div>
               )
             })}
           </div>
 
-          {/* Difuminado inferior que sube sobre las fotos */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-20 md:h-24
-                       bg-[linear-gradient(to_top,rgba(6,5,3,0.95)_0%,rgba(6,5,3,0.75)_45%,rgba(6,5,3,0)_100%)]"
-          />
+          {/* DIFUMINADO + BOTÓN */}
 
-          {/* Botón superpuesto y extendido */}
-          <div className="absolute inset-x-0 bottom-3 flex justify-center">
-            <button
-              onClick={() => setExpanded(v => !v)}
-              className="w-[92%] md:w-[86%] max-w-[980px]
-                         rounded-full px-6 md:px-8 py-3 md:py-3.5 font-poppins font-semibold text-black
-                         bg-[linear-gradient(180deg,#FFF760_0%,#F9E94E_100%)]
-                         ring-1 ring-black/20 shadow-[0_12px_28px_rgba(250,255,5,0.28)]
-                         hover:scale-[1.01] active:scale-[0.99] transition will-change-transform"
-            >
-              {expanded ? 'View Less Projects' : 'View More Projects'}
-            </button>
-          </div>
+          {/* BOTÓN + FADE */}
+          {!expanded ? (
+            // "View More" — superpuesto sobre las imágenes
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 -translate-y-15 md:-translate-y-25 flex flex-col items-center z-30">
+              {/* Fade negro suave detrás del botón */}
+              <div className="w-[96%] pointer-events-none absolute -top-20 left-7 right-0 h-25 bg-gradient-to-t from-black/90 via-black/90 to-transparent"></div>
+
+              <button
+                onClick={() => setExpanded(true)}
+                aria-label="View More Projects"
+                className="pointer-events-auto w-[95%]
+                          rounded-full px-6 md:px-8 py-3 md:py-3.5 font-poppins font-semibold text-[#faff05]
+                          ring-2 ring-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,.25)]
+                          bg-[linear-gradient(90deg,rgba(148,150,9,1)_0%,rgb(142,127,44)_25%,rgba(82,73,20,1)_50%,rgb(142,127,44)_75%,rgba(148,150,9,1)_100%)]
+                          hover:scale-[1.01] active:scale-[0.99] transition will-change-transform"
+              >
+                View More Projects
+              </button>
+            </div>
+          ) : (
+            // "View Less" — debajo del grid, sin superponer
+            <div className="mt-10 md:mt-12 flex justify-center z-10">
+              <button
+                onClick={() => setExpanded(false)}
+                aria-label="View Less Projects"
+                className="w-[95%]
+                          rounded-full px-6 md:px-8 py-3 md:py-3.5 font-poppins font-semibold text-[#faff05]
+                          ring-2 ring-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,.25)]
+                           bg-[linear-gradient(90deg,rgba(148,150,9,1)_0%,rgb(142,127,44)_25%,rgba(82,73,20,1)_50%,rgb(142,127,44)_75%,rgba(148,150,9,1)_100%)]
+                          hover:scale-[1.01] active:scale-[0.99] transition will-change-transform"
+              >
+                View Less Projects
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
