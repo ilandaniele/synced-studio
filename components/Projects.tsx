@@ -16,12 +16,14 @@ const projects: Project[] = [
   { id: 3,  title: 'Perfect Ted',   subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/perfect_ted/1.jpg',     gallery: ['/images/projects/perfect_ted/1.jpg', '/images/projects/perfect_ted/2.jpg'] },
   { id: 4,  title: 'Raise',         subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/raise/1.jpg',           gallery: ['/images/projects/raise/1.jpg', '/images/projects/raise/2.jpg', '/images/projects/raise/3.jpg', '/images/projects/raise/4.jpg', '/images/projects/raise/5.jpg', '/images/projects/raise/6.jpg'] },
   { id: 5,  title: 'Aquela Kombucha', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/aquela_kombucha/1.jpg', gallery: ['/images/projects/aquela_kombucha/1.jpg', '/images/projects/aquela_kombucha/2.jpg', '/images/projects/aquela_kombucha/3.mp4', '/images/projects/aquela_kombucha/4.jpg', '/images/projects/aquela_kombucha/5.jpg', '/images/projects/aquela_kombucha/6.jpg'] },
-  { id: 6,  title: "Diana's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/dianas/1.jpg',          gallery: ['/images/projects/dianas/1.jpg'] },
-  { id: 7,  title: "Reese's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/reeses/1.jpg',          gallery: ['/images/projects/reeses/1.jpg', '/images/projects/reeses/2.jpg', '/images/projects/reeses/3.jpg', '/images/projects/reeses/4.jpg', '/images/projects/reeses/5.jpg', '/images/projects/reeses/6.mp4', '/images/projects/reeses/7.jpg'] },
-  { id: 8, title: 'Almonds & Chocos', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/almonds/1.jpg',      gallery: ['/images/projects/almonds/1.jpg', '/images/projects/almonds/2.jpg', '/images/projects/almonds/3.jpg', '/images/projects/almonds/4.jpg', '/images/projects/almonds/5.jpg'] },
-  { id: 9, title: 'Zumino',        subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/zumino/1.jpg',          gallery: ['/images/projects/zumino/1.jpg', '/images/projects/zumino/2.mp4'] },
-  { id: 10, title: 'Glad',          subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/glad/1.jpg',            gallery: ['/images/projects/glad/1.jpg', '/images/projects/glad/2.jpg', '/images/projects/glad/3.jpg'] },
-  { id: 11,  title: 'Monaco', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/monaco/1.jpg', gallery: ['/images/projects/monaco/1.jpg'] },
+  // { id: 6,  title: "Diana's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/dianas/1.jpg',          gallery: ['/images/projects/dianas/1.jpg'] },
+  { id: 6,  title: "Reese's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/reeses/1.jpg',          gallery: ['/images/projects/reeses/1.jpg', '/images/projects/reeses/2.jpg', '/images/projects/reeses/3.jpg', '/images/projects/reeses/4.jpg', '/images/projects/reeses/5.jpg', '/images/projects/reeses/6.mp4', '/images/projects/reeses/7.jpg'] },
+  // { id: 8, title: 'Almonds & Chocos', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/almonds/1.jpg',      gallery: ['/images/projects/almonds/1.jpg', '/images/projects/almonds/2.jpg', '/images/projects/almonds/3.jpg', '/images/projects/almonds/4.jpg', '/images/projects/almonds/5.jpg'] },
+  { id: 7, title: 'Zumino',        subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/zumino/1.jpg',          gallery: ['/images/projects/zumino/1.jpg', '/images/projects/zumino/2.mp4'] },
+  { id: 8, title: 'Glad',          subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/glad/1.jpg',            gallery: ['/images/projects/glad/1.jpg', '/images/projects/glad/2.jpg', '/images/projects/glad/3.jpg'] },
+  { id: 9,  title: 'Monaco', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/monaco/1.jpg', gallery: ['/images/projects/monaco/1.jpg'] },
+  { id: 10,  title: '', subtitle: '', thumb: '', gallery: [] },
+  { id: 11,  title: '', subtitle: '', thumb: '', gallery: [] },
   { id: 12,  title: '', subtitle: '', thumb: '', gallery: [] }
 ]
 
@@ -112,7 +114,7 @@ export default function Projects() {
               return (
                 <div
                   key={p.id}
-                  className="w-1/2 md:w-1/4  mb-3 bg-[#140700]"
+                  className="w-1/2 md:w-1/4  mb-3 bg-transparent"
                   onClick={() => p.gallery.length > 0 && openCarousel(i)}
                 >
                   <div
@@ -157,15 +159,15 @@ export default function Projects() {
             // "View More" — superpuesto sobre las imágenes
             <div className="pointer-events-none absolute inset-x-0 bottom-0 -translate-y-15 md:-translate-y-25 flex flex-col items-center z-30">
               {/* Fade negro suave detrás del botón */}
-              <div className="w-[96%] pointer-events-none absolute -top-20 left-7 right-0 h-25 bg-gradient-to-t from-black/90 via-black/90 to-transparent"></div>
+              <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[95%] md:w-[96%] h-30 bg-gradient-to-t from-black/90 via-black/90 to-transparent"></div>
 
               <button
                 onClick={() => setExpanded(true)}
                 aria-label="View More Projects"
                 className="pointer-events-auto w-[95%]
                           rounded-full px-6 md:px-8 py-3 md:py-3.5 font-poppins font-semibold text-[#faff05]
-                          ring-2 ring-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,.25)]
-                          bg-[linear-gradient(90deg,rgba(148,150,9,1)_0%,rgb(142,127,44)_25%,rgba(82,73,20,1)_50%,rgb(142,127,44)_75%,rgba(148,150,9,1)_100%)]
+                          ring-1 ring-white/90
+                          bg-[linear-gradient(90deg,rgba(109,97,33,1)_0%,rgba(44,39,6,1)_25%,rgba(44,39,6,1)_75%,rgba(109,97,33,1)_100%)]
                           hover:scale-[1.01] active:scale-[0.99] transition will-change-transform"
               >
                 View More Projects

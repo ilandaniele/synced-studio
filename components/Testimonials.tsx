@@ -91,7 +91,7 @@ export default function Testimonials() {
   const posRef = useRef<number>(0)
 
   useEffect(() => {
-    const speed = 0.0 //1.8
+    const speed = 1.8
 
     const step = () => {
       if (contentRef.current) {
