@@ -161,7 +161,7 @@ export default function Projects() {
             // "View More" — superpuesto sobre las imágenes
             <div className="pointer-events-none absolute inset-x-0 bottom-0 -translate-y-15 md:-translate-y-25 flex flex-col items-center z-30">
               {/* Fade negro suave detrás del botón */}
-              <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[75%] md:w-[82%] h-30 bg-gradient-to-t from-black/90 via-black/90 to-transparent"></div>
+              <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[75%] md:w-[83.2%] h-30 bg-gradient-to-t from-black/90 via-black/90 to-transparent"></div>
 
               <button
                 onClick={() => setExpanded(true)}
