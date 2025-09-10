@@ -57,7 +57,7 @@ export default function FAQs() {
           {faqs.map((item, idx) => {
             const isOpen = idx === open
             return (
-              <div key={idx} className={`font-poppins ${isOpen ? 'relative overflow-hidden bg-black border-x border-b border-yellow-200/20 rounded-[2.5rem] md:rounded-4xl' : ''}`}>
+              <div key={idx} className={`font-poppins ${isOpen ? 'relative overflow-hidden bg-black border-x border-b border-yellow-200/20 rounded-[2.5rem] md:rounded-[2.1rem]' : ''}`}>
                 {/* HEADER (pill SIEMPRE redondeado) */}
                 <button
                   aria-expanded={isOpen}

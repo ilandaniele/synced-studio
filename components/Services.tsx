@@ -61,7 +61,7 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta }) => (
     {/* línea interior tenue */}
     <span
       aria-hidden
-      className="pointer-events-none absolute inset-[2px] rounded-[22px]"
+      className="pointer-events-none absolute rounded-[22px]"
       style={{ boxShadow: 'inset 0 0 0 1px rgba(250,255,5,0.08)' }}
     />
 

@@ -12,16 +12,16 @@ interface Project {
 
 const projects: Project[] = [
   { id: 1,  title: "Hershey's",     subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/hersheys/1.jpg',        gallery: ['/images/projects/hersheys/1.jpg'] },
-  { id: 2,  title: 'Huel',          subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/huel/1.jpg',            gallery: ['/images/projects/huel/1.jpg', '/images/projects/huel/2.png', '/images/projects/huel/3.jpg', '/images/projects/huel/4.mp4'] },
-  { id: 3,  title: 'Perfect Ted',   subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/perfect_ted/1.jpg',     gallery: ['/images/projects/perfect_ted/1.jpg', '/images/projects/perfect_ted/2.jpg'] },
-  { id: 4,  title: 'Raise',         subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/raise/1.jpg',           gallery: ['/images/projects/raise/1.jpg', '/images/projects/raise/2.jpg', '/images/projects/raise/3.jpg', '/images/projects/raise/4.jpg', '/images/projects/raise/5.jpg', '/images/projects/raise/6.jpg'] },
-  { id: 5,  title: 'Aquela Kombucha', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/aquela_kombucha/1.jpg', gallery: ['/images/projects/aquela_kombucha/1.jpg', '/images/projects/aquela_kombucha/2.jpg', '/images/projects/aquela_kombucha/3.mp4', '/images/projects/aquela_kombucha/4.jpg', '/images/projects/aquela_kombucha/5.jpg', '/images/projects/aquela_kombucha/6.jpg'] },
-  // { id: 6,  title: "Diana's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/dianas/1.jpg',          gallery: ['/images/projects/dianas/1.jpg'] },
-  { id: 6,  title: "Reese's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/reeses/1.jpg',          gallery: ['/images/projects/reeses/1.jpg', '/images/projects/reeses/2.jpg', '/images/projects/reeses/3.jpg', '/images/projects/reeses/4.jpg', '/images/projects/reeses/5.jpg', '/images/projects/reeses/6.mp4', '/images/projects/reeses/7.jpg'] },
-  // { id: 8, title: 'Almonds & Chocos', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/almonds/1.jpg',      gallery: ['/images/projects/almonds/1.jpg', '/images/projects/almonds/2.jpg', '/images/projects/almonds/3.jpg', '/images/projects/almonds/4.jpg', '/images/projects/almonds/5.jpg'] },
+  { id: 2,  title: 'Perfect Ted',   subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/perfect_ted/1.jpg',     gallery: ['/images/projects/perfect_ted/1.jpg', '/images/projects/perfect_ted/2.jpg'] },
+  { id: 3,  title: 'Raise',         subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/raise/1.jpg',           gallery: ['/images/projects/raise/1.jpg', '/images/projects/raise/2.jpg', '/images/projects/raise/3.jpg', '/images/projects/raise/4.jpg', '/images/projects/raise/5.jpg', '/images/projects/raise/6.jpg'] },
+  { id: 4,  title: "Reese's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/reeses/1.jpg',          gallery: ['/images/projects/reeses/1.jpg', '/images/projects/reeses/2.jpg', '/images/projects/reeses/3.jpg', '/images/projects/reeses/4.jpg', '/images/projects/reeses/5.jpg', '/images/projects/reeses/6.mp4', '/images/projects/reeses/7.jpg'] },
+  { id: 5,  title: 'Monaco', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/monaco/1.jpg', gallery: ['/images/projects/monaco/1.jpg'] },
+  { id: 6, title: 'Glad',          subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/glad/1.jpg',            gallery: ['/images/projects/glad/1.jpg', '/images/projects/glad/2.jpg', '/images/projects/glad/3.jpg'] },
   { id: 7, title: 'Zumino',        subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/zumino/1.jpg',          gallery: ['/images/projects/zumino/1.jpg', '/images/projects/zumino/2.mp4'] },
-  { id: 8, title: 'Glad',          subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/glad/1.jpg',            gallery: ['/images/projects/glad/1.jpg', '/images/projects/glad/2.jpg', '/images/projects/glad/3.jpg'] },
-  { id: 9,  title: 'Monaco', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/monaco/1.jpg', gallery: ['/images/projects/monaco/1.jpg'] },
+  { id: 8,  title: 'Huel',          subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/huel/1.jpg',            gallery: ['/images/projects/huel/1.jpg', '/images/projects/huel/2.png', '/images/projects/huel/3.jpg', '/images/projects/huel/4.mp4'] },
+  { id: 9,  title: 'Aquela Kombucha', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/aquela_kombucha/1.jpg', gallery: ['/images/projects/aquela_kombucha/1.jpg', '/images/projects/aquela_kombucha/2.jpg', '/images/projects/aquela_kombucha/3.mp4', '/images/projects/aquela_kombucha/4.jpg', '/images/projects/aquela_kombucha/5.jpg', '/images/projects/aquela_kombucha/6.jpg'] },
+  // { id: 6,  title: "Diana's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/dianas/1.jpg',          gallery: ['/images/projects/dianas/1.jpg'] },
+  // { id: 8, title: 'Almonds & Chocos', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/almonds/1.jpg',      gallery: ['/images/projects/almonds/1.jpg', '/images/projects/almonds/2.jpg', '/images/projects/almonds/3.jpg', '/images/projects/almonds/4.jpg', '/images/projects/almonds/5.jpg'] },
   { id: 10,  title: '', subtitle: '', thumb: '', gallery: [] },
   { id: 11,  title: '', subtitle: '', thumb: '', gallery: [] },
   { id: 12,  title: '', subtitle: '', thumb: '', gallery: [] }
@@ -87,13 +87,15 @@ export default function Projects() {
   }
 
   const Placeholder = () => (
-    <div className="absolute inset-0 flex items-center justify-center bg-black/20 border border-white/20">
-      <div className="opacity-40">
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
-          <path d="M4 16.5L12 4l8 12.5" stroke="currentColor" className="text-white/50" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M7 16.5h10" stroke="currentColor" className="text-white/30" strokeWidth="1.5" strokeLinecap="round"/>
-        </svg>
-      </div>
+    <div className="absolute inset-px rounded-2xl flex items-center justify-center bg-[#000000] ring-1 ring-white/20">
+      <Image
+        src="placeholder.svg"
+        alt=""
+        width={300}
+        height={300}
+        className="opacity-40"
+        priority
+      />
     </div>
   )
 
@@ -108,20 +110,20 @@ export default function Projects() {
         {/* LISTA DE PROYECTOS - FLEX WRAP CENTRADO */}
         <div className="relative pb-20 md:pb-24">
           {/* centramos TODO el conjunto y damos un gutter mínimo */}
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-center gap-x-2 md:gap-x-3">
             {visibleProjects.map((p, i) => {
               const hasImage = !!p.thumb
               return (
                 <div
                   key={p.id}
-                  className="w-1/2 md:w-1/4  mb-3 bg-transparent"
+                  className="basis-1/3 md:basis-1/5 mb-3 bg-transparent"
                   onClick={() => p.gallery.length > 0 && openCarousel(i)}
                 >
                   <div
                     className={[
                       // antes: 'w-full'
-                      'relative mx-auto w-[88%] md:w-[82%] aspect-[3/4] rounded-xl overflow-hidden group',
-                      hasImage ? 'bg-[#111] border border-white/10' : 'bg-transparent',
+                      'relative mx-auto aspect-[3/4] rounded-2xl overflow-hidden group',
+                      hasImage ? 'bg-[#111]' : 'bg-transparent',
                       p.gallery.length > 0 ? 'cursor-pointer hover:scale-[1.02] md:hover:scale-[1.04] transition-transform duration-300' : ''
                     ].join(' ')}
                   >
@@ -135,7 +137,7 @@ export default function Projects() {
                           sizes="(max-width:768px) 50vw, 25vw"
                           className="absolute inset-0 object-contain"
                         />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-end justify-center">
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300 flex items-end justify-center">
                           {p.gallery.length > 0 && (
                             <span className="mb-3 bg-[#faff05] text-black px-4 py-2 rounded-full text-xs md:text-sm font-bold font-poppins opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg uppercase">
                               View More
@@ -159,12 +161,12 @@ export default function Projects() {
             // "View More" — superpuesto sobre las imágenes
             <div className="pointer-events-none absolute inset-x-0 bottom-0 -translate-y-15 md:-translate-y-25 flex flex-col items-center z-30">
               {/* Fade negro suave detrás del botón */}
-              <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[95%] md:w-[96%] h-30 bg-gradient-to-t from-black/90 via-black/90 to-transparent"></div>
+              <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[75%] md:w-[82%] h-30 bg-gradient-to-t from-black/90 via-black/90 to-transparent"></div>
 
               <button
                 onClick={() => setExpanded(true)}
                 aria-label="View More Projects"
-                className="pointer-events-auto w-[95%]
+                className="pointer-events-auto w-[75%] md:w-[85%]
                           rounded-full px-6 md:px-8 py-3 md:py-3.5 font-poppins font-semibold text-[#faff05]
                           ring-1 ring-white/90
                           bg-[linear-gradient(90deg,rgba(109,97,33,1)_0%,rgba(44,39,6,1)_25%,rgba(44,39,6,1)_75%,rgba(109,97,33,1)_100%)]
@@ -179,9 +181,9 @@ export default function Projects() {
               <button
                 onClick={() => setExpanded(false)}
                 aria-label="View Less Projects"
-                className="w-[95%]
+                className="w-[75%] md:w-[85%]
                           rounded-full px-6 md:px-8 py-3 md:py-3.5 font-poppins font-semibold text-[#faff05]
-                          ring-2 ring-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,.25)]
+                          ring-1 ring-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,.25)]
                            bg-[linear-gradient(90deg,rgba(148,150,9,1)_0%,rgb(142,127,44)_25%,rgba(82,73,20,1)_50%,rgb(142,127,44)_75%,rgba(148,150,9,1)_100%)]
                           hover:scale-[1.01] active:scale-[0.99] transition will-change-transform"
               >
