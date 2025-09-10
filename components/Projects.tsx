@@ -7,7 +7,8 @@ interface Project {
   title: string
   subtitle: string
   thumb: string
-  gallery: string[]
+  gallery: string[],
+  disappearOnMobile?: boolean
 }
 
 const projects: Project[] = [
@@ -22,9 +23,9 @@ const projects: Project[] = [
   { id: 9,  title: 'Aquela Kombucha', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/aquela_kombucha/1.jpg', gallery: ['/images/projects/aquela_kombucha/1.jpg', '/images/projects/aquela_kombucha/2.jpg', '/images/projects/aquela_kombucha/3.mp4', '/images/projects/aquela_kombucha/4.jpg', '/images/projects/aquela_kombucha/5.jpg', '/images/projects/aquela_kombucha/6.jpg'] },
   // { id: 6,  title: "Diana's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/dianas/1.jpg',          gallery: ['/images/projects/dianas/1.jpg'] },
   // { id: 8, title: 'Almonds & Chocos', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/almonds/1.jpg',      gallery: ['/images/projects/almonds/1.jpg', '/images/projects/almonds/2.jpg', '/images/projects/almonds/3.jpg', '/images/projects/almonds/4.jpg', '/images/projects/almonds/5.jpg'] },
-  { id: 10,  title: '', subtitle: '', thumb: '', gallery: [] },
-  { id: 11,  title: '', subtitle: '', thumb: '', gallery: [] },
-  { id: 12,  title: '', subtitle: '', thumb: '', gallery: [] }
+  { id: 10,  title: '', subtitle: '', thumb: '', gallery: [], disappearOnMobile: false },
+  { id: 11,  title: '', subtitle: '', thumb: '', gallery: [], disappearOnMobile: true },
+  { id: 12,  title: '', subtitle: '', thumb: '', gallery: [], disappearOnMobile: true }
 ]
 
 export default function Projects() {
@@ -111,20 +112,28 @@ export default function Projects() {
         <div className="relative pb-20 md:pb-24">
           {/* centramos TODO el conjunto y damos un gutter mínimo */}
           <div className="flex flex-wrap justify-center gap-x-2 md:gap-x-3">
+            {/* ⬇️ REEMPLAZÁ todo el map actual por este */}
             {visibleProjects.map((p, i) => {
+              if (isMobile && i >= visibleProjects.length - 2) return null;
+
               const hasImage = !!p.thumb
+
+              // Oculta en mobile los que tengan la flag
+              if (isMobile && p.disappearOnMobile) return null
+
               return (
                 <div
                   key={p.id}
-                  className="basis-1/3 md:basis-1/5 mb-3 bg-transparent"
+                  className="basis-1/3 md:basis-1/5 mx-0.5 mb-3 bg-transparent"
                   onClick={() => p.gallery.length > 0 && openCarousel(i)}
                 >
                   <div
                     className={[
-                      // antes: 'w-full'
                       'relative mx-auto aspect-[3/4] rounded-2xl overflow-hidden group',
                       hasImage ? 'bg-[#111]' : 'bg-transparent',
-                      p.gallery.length > 0 ? 'cursor-pointer hover:scale-[1.02] md:hover:scale-[1.04] transition-transform duration-300' : ''
+                      p.gallery.length > 0
+                        ? 'cursor-pointer hover:scale-[1.02] md:hover:scale-[1.04] transition-transform duration-300'
+                        : ''
                     ].join(' ')}
                   >
                     {hasImage ? (
@@ -153,6 +162,7 @@ export default function Projects() {
               )
             })}
           </div>
+
 
           {/* DIFUMINADO + BOTÓN */}
 
