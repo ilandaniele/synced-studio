@@ -8,7 +8,7 @@ export default function Header() {
     { href: '#hero', label: 'Home' },
     { href: '#services', label: 'Services' },
     { href: '#projects', label: 'Projects' },
-    { href: '#comments', label: 'Comments' },
+    { href: '#comments', label: 'Reviews' },
     { href: '#faqs', label: "FAQ'S" },
   ]
 

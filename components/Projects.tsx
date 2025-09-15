@@ -102,7 +102,7 @@ export default function Projects() {
 
   return (
     <>
-      <section id="projects" className="py-[14vw] md:py-[6vw] px-5 md:px-10">
+      <section id="projects" className="py-[14vw] md:pt-[6vw] md:pb-[2vw] px-5 md:px-10">
         <h2 className="text-5xl font-bold font-poppins text-center text-[#faff05]">PROJECTS</h2>
         <p className="text-center font-poppins md:text-lg lg:text-2xl text-white mb-8 md:mb-10">
           Behind every design, there’s a purpose. Behind every project, a result.
@@ -111,7 +111,8 @@ export default function Projects() {
         {/* LISTA DE PROYECTOS - FLEX WRAP CENTRADO */}
         <div className="relative pb-20 md:pb-24">
           {/* centramos TODO el conjunto y damos un gutter mínimo */}
-          <div className="flex flex-wrap justify-center gap-x-2 md:gap-x-3">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap md justify-center md:gap-x-3 gap-3">
+            {/* <div className="flex flex-wrap justify-center gap-x-2 md:gap-x-3"> */}
             {/* ⬇️ REEMPLAZÁ todo el map actual por este */}
             {visibleProjects.map((p, i) => {
               if (isMobile && i >= visibleProjects.length - 2) return null;
@@ -124,7 +125,7 @@ export default function Projects() {
               return (
                 <div
                   key={p.id}
-                  className="basis-1/3 md:basis-1/5 mx-0.5 mb-3 bg-transparent"
+                  className="basis-1/3 md:basis-1/5 mx-0.5 mb-1 bg-transparent"
                   onClick={() => p.gallery.length > 0 && openCarousel(i)}
                 >
                   <div
@@ -171,15 +172,14 @@ export default function Projects() {
             // "View More" — superpuesto sobre las imágenes
             <div className="pointer-events-none absolute inset-x-0 bottom-0 -translate-y-15 md:-translate-y-25 flex flex-col items-center z-30">
               {/* Fade negro suave detrás del botón */}
-              <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[75%] md:w-[83.2%] h-30 bg-gradient-to-t from-black/90 via-black/90 to-transparent"></div>
+              <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[99%] md:w-[83.2%] h-30 bg-gradient-to-t from-black/90 via-black/90 to-transparent"></div>
 
               <button
                 onClick={() => setExpanded(true)}
                 aria-label="View More Projects"
-                className="pointer-events-auto w-[75%] md:w-[85%]
-                          rounded-full px-6 md:px-8 py-3 md:py-3.5 font-poppins font-semibold text-[#faff05]
-                          ring-1 ring-white/90
-                          bg-[linear-gradient(90deg,rgba(109,97,33,1)_0%,rgba(44,39,6,1)_25%,rgba(44,39,6,1)_75%,rgba(109,97,33,1)_100%)]
+                className="pointer-events-auto w-[98%] md:w-[85%]
+                          rounded-full px-6 md:px-8 py-3 md:py-3.5 font-poppins font-semibold text-[#000000]
+                          bg-[#faff05]
                           hover:scale-[1.01] active:scale-[0.99] transition will-change-transform"
               >
                 View More Projects
@@ -192,9 +192,8 @@ export default function Projects() {
                 onClick={() => setExpanded(false)}
                 aria-label="View Less Projects"
                 className="w-[75%] md:w-[85%]
-                          rounded-full px-6 md:px-8 py-3 md:py-3.5 font-poppins font-semibold text-[#faff05]
-                          ring-1 ring-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,.25)]
-                           bg-[linear-gradient(90deg,rgba(148,150,9,1)_0%,rgb(142,127,44)_25%,rgba(82,73,20,1)_50%,rgb(142,127,44)_75%,rgba(148,150,9,1)_100%)]
+                          rounded-full px-6 md:px-8 py-3 md:py-3.5 font-poppins font-semibold text-[#000000]
+                          bg-[#faff05]
                           hover:scale-[1.01] active:scale-[0.99] transition will-change-transform"
               >
                 View Less Projects

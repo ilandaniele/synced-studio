@@ -68,7 +68,7 @@ const GetInTouch: React.FC = () => {
   }, [])
 
   return (
-    <section id="contact" className="w-full text-white py-22 md:py-18 px-4 flex flex-col items-center gap-8 mb-24">
+    <section id="contact" className="w-full rounded-t-[30px] md:rounded-t-[60px] bg-[radial-gradient(140%_120%_at_50%_-10%,#260e00_0%,#0b0602_60%,#000_100%)] text-white py-22 md:py-18 px-4 flex flex-col items-center gap-8 mb-24">
       <div className="text-center flex flex-col gap-1">
         <h2 className="text-3xl md:text-5xl font-bold font-poppins leading-snug text-[#faff05]">
           LET’S DESIGN TO SELL

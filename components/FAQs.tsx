@@ -5,7 +5,7 @@ import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid'
 
 const faqs = [
   {
-    q: 'Why is 3D content better than a traditional photoshoot?',
+    q: 'Why is 3D content better than photoshoots?',
     a: [
       'Traditional photoshoots are slow, expensive, and hard to change once they’re done.',
       'With 3D, you get total flexibility: we can tweak lighting, colors, camera angles, or even product variants without having to reshoot anything.',
@@ -69,7 +69,7 @@ export default function FAQs() {
                              bg-[linear-gradient(135deg,rgba(0,0,0,1)_0%,rgba(0,0,0,1)_50%,rgba(255,255,5,0.05)_100%)]
                              hover:opacity-95"
                 >
-                  <span className="text-left text-lg">{item.q}</span>
+                  <span className="text-left text-xs md:text-lg">{item.q}</span>
                   <div
                     className="p-1 ml-3 rounded-full"
                     style={{ backgroundColor: isOpen ? '#faff05' : '#f7e8d3' }}

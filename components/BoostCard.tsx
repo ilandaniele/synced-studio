@@ -50,11 +50,11 @@ const BoostCard: React.FC<BoostCardProps> = ({
   const headerClass =
     on
       ? (activeColor === 'yellow'
-          ? 'bg-gradient-to-r from-[#1b1711] via-[#2a2516] to-[rgba(250,255,5,0.25)] border-white/12'
-          : 'bg-gradient-to-r from-[#1b1711] via-[#2a2516] to-[rgba(255,77,77,0.28)] border-red-200/20')
+          ? 'bg-gradient-to-r from-[#1b1711] to-[rgba(250,255,5,0.25)] border-white/12'
+          : 'bg-gradient-to-r from-[#1b1711] to-[rgba(255,77,77,0.28)] border-red-200/20')
       : (inactiveColor === 'red'
-          ? 'bg-gradient-to-r from-[#1b1711] via-[#2a2516] to-[rgba(255,77,77,0.28)] border-red-200/20'
-          : 'bg-gradient-to-r from-[#1b1711] via-[#2a2516] to-[rgba(255,255,255,0.16)] border-white/10')
+          ? 'bg-gradient-to-r from-[#1b1711] to-[rgba(255,77,77,0.28)] border-red-200/20'
+          : 'bg-gradient-to-r from-[#1b1711] to-[rgba(255,255,255,0.16)] border-white/10')
 
   const trackClass =
     on

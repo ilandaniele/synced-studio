@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import Link from 'next/link'
 
 type Service = {
   img: string
@@ -7,6 +8,7 @@ type Service = {
   title: string
   copy: string
   cta: string
+  href: string        // ⬅️ destino del CTA
 }
 
 const services: Service[] = [
@@ -20,6 +22,7 @@ const services: Service[] = [
       'without waiting for production. Eye catching,\n' +
       'cost effective, and built to convert.',
     cta: 'See Examples',
+    href: '#projects',          // ⬅️ a Projects
   },
   {
     img: '/images/cine-services.jpg',
@@ -31,6 +34,7 @@ const services: Service[] = [
       'engagement, and drives real sales impact\n' +
       'across every platform.',
     cta: 'Watch Demo',
+    href: '#projects',          // ⬅️ también a Projects
   },
   {
     img: '/images/foco-services.jpg',
@@ -42,10 +46,11 @@ const services: Service[] = [
       'maximize shelf impact, and position you\n' +
       'ahead of the competition.',
     cta: "Let’s Strategy",
+    href: '#contact',           // ⬅️ a Get in Touch (ajustá al id real si es otro)
   },
 ]
 
-const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta }) => (
+const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta, href }) => (
   <div
     className="
       relative isolate overflow-hidden rounded-[24px]
@@ -53,12 +58,10 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta }) => (
       flex flex-col h-full pt-10 pb-7 md:px-9 bg-black
     "
     style={{
-      // inner stroke + glow muy suave (no ensombrece la imagen)
       boxShadow:
         'inset 0 0 0 1px rgba(250,255,5,0.06), inset 0 -80px 120px rgba(160,160,0,0.18)'
     }}
   >
-    {/* línea interior tenue */}
     <span
       aria-hidden
       className="pointer-events-none absolute rounded-[22px]"
@@ -78,33 +81,29 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta }) => (
       }}
     />
 
-    {/* OVERLAY ENCIMA DE LA IMAGEN (NO OSCURECE) */}
+    {/* OVERLAY */}
     <div
       aria-hidden
       className="pointer-events-none absolute inset-0 rounded-[24px] z-[2]"
       style={{
-        // solo ilumina: no baja la opacidad de la imagen
         mixBlendMode: 'screen',
         backgroundImage: `
-          /* brillo oliva desde abajo */
           radial-gradient(120% 70% at 50% 100%,
             rgba(170,180,0,0.36) 0%,
             rgba(120,120,0,0.22) 28%,
             rgba(80,80,0,0.10) 55%,
             rgba(0,0,0,0.00) 72%),
-          /* highlight superior muy leve */
           radial-gradient(140% 35% at 50% 0%,
             rgba(255,255,200,0.12) 0%,
             rgba(255,255,200,0.06) 12%,
             rgba(0,0,0,0.00) 32%)
         `,
-        // que afecte principalmente la franja inferior (30–40%)
         WebkitMaskImage:
           'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 38%, rgba(255,255,255,0) 70%)'
       }}
     />
 
-    {/* CONTENIDO por encima de todo */}
+    {/* CONTENIDO */}
     <div className="relative z-10 flex flex-col flex-1 items-center text-center gap-5 pb-2 md:pb-2 pt-6">
       <h3 className="font-poppins font-extrabold text-white leading-[1.05] text-[7.5vw] md:text-[clamp(22px,2.2vw,32px)]">
         {title.split('\n').map((line, i) => <span key={i} className="block">{line}</span>)}
@@ -112,14 +111,25 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta }) => (
       <p className="font-poppins text-[#faff05] text-[3.3vw] md:text-[clamp(10px,0.95vw,14px)] pb-2 leading-snug max-w-[80ch] whitespace-pre-line">
         {copy}
       </p>
-      <button className="mt-auto inline-flex items-center justify-center rounded-full px-5 py-2.5 bg-[#faff05] text-black font-poppins font-semibold text-[15px] hover:-translate-y-[1px] transition-transform">
+
+      {/* CTA */}
+      <Link
+        href={href}
+        scroll
+        onClick={(e) => {
+          if (href.startsWith('#')) {
+            e.preventDefault()
+            document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        }}
+        role="button"
+        className="mt-auto inline-flex items-center justify-center rounded-full px-5 py-2.5 bg-[#faff05] text-black font-poppins font-semibold text-[15px] hover:-translate-y-[1px] transition-transform"
+      >
         {cta}
-      </button>
+      </Link>
     </div>
   </div>
 )
-
-
 
 const Services: React.FC = () => {
   return (
