@@ -65,9 +65,17 @@ export default function FAQs() {
                   className="w-full flex items-center justify-between pl-6 pr-5 py-4 transition-colors relative z-10
                              !rounded-[10vw] md:!rounded-[3vw]
                              border border-yellow-200/20
-                             bg-[#1a0f0b]
-                             bg-[linear-gradient(135deg,rgba(0,0,0,1)_0%,rgba(0,0,0,1)_50%,rgba(255,255,5,0.05)_100%)]
+                             
                              hover:opacity-95"
+                  style={{
+                  backgroundImage: `
+                    linear-gradient(270deg,
+                      rgba(57, 60, 5, 0.50) 0%,
+                      rgba(57, 60, 5, 0.20) 32%,
+                      rgba(57, 60, 5, 0.04) 62%,
+                      rgba(57, 60, 5, 0.00) 100%)
+                  `
+                }}
                 >
                   <span className="text-left text-xs md:text-lg">{item.q}</span>
                   <div
