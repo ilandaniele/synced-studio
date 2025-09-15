@@ -88,8 +88,8 @@ export default function Testimonials() {
                   linear-gradient(0deg,
                     rgba(57, 60, 5, 0.50) 0%,
                     rgba(57, 60, 5, 0.20) 32%,
-                    rgba(57, 60, 5, 0.04) 62%,
-                    rgba(57, 60, 5, 0.00) 100%)
+                    rgba(0, 0, 0, 0) 62%,
+                    rgba(0, 0, 0, 0) 100%)
                 `
               }}
               aria-hidden="true"
