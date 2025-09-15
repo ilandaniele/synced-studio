@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Bottom bar */}
-      <div className="w-full bg-[#b7b329] py-2.5 md:py-4 px-6 md:px-25 flex flex-col items-center text-center text-sm md:text-base">
+      <div className="w-full bg-[#646602] py-2.5 md:py-4 px-6 md:px-25 flex flex-col items-center text-center text-sm md:text-base">
         <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-black font-poppins underline mb-1 md:mb-2">
           <Link href="/cookies">Política de cookies</Link>
           <Link href="/privacy">Política de privacidad</Link>

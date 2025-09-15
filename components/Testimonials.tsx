@@ -119,8 +119,8 @@ export default function Testimonials() {
   }
 
   return (
-    <section id="comments" className="text-white py-[14vw] md:py-[0vw] overflow-hidden">
-      <h2 className="text-5xl md:text-4xl font-bold text-[#faff05] font-poppins text-center">
+    <section id="comments" className="text-white pt-[2vw] pb-[14vw] md:py-[0vw] overflow-hidden">
+      <h2 className="text-5xl font-bold text-[#faff05] font-poppins text-center">
         PARTNERS REVIEWS
       </h2>
       <p className="text-center font-poppins lg:text-2xl md:text-xl mb-12 px-4 max-w-2xl mx-auto">

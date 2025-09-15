@@ -20,13 +20,13 @@ const faqs = [
     ],
   },
   {
-    q: 'Can you match the style of our current branding?',
+    q: 'Can you match the style of our branding?',
     a: [
       '100%. We study your brand assets, packaging, and previous campaigns to match your visual identity perfectly, or push it to the next level if that’s what you’re looking for.',
     ],
   },
   {
-    q: 'What do I actually receive at the end of a project?',
+    q: 'What’s the final deliverable?',
     a: [
       'You get high-resolution visuals, optimized for your use case:',
       '- Static images (for web, ads, social)',
@@ -49,7 +49,7 @@ export default function FAQs() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section id="faqs" className="py-[14vw] md:py-[6vw] px-4 text-white">
+    <section id="faqs" className="pt-[10vw] pb-[14vw] md:py-[6vw] px-4 text-white">
       <div className="max-w-3xl mx-auto">
         <h2 className="text-center text-5xl font-bold text-[#faff05] font-poppins mb-8">FAQ’s</h2>
 

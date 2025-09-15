@@ -68,7 +68,7 @@ const GetInTouch: React.FC = () => {
   }, [])
 
   return (
-    <section id="contact" className="w-full rounded-t-[30px] md:rounded-t-[60px] bg-[radial-gradient(140%_120%_at_50%_-10%,#260e00_0%,#0b0602_60%,#000_100%)] text-white py-22 md:py-18 px-4 flex flex-col items-center gap-8 mb-24">
+    <section id="contact" className="w-full rounded-t-[30px] md:rounded-t-[60px] bg-[radial-gradient(140%_120%_at_50%_-10%,#351400_0%,#0c0702_70%,#000_100%)] text-white py-14 md:py-18 px-4 flex flex-col items-center gap-8 mb-24">
       <div className="text-center flex flex-col gap-1">
         <h2 className="text-3xl md:text-5xl font-bold font-poppins leading-snug text-[#faff05]">
           LET’S DESIGN TO SELL
@@ -110,13 +110,13 @@ const GetInTouch: React.FC = () => {
             onFocus={() => setSelectOpen(true)}
             onBlur={() => setSelectOpen(false)}
             onChange={() => setSelectOpen(false)} // 👈 cuando seleccionas algo
-            className="w-full h-12 px-5 bg-[rgba(78,58,46,0.3)] text-white text-lg font-poppins rounded-full focus:outline-none appearance-none"
+            className="w-full h-12 px-5 bg-[rgba(78,58,46,0.3)] text-white text-md font-poppins rounded-full focus:outline-none appearance-none"
           >
             <option value="" disabled hidden>
               Select a service you’re interested in
             </option>
-            <option value="3D Modeling">3D Modeling</option>
-            <option value="3D Animation & VFX">3D Animation & VFX</option>
+            <option value="3D Modeling">Fast & Flexible 3D Product Images</option>
+            <option value="3D Animation & VFX">Cinematic 3D Animation & VFX</option>
             <option value="Creative Brand Direction">Creative Brand Direction</option>
           </select>
 

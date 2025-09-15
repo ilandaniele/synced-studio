@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
   }
 
   return (
-    <section id="hero" className="relative w-full overflow-hidden bg-[#060503] flex flex-col items-center justify-center pt-30 md:pt-0 mt-20 md:mt-1">
+    <section id="hero" className="relative w-full overflow-hidden bg-[#000000] flex flex-col items-center justify-center pt-30 md:pt-0 mt-20 md:mt-1">
       {/* Texto */}
       <div className="absolute top-[7.5vw] md:top-[6.5vw] w-full flex flex-col justify-center md:px-35 px-[5vw]">
         <h1

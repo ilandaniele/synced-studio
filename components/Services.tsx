@@ -146,7 +146,7 @@ const Services: React.FC = () => {
         <div className="md:hidden -mx-4">
           <div
             className="
-              flex gap-4 overflow-x-auto px-4 no-scrollbar
+              flex gap-4 overflow-x-auto px-4 scrollbar-hide
               snap-x snap-mandatory scroll-smooth
             "
             aria-label="Services carousel"

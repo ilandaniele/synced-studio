@@ -102,7 +102,7 @@ export default function Projects() {
 
   return (
     <>
-      <section id="projects" className="py-[14vw] md:pt-[6vw] md:pb-[2vw] px-5 md:px-10">
+      <section id="projects" className="pt-[14vw] pb-[6vw] md:pt-[6vw] md:pb-[2vw] px-5 md:px-10">
         <h2 className="text-5xl font-bold font-poppins text-center text-[#faff05]">PROJECTS</h2>
         <p className="text-center font-poppins md:text-lg lg:text-2xl text-white mb-8 md:mb-10">
           Behind every design, there’s a purpose. Behind every project, a result.
@@ -170,9 +170,9 @@ export default function Projects() {
           {/* BOTÓN + FADE */}
           {!expanded ? (
             // "View More" — superpuesto sobre las imágenes
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 -translate-y-15 md:-translate-y-25 flex flex-col items-center z-30">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 -translate-y-15 md:-translate-y-22 flex flex-col items-center z-30">
               {/* Fade negro suave detrás del botón */}
-              <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[99%] md:w-[83.2%] h-30 bg-gradient-to-t from-black/90 via-black/90 to-transparent"></div>
+              <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[99%] md:w-[85%] h-30 bg-gradient-to-t from-black/90 via-black/90 to-transparent"></div>
 
               <button
                 onClick={() => setExpanded(true)}
@@ -191,7 +191,7 @@ export default function Projects() {
               <button
                 onClick={() => setExpanded(false)}
                 aria-label="View Less Projects"
-                className="w-[75%] md:w-[85%]
+                className="w-[98%] md:w-[85%]
                           rounded-full px-6 md:px-8 py-3 md:py-3.5 font-poppins font-semibold text-[#000000]
                           bg-[#faff05]
                           hover:scale-[1.01] active:scale-[0.99] transition will-change-transform"
