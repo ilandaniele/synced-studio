@@ -22,7 +22,7 @@ const services: Service[] = [
       'without waiting for production. Eye catching,\n' +
       'cost effective, and built to convert.',
     cta: 'See Examples',
-    href: '#projects',          // ⬅️ a Projects
+    href: '#projects',
   },
   {
     img: '/images/cine-services.jpg',
@@ -34,7 +34,7 @@ const services: Service[] = [
       'engagement, and drives real sales impact\n' +
       'across every platform.',
     cta: 'Watch Demo',
-    href: '#projects',          // ⬅️ también a Projects
+    href: '#projects',
   },
   {
     img: '/images/foco-services.jpg',
@@ -46,7 +46,7 @@ const services: Service[] = [
       'maximize shelf impact, and position you\n' +
       'ahead of the competition.',
     cta: "Let’s Strategy",
-    href: '#contact',           // ⬅️ a Get in Touch (ajustá al id real si es otro)
+    href: '#contact',
   },
 ]
 
@@ -57,10 +57,10 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta, href }) => (
       border border-yellow-200/20
       flex flex-col h-full pt-10 pb-7 md:px-9 bg-black
     "
-    style={{
-      boxShadow:
-        'inset 0 0 0 1px rgba(250,255,5,0.06), inset 0 -80px 120px rgba(160,160,0,0.18)'
-    }}
+    // style={{
+    //   boxShadow:
+    //     'inset 0 0 0 1px rgba(250,255,5,0.06), inset 0 -80px 120px rgba(160,160,0,0.18)'
+    // }}
   >
     <span
       aria-hidden
@@ -81,25 +81,20 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta, href }) => (
       }}
     />
 
-    {/* OVERLAY */}
+    {/* OVERLAY (solo desde abajo, sin halo arriba ni en esquinas) */}
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 rounded-[24px] z-[2]"
+      className="pointer-events-none absolute inset-[1px] rounded-[23px] z-[2]" // ⬅️ 1px para evitar anti-alias en el borde
       style={{
         mixBlendMode: 'screen',
         backgroundImage: `
-          radial-gradient(120% 70% at 50% 100%,
+          radial-gradient(120% 85% at 50% 120%,
             rgba(170,180,0,0.36) 0%,
             rgba(120,120,0,0.22) 28%,
             rgba(80,80,0,0.10) 55%,
-            rgba(0,0,0,0.00) 72%),
-          radial-gradient(140% 35% at 50% 0%,
-            rgba(255,255,200,0.12) 0%,
-            rgba(255,255,200,0.06) 12%,
-            rgba(0,0,0,0.00) 32%)
-        `,
-        WebkitMaskImage:
-          'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 38%, rgba(255,255,255,0) 70%)'
+            rgba(0,0,0,0.00) 72%)
+        ` // ⬅️ Centro desplazado debajo del card; no llega arriba/ esquinas
+        // WebkitMaskImage eliminado: ya no hace falta
       }}
     />
 

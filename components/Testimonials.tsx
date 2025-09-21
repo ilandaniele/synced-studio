@@ -34,7 +34,6 @@ export default function Testimonials() {
     const step = () => {
       if (contentRef.current) {
         const width = contentRef.current.scrollWidth / 2
-        // si está pausado, no movemos
         const speed = isPausedRef.current ? 0 : speedRef.current
         posRef.current -= speed
         if (Math.abs(posRef.current) >= width) posRef.current = 0
@@ -69,32 +68,21 @@ export default function Testimonials() {
         ref={contentRef}
         onMouseEnter={() => { isPausedRef.current = true }}
         onMouseLeave={() => { isPausedRef.current = false }}
-        // opcional mobile:
         onTouchStart={() => { isPausedRef.current = true }}
         onTouchEnd={() => { isPausedRef.current = false }}
       >
         {looped.map((t, i) => (
           <div
             key={i}
-            className="relative rounded-4xl flex-shrink-0 border border-yellow-200/20 flex flex-col overflow-hidden"
-            style={{ width: 370, minHeight: 240 }}
+            className="relative rounded-4xl flex-shrink-0 border border-yellow-200/20 flex flex-col overflow-hidden bg-black bg-clip-padding"
+            style={{
+              width: 370,
+              minHeight: 240,
+              // Gradiente más fuerte abajo (to top) con tus mismos stops:
+              backgroundImage:
+                'linear-gradient(to top, rgba(57,60,5,0.50) 0%, rgba(57,60,5,0.20) 32%, rgba(57,60,5,0.00) 62%, rgba(57,60,5,0.00) 100%)'
+            }}
           >
-            {/* Overlay linear invertido (más fuerte abajo), sin tocar el borde */}
-            <div
-              className="pointer-events-none absolute inset-px mix-blend-screen"
-              style={{
-                borderRadius: 'calc(2rem - 1px)',
-                backgroundImage: `
-                  linear-gradient(0deg,
-                    rgba(57, 60, 5, 0.50) 0%,
-                    rgba(57, 60, 5, 0.20) 32%,
-                    rgba(0, 0, 0, 0) 62%,
-                    rgba(0, 0, 0, 0) 100%)
-                `
-              }}
-              aria-hidden="true"
-            />
-
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex items-center h-32 px-9 pt-6 relative">
                 <div className="relative w-17 h-17 rounded-xl overflow-hidden flex-shrink-0 z-0">
