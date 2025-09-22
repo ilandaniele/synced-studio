@@ -1,71 +1,48 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import Image from 'next/image'
+import { PROJECTS } from '@/constants/projects'
+import { useIsMobile } from '@/hooks'
 
-interface Project {
-  id: number
-  title: string
-  subtitle: string
-  thumb: string
-  gallery: string[],
-  disappearOnMobile?: boolean
-}
 
-const projects: Project[] = [
-  { id: 1,  title: "Hershey's",     subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/hersheys/1.jpg',        gallery: ['/images/projects/hersheys/1.jpg'] },
-  { id: 2,  title: 'Perfect Ted',   subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/perfect_ted/1.jpg',     gallery: ['/images/projects/perfect_ted/1.jpg', '/images/projects/perfect_ted/2.jpg'] },
-  { id: 3,  title: 'Raise',         subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/raise/1.jpg',           gallery: ['/images/projects/raise/1.jpg', '/images/projects/raise/2.jpg', '/images/projects/raise/3.jpg', '/images/projects/raise/4.jpg', '/images/projects/raise/5.jpg', '/images/projects/raise/6.jpg'] },
-  { id: 4,  title: "Reese's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/reeses/1.jpg',          gallery: ['/images/projects/reeses/1.jpg', '/images/projects/reeses/2.jpg', '/images/projects/reeses/3.jpg', '/images/projects/reeses/4.jpg', '/images/projects/reeses/5.jpg', '/images/projects/reeses/6.mp4', '/images/projects/reeses/7.jpg'] },
-  { id: 5,  title: 'Monaco', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/monaco/1.jpg', gallery: ['/images/projects/monaco/1.jpg'] },
-  { id: 6, title: 'Glad',          subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/glad/1.jpg',            gallery: ['/images/projects/glad/1.jpg', '/images/projects/glad/2.jpg', '/images/projects/glad/3.jpg'] },
-  { id: 7, title: 'Zumino',        subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/zumino/1.jpg',          gallery: ['/images/projects/zumino/1.jpg', '/images/projects/zumino/2.mp4'] },
-  { id: 8,  title: 'Huel',          subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/huel/1.jpg',            gallery: ['/images/projects/huel/1.jpg', '/images/projects/huel/2.png', '/images/projects/huel/3.jpg', '/images/projects/huel/4.mp4'] },
-  { id: 9,  title: 'Aquela Kombucha', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/aquela_kombucha/1.jpg', gallery: ['/images/projects/aquela_kombucha/1.jpg', '/images/projects/aquela_kombucha/2.jpg', '/images/projects/aquela_kombucha/3.mp4', '/images/projects/aquela_kombucha/4.jpg', '/images/projects/aquela_kombucha/5.jpg', '/images/projects/aquela_kombucha/6.jpg'] },
-  // { id: 6,  title: "Diana's",       subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/dianas/1.jpg',          gallery: ['/images/projects/dianas/1.jpg'] },
-  // { id: 8, title: 'Almonds & Chocos', subtitle: '01. Layout Design & 3D Modeling', thumb: '/images/projects/almonds/1.jpg',      gallery: ['/images/projects/almonds/1.jpg', '/images/projects/almonds/2.jpg', '/images/projects/almonds/3.jpg', '/images/projects/almonds/4.jpg', '/images/projects/almonds/5.jpg'] },
-  { id: 10,  title: '', subtitle: '', thumb: '', gallery: [], disappearOnMobile: false },
-  { id: 11,  title: '', subtitle: '', thumb: '', gallery: [], disappearOnMobile: true },
-  { id: 12,  title: '', subtitle: '', thumb: '', gallery: [], disappearOnMobile: true }
-]
+
+
 
 export default function Projects() {
   const [openModal, setOpenModal] = useState(false)
   const [activeProjectIdx, setActiveProjectIdx] = useState<number>(0)
   const [activeGalleryIdx, setActiveGalleryIdx] = useState<number>(0)
-  const [isMobile, setIsMobile] = useState(false)
+  const isMobile = useIsMobile()
   const [expanded, setExpanded] = useState(false)
 
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
-
   const visibleProjects = React.useMemo(() => {
-    if (expanded) return projects
-    const onlyWithThumb = projects.filter(p => p.thumb)
-    return onlyWithThumb.slice(0, 8)
+    if (expanded) return PROJECTS
+    const projectsWithThumbnails = PROJECTS.filter(p => p.thumb)
+    return projectsWithThumbnails.slice(0, 8)
   }, [expanded])
 
-  const openCarousel = (visibleIndex: number) => {
-    const proj = visibleProjects[visibleIndex]
-    if (!proj || proj.gallery.length === 0) return
-    const realIdx = projects.findIndex(p => p.id === proj.id)
-    if (realIdx !== -1) {
-      setActiveProjectIdx(realIdx)
+  const openCarousel = useCallback((visibleIndex: number) => {
+    const selectedProject = visibleProjects[visibleIndex]
+    if (!selectedProject || selectedProject.gallery.length === 0) return
+    const projectIndex = PROJECTS.findIndex(p => p.id === selectedProject.id)
+    if (projectIndex !== -1) {
+      setActiveProjectIdx(projectIndex)
       setActiveGalleryIdx(0)
       setOpenModal(true)
     }
-  }
+  }, [visibleProjects])
 
-  const project = projects[activeProjectIdx] || { gallery: [], title: '', subtitle: '' }
-  const gallery = project.gallery || []
-  const total = gallery.length
-  const prev = () => { if (total > 0) setActiveGalleryIdx(i => (i - 1 + total) % total) }
-  const next = () => { if (total > 0) setActiveGalleryIdx(i => (i + 1) % total) }
+  const currentProject = PROJECTS[activeProjectIdx] || { gallery: [], title: '', subtitle: '' }
+  const galleryItems = currentProject.gallery || []
+  const totalItems = galleryItems.length
+  const prev = useCallback(() => { 
+    if (totalItems > 0) setActiveGalleryIdx(i => (i - 1 + totalItems) % totalItems) 
+  }, [totalItems])
+  const next = useCallback(() => { 
+    if (totalItems > 0) setActiveGalleryIdx(i => (i + 1) % totalItems) 
+  }, [totalItems])
 
-  const renderMedia = (src: string, className = '') => {
+  const renderMedia = useCallback((src: string, className = '') => {
     if (src.endsWith('.mp4')) {
       return (
         <video
@@ -85,9 +62,9 @@ export default function Projects() {
         unoptimized
       />
     )
-  }
+  }, [])
 
-  const Placeholder = () => (
+  const Placeholder = React.memo(() => (
     <div className="absolute inset-px rounded-2xl flex items-center justify-center bg-[#000000] ring-1 ring-white/20">
       <Image
         src="placeholder.svg"
@@ -98,7 +75,8 @@ export default function Projects() {
         priority
       />
     </div>
-  )
+  ))
+  Placeholder.displayName = 'Placeholder'
 
   return (
     <>
@@ -216,8 +194,8 @@ export default function Projects() {
               } bg-black border border-white/20 rounded-full flex items-center justify-between z-30 shadow-lg px-4 md:px-6 py-3 md:py-4 gap-4`}
             >
               <div className="text-white font-poppins text-sm md:text-md flex flex-col flex-grow truncate">
-                <div className="font-bold leading-tight">{project.title}</div>
-                <div className="text-white/70 leading-tight">{project.subtitle}</div>
+                <div className="font-bold leading-tight">{currentProject.title}</div>
+                <div className="text-white/70 leading-tight">{currentProject.subtitle}</div>
               </div>
               <button
                 onClick={() => setOpenModal(false)}
@@ -232,13 +210,13 @@ export default function Projects() {
 
             <div className={`flex items-center relative ${isMobile ? 'gap-4' : 'justify-center gap-8 overflow-hidden'}`}>
               {isMobile ? (
-                total === 1 ? (
+                totalItems === 1 ? (
                   <div className="w-[90vw] max-w-[520px] mx-auto">
-                    {renderMedia(gallery[0])}
+                    {renderMedia(galleryItems[0])}
                   </div>
                 ) : (
                   <div className="overflow-x-auto scroll-snap-x snap-x snap-mandatory scrollbar-hide gap-4 flex w-full">
-                    {gallery.map((src, idx) => (
+                    {galleryItems.map((src: string, idx: number) => (
                       <div key={idx} className="flex-shrink-0 w-[85%] max-w-[500px] snap-center flex justify-center px-2">
                         <div className="w-full">{renderMedia(src)}</div>
                       </div>
@@ -246,19 +224,19 @@ export default function Projects() {
                   </div>
                 )
               ) : (
-                total === 1 ? (
+                totalItems === 1 ? (
                   <div className="flex-shrink-0 w-[300px] mx-auto transform transition-all duration-300 scale-100 opacity-100">
-                    {renderMedia(gallery[0])}
+                    {renderMedia(galleryItems[0])}
                   </div>
                 ) : (
                   [activeGalleryIdx - 1, activeGalleryIdx, activeGalleryIdx + 1].map((offset, pos) => {
-                    const idx = (offset + total) % total
+                    const itemIndex = (offset + totalItems) % totalItems
                     return (
                       <div
                         key={pos}
                         className={`flex-shrink-0 w-[300px] transform transition-all duration-300 ${pos === 1 ? 'scale-100 opacity-100' : 'scale-75 opacity-100'}`}
                       >
-                        {renderMedia(gallery[idx])}
+                        {renderMedia(galleryItems[itemIndex])}
                       </div>
                     )
                   })
@@ -266,7 +244,7 @@ export default function Projects() {
               )}
             </div>
 
-            {total > 1 && (
+            {totalItems > 1 && (
               <>
                 <button
                   onClick={prev}
