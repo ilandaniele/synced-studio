@@ -17,9 +17,9 @@ const services: Service[] = [
     imgAlt: '3D gold can',
     title: 'Fast & Flexible\n3D Product Images',
     copy:
-      'Accelerate your go to market. Our 3D product\n' +
-      'visuals let you test, launch, and sell faster,\n' +
-      'without waiting for production. Eye catching,\n' +
+      'Accelerate your go to market. Our 3D product ' +
+      'visuals let you test, launch, and sell faster, ' +
+      'without waiting for production. Eye catching, ' +
       'cost effective, and built to convert.',
     cta: 'See Examples',
     href: '#projects',
@@ -29,9 +29,9 @@ const services: Service[] = [
     imgAlt: 'Gold clapperboard',
     title: 'Cinematic 3D\nAnimation & VFX',
     copy:
-      'Stories sell. We create cinematic 3D content\n' +
-      'that hooks your audience in seconds, boosts\n' +
-      'engagement, and drives real sales impact\n' +
+      'Stories sell. We create cinematic 3D content ' +
+      'that hooks your audience in seconds, boosts ' +
+      'engagement, and drives real sales impact ' +
       'across every platform.',
     cta: 'Watch Demo',
     href: '#projects',
@@ -41,11 +41,24 @@ const services: Service[] = [
     imgAlt: 'Gold lightbulb',
     title: 'Creative\nBrand Direction',
     copy:
-      'Consistency builds brands. We craft clear,\n' +
-      'strategic visuals that strengthen recognition,\n' +
-      'maximize shelf impact, and position you\n' +
+      'Consistency builds brands. We craft clear, ' +
+      'strategic visuals that strengthen recognition, ' +
+      'maximize shelf impact, and position you ' +
       'ahead of the competition.',
     cta: "Let’s Strategy",
+    href: '#contact',
+  },
+  // ✅ Nuevo servicio (placeholder image por ahora)
+  {
+    img: '/images/placeholder-services.jpg', // poné el asset que quieras luego
+    imgAlt: 'Placeholder',
+    title: 'Hire Us\nMonthly Partner',
+    copy:
+      'Work with us on a monthly retainer. Send as many ' +
+      'requests as you want within scope, we handle, refine, ' +
+      'and deliver fast. Priority queue, weekly check-ins, ' +
+      'and rapid turnarounds—your creative team on demand.',
+    cta: 'Hire Us',
     href: '#contact',
   },
 ]
@@ -55,12 +68,8 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta, href }) => (
     className="
       relative isolate overflow-hidden rounded-[24px]
       border border-yellow-200/20
-      flex flex-col h-full pt-10 pb-7 md:px-9 bg-black
+      flex flex-col h-full pt-8 pb-6 md:px-7 bg-black
     "
-    // style={{
-    //   boxShadow:
-    //     'inset 0 0 0 1px rgba(250,255,5,0.06), inset 0 -80px 120px rgba(160,160,0,0.18)'
-    // }}
   >
     <span
       aria-hidden
@@ -72,7 +81,7 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta, href }) => (
     <div
       role="img"
       aria-label={imgAlt}
-      className="relative z-0 w-full h-[170px] md:h-[150px] lg:h-[170px] rounded-[24px]"
+      className="relative z-0 w-full h-[150px] md:h-[130px] lg:h-[150px] rounded-[24px]"
       style={{
         backgroundImage: `url(${img})`,
         backgroundRepeat: 'no-repeat',
@@ -84,7 +93,7 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta, href }) => (
     {/* OVERLAY (solo desde abajo, sin halo arriba ni en esquinas) */}
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-[1px] rounded-[23px] z-[2]" // ⬅️ 1px para evitar anti-alias en el borde
+      className="pointer-events-none absolute inset-[1px] rounded-[23px] z-[2]"
       style={{
         mixBlendMode: 'screen',
         backgroundImage: `
@@ -93,17 +102,16 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta, href }) => (
             rgba(120,120,0,0.22) 28%,
             rgba(80,80,0,0.10) 55%,
             rgba(0,0,0,0.00) 72%)
-        ` // ⬅️ Centro desplazado debajo del card; no llega arriba/ esquinas
-        // WebkitMaskImage eliminado: ya no hace falta
+        `
       }}
     />
 
     {/* CONTENIDO */}
-    <div className="relative z-10 flex flex-col flex-1 items-center text-center gap-5 pb-2 md:pb-2 pt-6">
-      <h3 className="font-poppins font-extrabold text-white leading-[1.05] text-[7.5vw] md:text-[clamp(22px,2.2vw,32px)]">
+    <div className="relative z-10 flex flex-col flex-1 items-center text-center gap-4 pb-2 md:pb-2 pt-5">
+      <h3 className="font-poppins font-extrabold text-white leading-[1.05] text-[6.5vw] md:text-[1.7vw]">
         {title.split('\n').map((line, i) => <span key={i} className="block">{line}</span>)}
       </h3>
-      <p className="font-poppins text-[#faff05] text-[3.3vw] md:text-[clamp(10px,0.95vw,14px)] pb-2 leading-snug max-w-[80ch] whitespace-pre-line">
+      <p className="font-poppins text-[#faff05] text-[3vw] md:text-[0.9vw] leading-snug whitespace-pre-line px-5 md:px-0">
         {copy}
       </p>
 
@@ -118,7 +126,7 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta, href }) => (
           }
         }}
         role="button"
-        className="mt-auto inline-flex items-center justify-center rounded-full px-5 py-2.5 bg-[#faff05] text-black font-poppins font-semibold text-[15px] hover:-translate-y-[1px] transition-transform"
+        className="mt-auto inline-flex items-center justify-center rounded-full px-5 py-2 bg-[#faff05] text-black font-poppins font-semibold text-[14px] hover:-translate-y-[1px] transition-transform"
       >
         {cta}
       </Link>
@@ -155,8 +163,8 @@ const Services: React.FC = () => {
           </div>
         </div>
 
-        {/* Desktop: 3 columnas */}
-        <div className="hidden md:flex justify-center gap-6">
+        {/* Desktop: 4 columnas (mantiene tamaños) */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((s, i) => (
             <Card key={i} {...s} />
           ))}
