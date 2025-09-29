@@ -1,88 +1,131 @@
 ﻿'use client'
 import React from 'react'
 import Link from 'next/link'
-import { SERVICES } from '@/constants/services'
-import { smoothScrollToElement } from '@/lib/utils'
-import type { Service } from '@/types'
 
-// ServiceCard component
-const ServiceCard = React.memo<Service>(({ img, imgAlt, title, copy, cta, href }) => {
-  const handleClick = React.useCallback((e: React.MouseEvent) => {
-    if (href.startsWith('#')) {
-      e.preventDefault()
-      smoothScrollToElement(href)
-    }
-  }, [href])
+type Service = {
+  img: string
+  imgAlt: string
+  title: string
+  copy: string
+  cta: string
+  href: string        // ⬅️ destino del CTA
+}
 
-  return (
+const services: Service[] = [
+  {
+    img: '/images/lata-services.jpg',
+    imgAlt: '3D gold can',
+    title: 'Fast & Flexible\n3D Product Images',
+    copy:
+      'Accelerate your go to market. Our 3D product\n' +
+      'visuals let you test, launch, and sell faster,\n' +
+      'without waiting for production. Eye catching,\n' +
+      'cost effective, and built to convert.',
+    cta: 'See Examples',
+    href: '#projects',
+  },
+  {
+    img: '/images/cine-services.jpg',
+    imgAlt: 'Gold clapperboard',
+    title: 'Cinematic 3D\nAnimation & VFX',
+    copy:
+      'Stories sell. We create cinematic 3D content\n' +
+      'that hooks your audience in seconds, boosts\n' +
+      'engagement, and drives real sales impact\n' +
+      'across every platform.',
+    cta: 'Watch Demo',
+    href: '#projects',
+  },
+  {
+    img: '/images/foco-services.jpg',
+    imgAlt: 'Gold lightbulb',
+    title: 'Creative\nBrand Direction',
+    copy:
+      'Consistency builds brands. We craft clear,\n' +
+      'strategic visuals that strengthen recognition,\n' +
+      'maximize shelf impact, and position you\n' +
+      'ahead of the competition.',
+    cta: "Let’s Strategy",
+    href: '#contact',
+  },
+]
+
+const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta, href }) => (
+  <div
+    className="
+      relative isolate overflow-hidden rounded-[24px]
+      border border-yellow-200/20
+      flex flex-col h-full pt-10 pb-7 md:px-9 bg-black
+    "
+    // style={{
+    //   boxShadow:
+    //     'inset 0 0 0 1px rgba(250,255,5,0.06), inset 0 -80px 120px rgba(160,160,0,0.18)'
+    // }}
+  >
+    <span
+      aria-hidden
+      className="pointer-events-none absolute rounded-[22px]"
+      style={{ boxShadow: 'inset 0 0 0 1px rgba(250,255,5,0.08)' }}
+    />
+
+    {/* IMAGEN */}
     <div
-      className="
-        relative isolate overflow-hidden rounded-[24px]
-        border border-yellow-200/20
-        flex flex-col h-full pt-8 pb-6 md:px-7 bg-black
-      "
-    >
-      <span
-        aria-hidden
-        className="pointer-events-none absolute rounded-[22px]"
-        style={{ boxShadow: 'inset 0 0 0 1px rgba(250,255,5,0.08)' }}
-      />
+      role="img"
+      aria-label={imgAlt}
+      className="relative z-0 w-full h-[170px] md:h-[150px] lg:h-[170px] rounded-[24px]"
+      style={{
+        backgroundImage: `url(${img})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        backgroundSize: 'contain'
+      }}
+    />
 
-      {/* IMAGEN */}
-      <div
-        role="img"
-        aria-label={imgAlt}
-        className="relative z-0 w-full h-[170px] md:h-[150px] lg:h-[170px] rounded-[24px]"
-        style={{
-          backgroundImage: `url(${img})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundSize: 'contain'
+    {/* OVERLAY (solo desde abajo, sin halo arriba ni en esquinas) */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-[1px] rounded-[23px] z-[2]" // ⬅️ 1px para evitar anti-alias en el borde
+      style={{
+        mixBlendMode: 'screen',
+        backgroundImage: `
+          radial-gradient(120% 85% at 50% 120%,
+            rgba(170,180,0,0.36) 0%,
+            rgba(120,120,0,0.22) 28%,
+            rgba(80,80,0,0.10) 55%,
+            rgba(0,0,0,0.00) 72%)
+        ` // ⬅️ Centro desplazado debajo del card; no llega arriba/ esquinas
+        // WebkitMaskImage eliminado: ya no hace falta
+      }}
+    />
+
+    {/* CONTENIDO */}
+    <div className="relative z-10 flex flex-col flex-1 items-center text-center gap-5 pb-2 md:pb-2 pt-6">
+      <h3 className="font-poppins font-extrabold text-white leading-[1.05] text-[7.5vw] md:text-[clamp(22px,2.2vw,32px)]">
+        {title.split('\n').map((line, i) => <span key={i} className="block">{line}</span>)}
+      </h3>
+      <p className="font-poppins text-[#faff05] text-[3.3vw] md:text-[clamp(10px,0.95vw,14px)] pb-2 leading-snug max-w-[80ch] whitespace-pre-line">
+        {copy}
+      </p>
+
+      {/* CTA */}
+      <Link
+        href={href}
+        scroll
+        onClick={(e) => {
+          if (href.startsWith('#')) {
+            e.preventDefault()
+            document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
         }}
-      />
-
-      {/* OVERLAY */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-[1px] rounded-[23px] z-[2]"
-        style={{
-          mixBlendMode: 'screen',
-          backgroundImage: `
-            radial-gradient(120% 85% at 50% 120%,
-              rgba(170,180,0,0.36) 0%,
-              rgba(120,120,0,0.22) 28%,
-              rgba(80,80,0,0.10) 55%,
-              rgba(0,0,0,0.00) 72%)
-          `
-        }}
-      />
-
-      {/* CONTENIDO */}
-      <div className="relative z-10 flex flex-col flex-1 items-center text-center gap-4 pb-2 md:pb-2 pt-5">
-        <h3 className="font-poppins font-extrabold text-white leading-[1.05] text-[6.5vw] md:text-[1.7vw]">
-          {title.split('\n').map((line, i) => <span key={i} className="block">{line}</span>)}
-        </h3>
-        <p className="font-poppins text-[#faff05] text-[3vw] md:text-[0.9vw] leading-snug whitespace-pre-line px-5 md:px-0">
-          {copy}
-        </p>
-
-        {/* CTA */}
-        <Link
-          href={href}
-          scroll
-          onClick={handleClick}
-          role="button"
-          className="mt-auto inline-flex items-center justify-center rounded-full px-5 py-2 bg-[#faff05] text-black font-poppins font-semibold text-[14px] hover:-translate-y-[1px] transition-transform"
-        >
-          {cta}
-        </Link>
-      </div>
+        role="button"
+        className="mt-auto inline-flex items-center justify-center rounded-full px-5 py-2.5 bg-[#faff05] text-black font-poppins font-semibold text-[15px] hover:-translate-y-[1px] transition-transform"
+      >
+        {cta}
+      </Link>
     </div>
-  )
-})
-ServiceCard.displayName = 'ServiceCard'
+  </div>
+)
 
-// Main Services component
 const Services: React.FC = () => {
   return (
     <section id="services" className="text-white py-[12vw] md:py-[6vw]">
@@ -103,19 +146,19 @@ const Services: React.FC = () => {
             "
             aria-label="Services carousel"
           >
-            {SERVICES.map((service, index) => (
-              <div key={index} className="snap-center shrink-0 w-[88vw]">
-                <ServiceCard {...service} />
+            {services.map((s, i) => (
+              <div key={i} className="snap-center shrink-0 w-[88vw]">
+                <Card {...s} />
               </div>
             ))}
             <div className="shrink-0 w-[4vw]" />
           </div>
         </div>
 
-        {/* Desktop: 4 columnas */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {SERVICES.map((service, index) => (
-            <ServiceCard key={index} {...service} />
+        {/* Desktop: 3 columnas */}
+        <div className="hidden md:flex justify-center gap-6">
+          {services.map((s, i) => (
+            <Card key={i} {...s} />
           ))}
         </div>
       </div>
