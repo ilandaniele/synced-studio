@@ -56,11 +56,8 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta, href }) => (
       relative isolate overflow-hidden rounded-[24px]
       border border-yellow-200/20
       flex flex-col h-full pt-10 pb-7 md:px-9 bg-black
+      transform transition-transform duration-300 hover:scale-110
     "
-    // style={{
-    //   boxShadow:
-    //     'inset 0 0 0 1px rgba(250,255,5,0.06), inset 0 -80px 120px rgba(160,160,0,0.18)'
-    // }}
   >
     <span
       aria-hidden
@@ -81,10 +78,10 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta, href }) => (
       }}
     />
 
-    {/* OVERLAY (solo desde abajo, sin halo arriba ni en esquinas) */}
+    {/* OVERLAY */}
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-[1px] rounded-[23px] z-[2]" // ⬅️ 1px para evitar anti-alias en el borde
+      className="pointer-events-none absolute inset-[1px] rounded-[23px] z-[2]"
       style={{
         mixBlendMode: 'screen',
         backgroundImage: `
@@ -93,15 +90,16 @@ const Card: React.FC<Service> = ({ img, imgAlt, title, copy, cta, href }) => (
             rgba(120,120,0,0.22) 28%,
             rgba(80,80,0,0.10) 55%,
             rgba(0,0,0,0.00) 72%)
-        ` // ⬅️ Centro desplazado debajo del card; no llega arriba/ esquinas
-        // WebkitMaskImage eliminado: ya no hace falta
+        `
       }}
     />
 
     {/* CONTENIDO */}
     <div className="relative z-10 flex flex-col flex-1 items-center text-center gap-5 pb-2 md:pb-2 pt-6">
       <h3 className="font-poppins font-extrabold text-white leading-[1.05] text-[7.5vw] md:text-[clamp(22px,2.2vw,32px)]">
-        {title.split('\n').map((line, i) => <span key={i} className="block">{line}</span>)}
+        {title.split('\n').map((line, i) => (
+          <span key={i} className="block">{line}</span>
+        ))}
       </h3>
       <p className="font-poppins text-[#faff05] text-[3.3vw] md:text-[clamp(10px,0.95vw,14px)] pb-2 leading-snug max-w-[80ch] whitespace-pre-line">
         {copy}

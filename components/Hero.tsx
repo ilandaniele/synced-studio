@@ -8,21 +8,31 @@ const Hero: React.FC = () => {
   // Mobile (sigue igual: cambia contenido con el toggle)
   const [boostOn, setBoostOn] = React.useState(true)
 
-  // Desktop: exclusión mutua
+  // Desktop: exclusión mutua con “al menos uno activo” (B arranca activo)
   const [panelAOn, setPanelAOn] = React.useState(false) // A arranca gris (off)
   const [panelBOn, setPanelBOn] = React.useState(true)  // B arranca amarillo (on)
 
+  // Solo aplicar lógica en desktop
+  const isDesktop = () =>
+    typeof window !== 'undefined' &&
+    window.matchMedia('(min-width: 768px)').matches
+
+  // Nunca quedan ambos desactivados: si A cambia, B = !A
   const handleToggleA = () => {
+    if (!isDesktop()) return
     setPanelAOn(prev => {
       const next = !prev
-      if (next) setPanelBOn(false) // si A se activa (rojo), B -> gris
+      setPanelBOn(!next) // espejo: si A se apaga, B se enciende; si A se enciende, B se apaga
       return next
     })
   }
+
+  // Nunca quedan ambos desactivados: si B cambia, A = !B
   const handleToggleB = () => {
+    if (!isDesktop()) return
     setPanelBOn(prev => {
       const next = !prev
-      if (next) setPanelAOn(false) // si B se activa (amarillo), A -> gris
+      setPanelAOn(!next) // espejo: si B se apaga, A se enciende; si B se enciende, A se apaga
       return next
     })
   }
@@ -87,7 +97,7 @@ const Hero: React.FC = () => {
         />
       </div>
 
-      {/* Mobile: contenido cambia según toggle */}
+      {/* Mobile: contenido cambia según toggle (sin cambios) */}
       <BoostCard
         on={boostOn}
         onToggle={() => setBoostOn(v => !v)}
@@ -96,7 +106,7 @@ const Hero: React.FC = () => {
         className="absolute z-10 md:hidden md:top-[30vw] top-[40vw] w-[90vw] max-w-[90vw] md:w-[55vw] md:max-w-[60vw]"
       />
 
-      {/* Desktop: Panel A (izq) -> título y contenido fijos NEGATIVOS */}
+      {/* Desktop: Panel A (negativo) */}
       <BoostCard
         on={panelAOn}
         onToggle={handleToggleA}
@@ -109,7 +119,7 @@ const Hero: React.FC = () => {
         className="hidden md:block absolute z-10 md:left-[7vw] md:top-[12vw] xl:top-[16vw] md:w-[40vw] md:max-w-[28vw]"
       />
 
-      {/* Desktop: Panel B (der) -> título y contenido fijos POSITIVOS */}
+      {/* Desktop: Panel B (positivo) */}
       <BoostCard
         on={panelBOn}
         onToggle={handleToggleB}
