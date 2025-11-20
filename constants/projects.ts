@@ -50,7 +50,7 @@ export const PROJECTS: Project[] = [
     title: 'Monaco',
     subtitle: '01. Layout Design & 3D Modeling',
     thumb: '/images/projects/monaco/1.jpg',
-    gallery: ['/images/projects/monaco/1.jpg']
+    gallery: ['/images/projects/monaco/1.jpg', '/images/projects/monaco/2.jpg', '/images/projects/monaco/3.jpg']
   },
   {
     id: 6,
