@@ -5,17 +5,53 @@ import Link from 'next/link'
 import { PROJECTS } from '@/constants/projects'
 import { useIsMobile } from '@/hooks'
 
-// Mapeo de fotos de personas por proyecto
-const projectPersonPhotos: Record<string, string> = {
-  "Hershey's": '/images/THEREALSTUDIO_person.jpg',
-  'Perfect Ted': '/images/PerfectTed_person.jpg',
-  'Raise': '/images/THEREALSTUDIO_person.jpg',
-  "Reese's": '/images/Reeses_person.jpg',
-  'Monaco': '/images/THEREALSTUDIO_person.jpg',
-  'Glad': '/images/glad_person.jpg',
-  'Zumino': '/images/THEREALSTUDIO_person.jpg',
-  'Huel': '/images/THEREALSTUDIO_person.jpg',
-  'Aquela Kombucha': '/images/aquelaKombucha_person.jpg',
+// Mapeo de datos de clientes por proyecto
+const projectClientData: Record<string, { photo: string; name: string; role: string }> = {
+  "Hershey's": {
+    photo: '/images/THEREALSTUDIO_person.jpg',
+    name: 'Jose Real',
+    role: "Hershey's"
+  },
+  'Perfect Ted': {
+    photo: '/images/PerfectTed_person.jpg',
+    name: 'Marisa Poster',
+    role: "PerfectTed's Founder"
+  },
+  'Raise': {
+    photo: '/images/THEREALSTUDIO_person.jpg',
+    name: 'Jose Real',
+    role: 'Raise'
+  },
+  "Reese's": {
+    photo: '/images/Reeses_person.jpg',
+    name: 'Fred Trevor',
+    role: "Reese's Graphic Designer"
+  },
+  'Monaco': {
+    photo: '/images/ModHaus_person.jpg',
+    name: 'Aaron von Kreisler',
+    role: 'Monaco'
+  },
+  'Glad': {
+    photo: '/images/glad_person.jpg',
+    name: 'Katrin Cavalcanti',
+    role: "Glad's Founder"
+  },
+  'Zumino': {
+    photo: '/images/TheCoconutCollab_person.jpg',
+    name: 'Edward Averdieck',
+    role: 'Zumino'
+  },
+  'Huel': {
+    photo: '/images/helpbnk_person.jpg',
+    name: 'Will Waite',
+    role: 'Huel'
+  },
+  'Aquela Kombucha': {
+    photo: '/images/aquelaKombucha_person.jpg',
+    name: 'Maria Lima',
+    role: "Aquela Kombucha's Founder"
+  }
 }
 
 // Mapeo de descripciones personalizadas por proyecto
@@ -226,7 +262,7 @@ export default function PortfolioPage() {
                       {/* Person Photo */}
                       <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden flex-shrink-0 outline outline-4 outline-black">
                         <Image
-                          src={projectPersonPhotos[project.title] || '/images/THEREALSTUDIO_person.jpg'}
+                          src={projectClientData[project.title]?.photo || '/images/THEREALSTUDIO_person.jpg'}
                           alt="Client"
                           fill
                           className="object-cover"
@@ -257,7 +293,7 @@ export default function PortfolioPage() {
                       
                       {/* Author - Mucho más abajo */}
                       <p className="text-white/50 text-xs md:text-sm">
-                        Client Name · {project.title}
+                        {projectClientData[project.title]?.name || 'Client Name'} · {projectClientData[project.title]?.role || project.title}
                       </p>
                     </div>
                   </div>
