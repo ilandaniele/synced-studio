@@ -18,6 +18,46 @@ const projectPersonPhotos: Record<string, string> = {
   'Aquela Kombucha': '/images/aquelaKombucha_person.jpg',
 }
 
+// Mapeo de descripciones personalizadas por proyecto
+const projectDescriptions: Record<string, { subtitle: string; description: string }> = {
+  "Reese's": {
+    subtitle: '3D Product Renders & Packaging Design',
+    description: "We elevated their retail presence with photorealistic 3D renders and packaging designed for maximum shelf impact. The result: a successful launch at Tesco, followed by expansion into Sainsbury's across the UK, proving visuals that sell drive real-world results."
+  },
+  'Glad': {
+    subtitle: '3D Product Renders & Social Media Content',
+    description: "We crafted photorealistic 3D visuals that elevated brand quality perception across social channels. By blending studio-grade lighting with premium compositions, we helped Glad stand out in a crowded chocolate market, turning scrollers into believers, and believers into repeated customers."
+  },
+  'Zumino': {
+    subtitle: '3D Product Renders & Rebranding Launch',
+    description: "We brought their rebrand to life with photorealistic 3D visuals that introduced the new identity to the world. Crisp, refreshing renders captured the natural, sustainable positioning, making their relaunch feel premium and impossible to ignore."
+  },
+  'Huel': {
+    subtitle: 'Mixed Media Exploration & 3D Product Renders',
+    description: "An internal studio exploration pushing the boundaries of CGI, live-action, and AI video enhancement. We crafted cinematic visuals that blend physical and digital worlds, proving how modern brands can create high-impact content without traditional production limits."
+  },
+  'Aquela Kombucha': {
+    subtitle: 'Brand Visual Kit & FOOH Video Campaign',
+    description: "We crafted a premium visual system and a FOOH video set in Porto's iconic streets, connecting the product to daily rituals. The result: 50x their average reel reach, proving hyper-localized, emotion-driven content cuts through the noise and drives massive engagement."
+  },
+  'Raise': {
+    subtitle: 'Packaging Redesign & 3D Product Renders',
+    description: "We redesigned their packaging to create instant cravability on the retail shelf. With bold, appetite-driven 3D visuals that make the product pop, we transformed how consumers perceive the brand, turning browsing into buying in seconds."
+  },
+  'Perfect Ted': {
+    subtitle: '3D Branded Models & Product Visualization',
+    description: "We designed 3D branded models for their limited-edition matcha kit, bringing a tangible product concept to life before manufacturing. By visualizing the final product in photorealistic detail, we helped validate design decisions and build launch anticipation."
+  },
+  "Hershey's": {
+    subtitle: '3D Product Renders & Packaging Design',
+    description: "We elevated their UK retail presence with photorealistic 3D renders and packaging built for maximum shelf impact. The outcome: a successful launch at Tesco, followed by expansion into Sainsbury's, proving visuals that captivate drive real-world distribution wins."
+  },
+  'Monaco': {
+    subtitle: 'AI-Generated Social Media & Web Content',
+    description: "We created mystery-driven AI content for their Halloween IRL experience across London and Manchester locations. Through cinematic storytelling visuals, we built anticipation and hype on social, turning Halloween into a must-attend moment that drove packed reservations."
+  }
+}
+
 export default function PortfolioPage() {
   const [openModal, setOpenModal] = useState(false)
   const [activeProjectIdx, setActiveProjectIdx] = useState<number>(0)
@@ -169,12 +209,13 @@ export default function PortfolioPage() {
                           {project.title}
                         </h2>
                         <p className="text-white/60 text-xs md:text-sm font-poppins">
-                          {project.subtitle}
+                          {projectDescriptions[project.title]?.subtitle || project.subtitle}
                         </p>
                       </div>
                     </div>
                     <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-xl">
-                      We created a series of 3D product renders for {project.title}, designed to simulate a high-end product photoshoot. Through realistic lighting, material accuracy, and compositional balance, the visuals highlight the product&apos;s texture and packaging identity blending the look of studio photography with the control of CGI.
+                      {projectDescriptions[project.title]?.description || 
+                        `We created a series of 3D product renders for ${project.title}, designed to simulate a high-end product photoshoot. Through realistic lighting, material accuracy, and compositional balance, the visuals highlight the product's texture and packaging identity blending the look of studio photography with the control of CGI.`}
                     </p>
                   </div>
 
